@@ -1,0 +1,17 @@
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\bin\Debug\net6.0\CoolatyMVC.Data.deps.json
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\bin\Debug\net6.0\CoolatyMVC.Data.runtimeconfig.json
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\bin\Debug\net6.0\CoolatyMVC.Data.dll
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\bin\Debug\net6.0\CoolatyMVC.Data.pdb
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\bin\Debug\net6.0\CoolatyMVC.Models.dll
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\bin\Debug\net6.0\CoolatyMVC.Models.pdb
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.csproj.AssemblyReference.cache
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.GeneratedMSBuildEditorConfig.editorconfig
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.AssemblyInfoInputs.cache
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.AssemblyInfo.cs
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.csproj.CoreCompileInputs.cache
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.csproj.CopyComplete
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.dll
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\refint\CoolatyMVC.Data.dll
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.pdb
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\CoolatyMVC.Data.genruntimeconfig.cache
+E:\Personal\CoolatyMVC\CoolatyMVC.DataAccess\obj\Debug\net6.0\ref\CoolatyMVC.Data.dll

@@ -1,0 +1,13 @@
+﻿@{ ViewData["Title"] = "Products"; } 
+@model IEnumerable<ProductModel>
+
+<div>
+    @if (Model != null && Model.Count() > 0)
+    {
+        @foreach (var product in Model)
+        {
+            <h3>@product.Name</h3>
+            <h1>@product.Price</h1>
+        }
+    }
+</div>

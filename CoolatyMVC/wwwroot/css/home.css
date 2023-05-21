@@ -1,0 +1,695 @@
+﻿/* BANNER */
+.home .banner {
+    width: 100%;
+    height: 120vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.home .banner .image-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 115vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.home .banner .image-container img {
+    height: 75vh;
+}
+
+.home .banner .text-block-1,
+.home .banner .text-block-2,
+.home .banner .text-block-3 {
+    width: 180%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) rotate(-3deg);
+    font-size: 7vw;
+    text-transform: uppercase;
+    font-family: var(--font-fajalle);
+}
+
+.home .banner .text-block-1 span,
+.home .banner .text-block-2 span,
+.home .banner .text-block-3 span {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--color-secondary);
+}
+
+.home .banner .text-block-1 {
+    top: 27vh;
+    z-index: 2;
+}
+
+.home .banner .text-block-2 {
+    top: 47vh;
+    z-index: 4;
+}
+
+.home .banner .text-block-3 {
+    width: 210%;
+    top: 67vh;
+    z-index: 2;
+}
+
+/* ABOUT US */
+.home .about-us {
+    width: 100%;
+    min-height: 160vh;
+    background-color: var(--color-secondary);
+    position: relative;
+    overflow-y: visible;
+}
+
+.home .about-us h1 {
+    width: 100%;
+    position: absolute;
+    top: 6vw;
+    color: var(--color-white);
+    text-align: center;
+    font-size: 5vw;
+    z-index: 3;
+}
+
+.home .about-us .image-container {
+    position: absolute;
+    top: 22vw;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100vh;
+    min-width: 30vw;
+}
+
+.home .about-us .image-container .image-container-inner {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.home .about-us .image-container .image-container-inner .center-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 20rem 20rem 0 0;
+    z-index: 2;
+}
+
+.home .about-us .cloud-image-1 {
+    position: absolute;
+    top: 19vw;
+    left: -9vw;
+    width: 50%;
+    z-index: 3;
+}
+
+.home .about-us .cloud-image-2 {
+    position: absolute;
+    bottom: 0;
+    right: -19vw;
+    width: 90%;
+    z-index: 3;
+}
+
+/* MORE ABOUT US */
+.home .more-about-us {
+    min-height: 100vh;
+    background: var(--color-secondary);
+    display: flex;
+}
+
+.home .more-about-us .image-container-1 {
+    position: relative;
+    width: 35%;
+}
+
+.home .more-about-us .image-container-1 img {
+    width: 75%;
+    position: absolute;
+    left: 5rem;
+    top: -20rem;
+}
+
+.home .more-about-us .image-container-2 {
+    width: 25%;
+    position: relative;
+}
+
+.home .more-about-us .image-container-2 img {
+    width: 70%;
+    position: absolute;
+    right: 5rem;
+    top: 5rem;
+}
+
+.home .more-about-us .text-container {
+    width: 40%;
+    color: var(--color-white);
+}
+
+.home .more-about-us .text-container h1 {
+    font-size: 3vw;
+    text-transform: uppercase;
+}
+
+.home .more-about-us .text-container p {
+    margin-top: 2rem;
+    line-height: 1.6vw;
+}
+
+.home a.button-link {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    margin-top: 2rem;
+    text-decoration: none;
+    color: var(--color-white);
+    font-family: var(--font-fajalle);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.circle {
+    width: 7rem;
+    height: 7rem;
+    border: 2px solid var(--color-white);
+    border-radius: 50%;
+    margin-right: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.inner-circle {
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%);
+    border: 2px solid var(--color-white);
+    background: var(--color-white);
+    transition: 0.3s;
+}
+
+.home a.button-link:hover .inner-circle {
+    top: -2px;
+}
+
+.home a.button-link .icon {
+    font-size: 2rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    transition: 0.3s;
+}
+
+.home a.button-link:hover .icon {
+    color: var(--color-secondary);
+}
+
+/* PRODUCTS */
+.home .products {
+    width: 100%;
+    min-height: 100vh;
+    padding: 5rem;
+}
+
+.home .products h1 {
+    font-size: 5vw;
+    text-align: center;
+}
+
+.home .products .product-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-block-start: 2rem;
+}
+
+.home .products .product-box .product {
+    width: 18%;
+    height: 20rem;
+    background: var(--color-white);
+    border-radius: 0.5rem;
+    margin-right: 1.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.home .products .product-box .product .product-link {
+    display: block;
+    width: 100%;
+    height: 20rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+
+.home .products .product-box .product .product-link .inner,
+.home .products .product-box .product .product-link .inner-circle,
+.home .products .product-box .product .product-link .content-box {
+    position: absolute;
+    transition: 0.3s;
+}
+
+.home .products .product-box .product .product-link .inner,
+.home .products .product-box .product .product-link .content-box {
+    width: 100%;
+    height: 20rem;
+    border-radius: 0.5rem;
+}
+
+.home .products .product-box .product .product-link .inner {
+    top: 100%;
+    background-color: #fef2e4;
+    z-index: 2;
+}
+
+.home .products .product-box .product .product-link .inner-circle {
+    width: 7rem;
+    height: 7rem;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    z-index: 4;
+}
+
+.home .products .product-box .product .product-link:hover .inner-circle {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home .products .product-box .product .product-link:hover .inner {
+    top: 0;
+}
+
+.home .products .product-box .product .product-link .content-box {
+    z-index: 3;
+}
+
+.home .products .product-box .product .product-link .image {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.home .products .product-box .product .product-link .image,
+.home .products .product-box .product .product-link .image img {
+    height: 15rem;
+}
+
+.home .products .product-box .product .product-link .content {
+    padding: 0 1rem;
+}
+
+.home .products .product-box .product .product-link .content h3 {
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.home .products .product-box .product .product-link .content p {
+    font-size: 13px;
+}
+
+.home .products .product-box .product .product-link .content h2 {
+    margin-top: 0.5rem;
+}
+
+.home .products .product-box .product .product-link .content h2 span {
+    font-family: var(--font-bebas);
+    font-weight: normal;
+}
+
+.home .products a.button-link {
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.home .products a.button-link .circle {
+    width: 9rem;
+    height: 9rem;
+    border: 2px solid var(--color-secondary);
+    font-size: 1rem;
+}
+
+.home .products a.button-link .inner-circle {
+    width: 9rem;
+    height: 9rem;
+    background: var(--color-secondary);
+}
+
+.home .products a.button-link .icon {
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.home .products a.button-link:hover .icon {
+    color: var(--color-white);
+}
+
+/* SEND BOX */
+.home .send-box {
+    padding: 0 0 3rem 0;
+    position: relative;
+}
+
+.home .send-box .image-container {
+    margin: auto;
+    text-align: center;
+}
+
+.home .send-box .image-container img {
+    height: 120vh;
+}
+
+.home .send-box .text-container {
+    width: 35%;
+    margin: auto;
+    margin-top: 6rem;
+}
+
+.home .send-box .text-container h2 {
+    font-size: 2vw;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.home .send-box .button {
+    width: 9rem;
+    height: 9rem;
+    border: 1px solid var(--color-secondary);
+    border-radius: 50%;
+    margin: auto;
+    margin-top: -4.5rem;
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home .send-box .button .wrapper {
+    display: block;
+    text-decoration: none;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.home .send-box .button .wrapper .inner-circle-1 {
+    position: absolute;
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-secondary);
+    transition: 0.3s;
+    z-index: 1;
+}
+
+.home .send-box .button .wrapper:hover .inner-circle-1 {
+    top: 0;
+}
+
+.home .send-box .button .wrapper .inner-circle-2 {
+    position: absolute;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-secondary);
+    z-index: 2;
+}
+
+.home .send-box .button .wrapper .inner-circle-wrapper {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+}
+
+.home .send-box .button .wrapper .inner-center-circle {
+    background: var(--color-white);
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    position: absolute;
+    transition: 0.3s;
+    z-index: 2;
+}
+
+.home .send-box .button .wrapper .inner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    font-family: var(--font-fajalle);
+    transition: 0.3;
+    z-index: 4;
+}
+
+.home .send-box .button:hover .inner-center-circle {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.home .send-box .button:hover .inner-text {
+    color: var(--color-secondary);
+}
+
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+@media only screen and (max-width: 600px) {
+    .home .banner {
+        height: 80vh;
+    }
+
+    .home .banner .image-container {
+        height: 80vh;
+    }
+
+    .home .banner .image-container img {
+        height: 45vh;
+    }
+
+    .home .banner .text-block-1 {
+        top: 35vh;
+    }
+
+    .home .banner .text-block-2 {
+        top: 40vh;
+    }
+
+    .home .banner .text-block-3 {
+        top: 45vh;
+        width: 250%;
+    }
+
+    .home .about-us {
+        min-height: 45vh;
+    }
+
+    .home .about-us h1 {
+        font-size: 6vw;
+    }
+
+    .home .about-us .image-container .image-container-inner {
+        height: 30vh;
+    }
+
+    .home .about-us .image-container .image-container-inner .center-image {
+        width: auto;
+        height: 30vh;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .home .more-about-us {
+        min-height: 60vh;
+        padding-top: 4rem;
+    }
+
+    .home .more-about-us .image-container-1,
+    .home .more-about-us .image-container-2 {
+        display: none;
+    }
+
+    .home .more-about-us .text-container {
+        width: 1000%;
+        padding: 0 5rem;
+    }
+
+    .home .more-about-us .text-container h1 {
+        font-size: 6vw;
+    }
+
+    .home .more-about-us .text-container p {
+        font-size: 3.5rem;
+        line-height: 5.5rem;
+    }
+
+    .home .more-about-us a.button-link {
+        margin-top: 5rem;
+        font-size: 4rem;
+    }
+
+    .circle {
+        width: 14rem;
+        height: 14rem;
+        margin-right: 4rem;
+    }
+
+    .inner-circle {
+        width: 14rem;
+        height: 14rem;
+    }
+
+    .home .more-about-us a.button-link .icon {
+        font-size: 4rem;
+    }
+
+    .home .products h1 {
+        font-size: 10vw;
+    }
+
+    .home .products .product-box .product {
+        width: 48%;
+        height: 50rem;
+        border-radius: 1rem;
+    }
+
+    .home .products .product-box .product .product-link {
+        height: 50rem;
+        border-radius: 1rem;
+    }
+
+    .home .products .product-box .product .product-link .inner,
+    .home .products .product-box .product .product-link .content-box {
+        height: 50rem;
+        border-radius: 1rem;
+    }
+
+    .home .products .product-box .product .product-link .image,
+    .home .products .product-box .product .product-link .image img {
+        height: 35rem;
+    }
+
+    .home .products .product-box .product .product-link .content {
+        padding: 0 3rem;
+    }
+
+    .home .products .product-box .product .product-link .content h3 {
+        font-size: 3rem;
+    }
+
+    .home .products .product-box .product .product-link .content p {
+        font-size: 10px;
+    }
+
+    .home .products .product-box .product .product-link .content h2 {
+        font-size: 4.5rem;
+    }
+
+    .home .products a.button-link .circle,
+    .home .products a.button-link .inner-circle {
+        width: 25rem;
+        height: 25rem;
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .home .products a.button-link .icon {
+        font-size: 13px;
+        font-weight: bold;
+        color: var(--color-secondary);
+    }
+
+    .home .products a.button-link:hover .icon {
+        color: var(--color-white);
+    }
+
+    .home .send-box {
+        padding: 0 0 6rem 0;
+        overflow: hidden;
+    }
+
+    .home .send-box .image-container img {
+        height: 50vh;
+    }
+
+    .home .send-box .text-container {
+        width: 95%;
+        margin-top: 28rem;
+    }
+
+    .home .send-box .text-container h2 {
+        font-size: 5vw;
+        text-align: center;
+        margin-top: 5rem;
+    }
+
+    .home .send-box .button {
+        width: 25rem;
+        height: 25rem;
+        border: 1px solid var(--color-secondary);
+        margin-top: -4.5rem;
+    }
+
+    .home .send-box .button .wrapper {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .home .send-box .button .wrapper .inner-circle-1 {
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .home .send-box .button .wrapper .inner-circle-2 {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .home .send-box .button .wrapper .inner-circle-wrapper {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .home .send-box .button .wrapper .inner-center-circle {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .home .send-box .button .wrapper .inner-text {
+        font-size: 13px;
+        text-align: center;
+    }
+}

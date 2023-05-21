@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+
+:root {
+    --color-primary: #fee5ca;
+    --color-secondary: #b00e2f;
+    --color-white: #f7f7fa;
+    --color-border: #383737;
+    --font-bebas: "Bebas Neue", sans-serif;
+    --font-barlow: "Barlow", sans-serif;
+    --font-fajalle: "Fjalla One", sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    font-family: var(--font-barlow);
+    font-size: 1.1vw;
+    font-weight: 300;
+}
+
+/* HEADING */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-fajalle);
+    text-transform: uppercase;
+}
+
+/* NAVIGATION */
+.navigation {
+    position: fixed;
+    top: 0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    height: 4rem;
+    background-color: #f7dcc0;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+.navigation-container {
+    width: calc(100% - 1rem);
+    height: 3rem;
+    border-radius: 0.5rem;
+    margin-left: 0.5rem;
+    background-color: var(--color-primary);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigation-container .brand {
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 6rem;
+    background: #f7dcc0;
+    border-radius: 0.5rem;
+}
+
+.navigation-container .brand a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-family: var(--font-fajalle);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+}
+
+.navigation-container .links {
+    display: flex;
+    align-items: center;
+}
+
+.navigation-container .links a {
+    display: block;
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 400;
+    margin-left: 1.5rem;
+}
+
+.navigation-container .links a.block {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background: #f7dcc0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation-container .links a.block:last-child {
+    margin-left: 0.5rem;
+}
+
+a.block img {
+    width: 1.5rem;
+    transition: 0.3s;
+}
+
+.navigation-container .links a.block:hover img {
+    transform: scale(0.8);
+}
+
+.navigation-container .links a.link {
+    position: relative;
+}
+
+.navigation-container .links a.active::before,
+.navigation-container .links a.link::before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    left: 50%;
+    top: -8px;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.navigation-container .links a.link:hover::before,
+.navigation-container .links a.active::before {
+    opacity: 1;
+    top: -5px;
+}
+
+@media only screen and (max-width: 600px) {
+    .navigation {
+        top: 3rem;
+        width: 90%;
+        height: 16rem;
+        border-radius: 1.5rem;
+    }
+
+    .navigation-container {
+        width: calc(100% - 4rem);
+        height: 12rem;
+        margin-left: 2rem;
+        padding: 0 2rem;
+    }
+
+    .navigation-container .brand {
+        height: 8rem;
+        min-width: 16rem;
+    }
+
+    .navigation-container .brand a {
+        font-size: 3rem;
+        letter-spacing: 1px;
+    }
+
+    .navigation-container .links {
+        display: flex;
+        align-items: center;
+    }
+
+    .navigation-container .links a {
+        font-size: 3rem;
+        margin-left: 4rem;
+    }
+
+    .navigation-container .links a.block {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .navigation-container .links a.block:last-child {
+        margin-left: 2rem;
+    }
+
+    a.block img {
+        width: 5rem;
+    }
+
+    .navigation-container .links a.block:hover img {
+        transform: scale(0.8);
+    }
+
+    .navigation-container .links a.link {
+        position: relative;
+    }
+
+    .navigation-container .links a.link::before {
+        content: "";
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--color-secondary);
+        left: 50%;
+        top: -8px;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: 0.3s;
+    }
+
+    .navigation-container .links a.link:hover::before {
+        opacity: 1;
+        top: -5px;
+    }
+}
