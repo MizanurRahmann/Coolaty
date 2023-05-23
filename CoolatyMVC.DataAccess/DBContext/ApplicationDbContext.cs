@@ -8,5 +8,6 @@ namespace CoolatyMVC.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<ProductModel> Products { get; set; }
+        public DbSet<CategoryModel> Category { get; set; }
     }
 }

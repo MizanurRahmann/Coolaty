@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4g8POnH7gn+q/9npczBhUuB68FrVuSVA5F80n2ALAnE=",
+  "Hash": "V+SanO8kifXnxN90UcKTiKsjVk+qTsNeMvAGVOSbwz8=",
   "Source": "CoolatyMVC",
   "BasePath": "_content/CoolatyMVC",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\home.css"
+    },
+    {
+      "Identity": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\css\\products.css",
+      "SourceId": "CoolatyMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\",
+      "BasePath": "_content/CoolatyMVC",
+      "RelativePath": "css/products.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\products.css"
     },
     {
       "Identity": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\css\\site.css",
@@ -236,6 +253,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\cloud_small.2829b4c4.webp"
+    },
+    {
+      "Identity": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\img\\frozen-yogurt.png",
+      "SourceId": "CoolatyMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\",
+      "BasePath": "_content/CoolatyMVC",
+      "RelativePath": "img/frozen-yogurt.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\frozen-yogurt.png"
+    },
+    {
+      "Identity": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\img\\ice-cream.png",
+      "SourceId": "CoolatyMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\",
+      "BasePath": "_content/CoolatyMVC",
+      "RelativePath": "img/ice-cream.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\ice-cream.png"
     },
     {
       "Identity": "E:\\Personal\\CoolatyMVC\\CoolatyMVC\\wwwroot\\img\\passion fruit.png",

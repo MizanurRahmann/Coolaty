@@ -1,13 +1,58 @@
-﻿@{ ViewData["Title"] = "Products"; } 
+﻿@section Styles { <link rel="stylesheet" href="~/css/products.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Products"; } 
 @model IEnumerable<ProductModel>
 
-<div>
-    @if (Model != null && Model.Count() > 0)
-    {
-        @foreach (var product in Model)
-        {
-            <h3>@product.Name</h3>
-            <h1>@product.Price</h1>
-        }
-    }
+<div class="products">
+    <div class="products-conteiner">
+        <h1>CATALOG</h1>
+        <p>Here are some of our products</p>
+
+        <div class="filter-container">
+            <a 
+               href="@Url.Action("Index", "Products", new { category = "classic" })"
+               class="filter-block @(Context.Request.Query["category"].ToString() == "classic" ? "active" : "")"
+            >
+                <img src="~/img/ice-cream.png" alt="" />
+            </a>
+            <a 
+               href="@Url.Action("Index", "Products", new { category = "cup" })"
+               class="filter-block @(Context.Request.Query["category"].ToString() == "cup" ? "active" : "")"
+            >
+                <img src="~/img/frozen-yogurt.png" alt="" />
+            </a>
+        </div>
+
+        <div class="product-box">
+            @if (Model != null && Model.Count() > 0)
+            {
+                @foreach (var product in Model)
+                {
+                    <div class="product">
+                        <a href="" class="product-link">
+                            <div class="inner"></div>
+                            <div class="content-box">
+                                <div class="image">
+                                    <img src="~/img/passion fruit.png" alt="" />
+                                </div>
+                                <div class="content">
+                                    <h3>@product.Name</h3>
+                                    <p>Serving Weight 80R</p>
+                                    <h2>@product.Price <span>$</span></h2>
+                                </div>
+                            </div>
+                            <div class="inner-circle">😋</div>
+                            <div class="cart-button">
+                                <div class="wrapper">
+                                    <div class="cart-button-circle"></div>
+                                    <div class="cart-button-text" id="cart-box">
+                                        <i class="iconoir-shopping-bag-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
 </div>

@@ -1,5 +1,8 @@
+using AutoMapper;
 using CoolatyMVC.Data;
+using CoolatyMVC.Data.Repository.Category;
 using CoolatyMVC.Data.Repository.Products;
+using CoolatyMVC.Services.Category;
 using CoolatyMVC.Services.Products;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +22,12 @@ builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromSeco
 
 // 4. repositories for different actions
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
 // 5. custom services for different actions
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
 
 // BUILD THE APP WITH DI CONTAINER
 var app = builder.Build();

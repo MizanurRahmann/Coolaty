@@ -14,7 +14,11 @@ namespace CoolatyMVC.Models
         [Required(ErrorMessage = "Product name is required.")]
         [DisplayName("product name")]
         public string? Name { get; set; }
-        
+
+        [Required(ErrorMessage = "Product sub-name is required.")]
+        [DisplayName("product sub-name")]
+        public string? SubName { get; set; }
+
         [Required(ErrorMessage = "Product price is required.")]
         [DisplayName("product price")]
         public int Price { get; set; }
@@ -48,5 +52,16 @@ namespace CoolatyMVC.Models
         [MaxFileSize(500)]
         [AllowedFileType(new string[] { ".jpg", ".png", ".jpeg" })]
         public IFormFile? Image { get; set; }
+
+        [Required]
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public virtual CategoryModel? Category { get; set; }
+
+        [DisplayName("product created")]
+        public DateTime? CreateDate { get; set; }
+
+        [DisplayName("product updated")]
+        public DateTime? UpdateDate { get; set; }
     }
 }

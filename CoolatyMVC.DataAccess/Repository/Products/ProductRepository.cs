@@ -1,5 +1,4 @@
 ﻿using CoolatyMVC.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace CoolatyMVC.Data.Repository.Products
 {
@@ -19,21 +18,13 @@ namespace CoolatyMVC.Data.Repository.Products
         #region Methods
         public async Task<IEnumerable<ProductModel>> GetAllProducts(int pageNumber, int pageSize, string filterBy)
         {
-            int offset = (pageNumber - 1) * pageSize;
-            IQueryable<ProductModel> query = _db.Products.AsQueryable();
+            var result = _db.Products
+                .Where(p => p.Category.Name == filterBy)
+                .OrderBy(p => p.Name)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize);
 
-            if(!string.IsNullOrEmpty(filterBy))
-            {
-                query = query.Where(p => p.Name.Contains(filterBy));
-            }
-
-            IEnumerable<ProductModel> results = await query
-                .OrderBy(p => p.Id)
-                .Skip(offset)
-                .Take(pageSize)
-                .ToListAsync();
-            
-            return results;
+            return await Task.FromResult(result);
         }
         #endregion
     }

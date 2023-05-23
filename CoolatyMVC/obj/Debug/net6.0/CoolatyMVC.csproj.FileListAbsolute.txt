@@ -8,10 +8,12 @@ E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\CoolatyMVC.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\CoolatyMVC.pdb
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Azure.Core.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Azure.Identity.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Humanizer.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
@@ -19,6 +21,7 @@ E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.Caching.
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
@@ -33,6 +36,8 @@ E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.IdentityModel.Proto
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.SqlServer.Server.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\Mono.TextTemplating.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.CodeDom.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Drawing.Common.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
@@ -40,6 +45,8 @@ E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Memory.Data.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Runtime.Caching.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Security.Permissions.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Text.Encodings.Web.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Text.Json.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\System.Windows.Extensions.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
@@ -52,6 +59,7 @@ E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\unix\lib\net6.0\Syst
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\CoolatyMVC.Data.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\CoolatyMVC.Models.dll
@@ -78,3 +86,4 @@ E:\Personal\CoolatyMVC\CoolatyMVC\obj\Debug\net6.0\refint\CoolatyMVC.dll
 E:\Personal\CoolatyMVC\CoolatyMVC\obj\Debug\net6.0\CoolatyMVC.pdb
 E:\Personal\CoolatyMVC\CoolatyMVC\obj\Debug\net6.0\CoolatyMVC.genruntimeconfig.cache
 E:\Personal\CoolatyMVC\CoolatyMVC\obj\Debug\net6.0\ref\CoolatyMVC.dll
+E:\Personal\CoolatyMVC\CoolatyMVC\bin\Debug\net6.0\AutoMapper.dll

@@ -1,4 +1,7 @@
-﻿using CoolatyMVC.Services.Products;
+﻿using CoolatyMVC.Models.Category;
+using CoolatyMVC.Models.Products;
+using CoolatyMVC.Services.Category;
+using CoolatyMVC.Services.Products;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoolatyWeb.Controllers
@@ -6,22 +9,28 @@ namespace CoolatyWeb.Controllers
     public class ProductsController : Controller
     {
         private readonly ILogger<ProductsController> _logger;
-        private readonly IProductService _services;
+        private readonly IProductService _prodServices;
+        private readonly ICategoryService _catServices;
         private readonly IHttpContextAccessor _session;
 
-        public ProductsController(ILogger<ProductsController> logger, IProductService services, IHttpContextAccessor sessionContext)
+        public ProductsController(
+            ILogger<ProductsController> logger, 
+            IProductService prodServices,
+            ICategoryService catServices,
+            IHttpContextAccessor sessionContext)
         {
             _logger = logger;
-            _services = services;
+            _prodServices = prodServices;
+            _catServices = catServices;
             _session = sessionContext;
         }
 
         // GET PRODUCT
         [HttpGet]
-        public async Task<IActionResult> Index([FromQuery(Name = "search")] string search)
+        public async Task<IActionResult> Index([FromQuery(Name = "category")] string search)
         {
-            var data = await _services.GetAllProducts(1, 10, search);
-            return View(data);
+            var productData = await _prodServices.GetAllProducts(1, 10, search);
+            return View(productData);
         }
     }
 }
