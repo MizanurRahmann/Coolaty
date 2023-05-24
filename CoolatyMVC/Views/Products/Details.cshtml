@@ -1,0 +1,133 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/productDetails.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Detail"; }
+@model ProductModel
+
+<div class="singleproduct">
+    @if(Model != null)
+    {
+        <div class="info-container">
+            <div class="image">
+                <div class="wrapper">
+                    <img src="~/img/passion fruit.png" alt="" />
+                    <div class="cart-button-box">
+                        <div class="total-price">
+                            <h1>
+                                <span id="disable-productPrice">@Model.Price</span>
+                                <span id="productPrice">@Model.Price</span>
+                                <span id="sign">$</span>
+                            </h1>
+                        </div>
+                        <div class="amount">
+                            <div class="box" id="decreament">
+                                <div class="box-text"> - </div>
+                            </div>
+                            <div class="amnt">
+                                <input id="selectedItem" type="text" value="01">
+                            </div>
+                            <div class="box" id="increament">
+                                <div class="box-text"> + </div>
+                            </div>
+                            <div class="submit-button">
+                                <i class="iconoir-shopping-bag-alt"></i>
+                                <span>Add to cart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="info">
+                <div class="info-wrapper">
+                    <h1>@Model.Name</h1>
+                    <div class="description">
+                        <p>@Model.SubName</p>
+                    </div>
+                    <div class="compund">
+                        <h3>Compound</h3>
+                        <p>@Model.Compound</p>
+                    </div>
+                    <div class="energy">
+                        <h3>Energy Values</h3>
+                        <div class="values">
+                            <div class="desc">Protien</div>
+                            <div class="value">@(Model.Proteins)g</div>
+                        </div>
+                        <div class="values">
+                            <div class="desc">Fats</div>
+                            <div class="value">@(Model.Fats)g</div>
+                        </div>
+                        <div class="values">
+                            <div class="desc">Carbohydrates</div>
+                            <div class="value">@(Model.Carbohydrates)g</div>
+                        </div>
+                        <div class="values">
+                            <div class="desc">Calories</div>
+                            <div class="value">@(Model.Calories)kcal</div>
+                        </div>
+                    </div>
+                    <div class="terms">
+                        <h3>Terms</h3>
+                        <div class="term">
+                            <div class="desc">PICKUP</div>
+                            <div class="value">
+                                The minimum order amount is 50 UAH, the minimum assembly
+                                time is 30 minutes, you can pick up from the store at any
+                                time convenient for you.
+                            </div>
+                        </div>
+                        <div class="term">
+                            <div class="desc">DELIVERY</div>
+                            <div class="value">
+                                Minimum order amount 75 UAH, delivery cost 50 UAH, delivery
+                                time 1 hour.
+                            </div>
+                        </div>
+                        <div class="term">
+                            <div class="desc">Payment</div>
+                            <div class="value">Cash on delivery.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else 
+    {
+        <div>Not Found</div>
+    }
+    <div class="similar-products">
+        <h1>IT'S WORTH A TRY</h1>
+
+        <div class="product-box">
+            <div class="aproduct">
+                <a href="" class="product-link">
+                    <div class="inner"></div>
+                    <div class="content-box">
+                        <div class="image">
+                            <img src="./img/passion fruit.png" alt="" />
+                        </div>
+                        <div class="content">
+                            <h3>Salted Caramel</h3>
+                            <p>Serving Weight 80R</p>
+                            <h2>80 <span>$</span></h2>
+                        </div>
+                    </div>
+                    <div class="inner-circle">😋</div>
+                    <div class="cart-button">
+                        <div class="wrapper">
+                            <div class="cart-button-circle"></div>
+                            <div class="cart-button-text" id="cart-box">
+                                <i class="iconoir-shopping-bag-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="aproduct"></div>
+            <div class="aproduct"></div>
+            <div class="aproduct"></div>
+            <div class="aproduct"></div>
+        </div>
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/product.js" asp-append-version="true"></script> }

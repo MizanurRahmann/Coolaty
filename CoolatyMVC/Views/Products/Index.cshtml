@@ -27,31 +27,16 @@
             {
                 @foreach (var product in Model)
                 {
-                    <div class="product">
-                        <a href="" class="product-link">
-                            <div class="inner"></div>
-                            <div class="content-box">
-                                <div class="image">
-                                    <img src="~/img/passion fruit.png" alt="" />
-                                </div>
-                                <div class="content">
-                                    <h3>@product.Name</h3>
-                                    <p>Serving Weight 80R</p>
-                                    <h2>@product.Price <span>$</span></h2>
-                                </div>
-                            </div>
-                            <div class="inner-circle">😋</div>
-                            <div class="cart-button">
-                                <div class="wrapper">
-                                    <div class="cart-button-circle"></div>
-                                    <div class="cart-button-text" id="cart-box">
-                                        <i class="iconoir-shopping-bag-alt"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    @await Html.PartialAsync("~/Views/Shared/_Product.cshtml", product)
                 }
+            }
+            else
+            {
+                <div class="error-container">
+                    <img src="~/img/closed.png" alt="">
+                    <h1>PRODUCT NOT FOUND</h1>
+                    <p>Sorry we are unable to find any product.</p>
+                </div>
             }
         </div>
     </div>

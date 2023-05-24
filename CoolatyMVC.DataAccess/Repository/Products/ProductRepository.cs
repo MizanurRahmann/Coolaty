@@ -1,4 +1,5 @@
 ﻿using CoolatyMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoolatyMVC.Data.Repository.Products
 {
@@ -25,6 +26,11 @@ namespace CoolatyMVC.Data.Repository.Products
                 .Take(pageSize);
 
             return await Task.FromResult(result);
+        }
+
+        public async Task<ProductModel> GetSingleProduct(int productId)
+        {
+            return await _db.Products.FirstOrDefaultAsync(p => p.Id == productId);
         }
         #endregion
     }

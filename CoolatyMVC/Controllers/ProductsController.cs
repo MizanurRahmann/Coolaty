@@ -1,4 +1,5 @@
-﻿using CoolatyMVC.Models.Category;
+﻿using CoolatyMVC.Models;
+using CoolatyMVC.Models.Category;
 using CoolatyMVC.Models.Products;
 using CoolatyMVC.Services.Category;
 using CoolatyMVC.Services.Products;
@@ -25,12 +26,20 @@ namespace CoolatyWeb.Controllers
             _session = sessionContext;
         }
 
-        // GET PRODUCT
+        // GET ALL PRODUCT
         [HttpGet]
         public async Task<IActionResult> Index([FromQuery(Name = "category")] string search)
         {
             var productData = await _prodServices.GetAllProducts(1, 10, search);
             return View(productData);
+        }
+
+        // GET SINGLE PRODUCT
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            ProductModel data = await _prodServices.GetSingleProduct(id);
+            return View("~/Views/Products/Details.cshtml", data);
         }
     }
 }

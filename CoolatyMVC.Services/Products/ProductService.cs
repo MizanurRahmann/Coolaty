@@ -22,6 +22,11 @@ namespace CoolatyMVC.Services.Products
         {
             return await _productRepository.GetAllProducts(pageNumber, pageSize, filterBy);
         }
+
+        public async Task<ProductModel> GetSingleProduct(int id)
+        {
+            return await _productRepository.GetSingleProduct(id);
+        }
         #endregion
     }
 }

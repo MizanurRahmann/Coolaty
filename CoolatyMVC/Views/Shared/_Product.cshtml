@@ -1,0 +1,31 @@
+﻿@model ProductModel
+
+<div class="aproduct">
+    <a 
+        class="product-link"
+       asp-controller="Products"
+       asp-action="Details"
+       asp-route-id=@Model.Id
+    >
+        <div class="inner"></div>
+        <div class="content-box">
+            <div class="image">
+                <img src="~/img/passion fruit.png" alt="" />
+            </div>
+            <div class="content">
+                <h3>@Model.Name</h3>
+                <p>Serving Weight 80R</p>
+                <h2>@Model.Price <span>$</span></h2>
+            </div>
+        </div>
+        <div class="inner-circle">😋</div>
+        <div class="cart-button">
+            <div class="wrapper">
+                <div class="cart-button-circle"></div>
+                <div class="cart-button-text" id="cart-box">
+                    <i class="iconoir-shopping-bag-alt"></i>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>

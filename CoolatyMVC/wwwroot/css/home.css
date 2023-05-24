@@ -454,7 +454,7 @@
 }
 
 .home .send-box .button .wrapper .inner-center-circle {
-    background: var(--color-white);
+    background: var(--color-primary);
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
