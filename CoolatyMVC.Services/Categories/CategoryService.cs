@@ -1,25 +1,25 @@
 ﻿using CoolatyMVC.Models;
-using CoolatyMVC.Data.Repository.Category;
+using CoolatyMVC.Data.Repository;
 
 namespace CoolatyMVC.Services.Category
 {
     public class CategoryService : ICategoryService
     {
         #region Fields
-        private readonly ICategoryRepository _categoryRepository;
+        private readonly Repository _repo;
         #endregion
 
         #region Constructor
-        public CategoryService(ICategoryRepository categoryRepository)
+        public CategoryService(Repository repo)
         {
-            _categoryRepository = categoryRepository;
+            _repo = repo;
         }
         #endregion
 
         #region Methods
         public async Task<IEnumerable<CategoryModel>> GetAllCategories()
         {
-            return await _categoryRepository.GetAllCategories();
+            return await _repo.Category.GetAllCategories();
         }
         #endregion
     }

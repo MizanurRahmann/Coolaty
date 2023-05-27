@@ -1,31 +1,30 @@
 ﻿using CoolatyMVC.Models;
-using CoolatyMVC.Data;
-using CoolatyMVC.Data.Repository.Products;
+using CoolatyMVC.Data.Repository;
 
 namespace CoolatyMVC.Services.Products
 {
     public class ProductService : IProductService
     {
         #region Fields
-        private readonly IProductRepository _productRepository;
+        private readonly Repository _repo;
         #endregion
 
         #region Constructor
-        public ProductService(IProductRepository productRepository)
+        public ProductService(Repository repo)
         {
-            _productRepository = productRepository;
+            _repo = repo;
         }
         #endregion
 
         #region Methods
         public async Task<IEnumerable<ProductModel>> GetAllProducts(int pageNumber, int pageSize, string filterBy)
         {
-            return await _productRepository.GetAllProducts(pageNumber, pageSize, filterBy);
+            return await _repo.Products.GetAllProducts(pageNumber, pageSize, filterBy);
         }
 
         public async Task<ProductModel> GetSingleProduct(int id)
         {
-            return await _productRepository.GetSingleProduct(id);
+            return await _repo.Products.GetSingleProduct(id);
         }
         #endregion
     }
