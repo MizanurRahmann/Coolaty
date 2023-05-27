@@ -1,9 +1,6 @@
-using AutoMapper;
 using CoolatyMVC.Data;
-using CoolatyMVC.Data.Repository.Category;
-using CoolatyMVC.Data.Repository.Products;
-using CoolatyMVC.Services.Category;
-using CoolatyMVC.Services.Products;
+using CoolatyMVC.Data.Repository;
+using CoolatyMVC.Services.Service;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,13 +17,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromSeconds(120); });
 
-// 4. repositories for different actions
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+// 4. register repositories
+builder.Services.AddScoped<Repository, Repository>();
 
-// 5. custom services for different actions
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
+// 5. register custom services
+builder.Services.AddScoped<IService, Service>();
 
 
 // BUILD THE APP WITH DI CONTAINER
