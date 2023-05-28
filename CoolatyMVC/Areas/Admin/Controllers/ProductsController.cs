@@ -93,13 +93,48 @@ namespace CoolatyMVC.Areas.Admin.Controllers
                 return View("~/Areas/Admin/Views/Products/_NotFound.cshtml");
             }
 
-            return View("~/Areas/Admin/Views/Products/Edit.cshtml", viewData);
+            return View("~/Areas/Admin/Views/Products/Update.cshtml", viewData);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(int id)
+        public async Task<IActionResult> Update(ProductModel model)
         {
-            throw new NotImplementedException();
+            // convert image file to base64 string
+            string hexString = "";
+            if (model.Image != null)
+            {
+                var bytes = await GetBytes(model);
+                hexString = Convert.ToBase64String(bytes);
+                model.ImageUrl = hexString;
+            }
+
+            // clear previous validation & rerun validation function
+            ModelState.Clear();
+            TryValidateModel(model);
+
+            // check model validty
+            if (ModelState.IsValid)
+            {
+                var domainModel = new ProductModel()
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    ImageUrl = model.ImageUrl,
+                    Price = model.Price,
+                    SubName = model.SubName,
+                    Compound = model.Compound,
+                    Calories = model.Calories,
+                    Carbohydrates = model.Carbohydrates,
+                    Proteins = model.Proteins,
+                    Fats = model.Fats,
+                    CategoryId = model.CategoryId,
+                };
+
+                _services.Products.Update(domainModel);
+                TempData["success"] = "Updated Successfully!";
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
         #endregion
 

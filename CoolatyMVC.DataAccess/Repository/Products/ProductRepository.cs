@@ -54,6 +54,11 @@ namespace CoolatyMVC.Data.Repository.Products
         {
             await _db.Products.AddAsync(model);
         }
+
+        public void Update(ProductModel model)
+        {
+            _db.Products.Update(model);
+        }
         #endregion
     }
 }

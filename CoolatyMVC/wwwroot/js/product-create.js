@@ -117,7 +117,7 @@ const previewController = (input) => {
 }
 
 const showPreview = () => {
-    if ($("#productImage").val()) {
+    if ($("#productImage").val() || $("#productImageUrl").val()) {
         $("#image-preview").css("display", "flex");
         $("#image-preview .container").css("animation-name", "scaleToNormal");
         $("#image-preview .container").css("animation-duration", "0.5s");

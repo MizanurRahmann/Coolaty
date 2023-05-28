@@ -36,6 +36,12 @@ namespace CoolatyMVC.Services.Products
             await _repo.Products.Create(model);
             _repo.Save();
         }
+
+        public void Update(ProductModel model)
+        {
+             _repo.Products.Update(model);
+            _repo.Save();
+        }
         #endregion
     }
 }

@@ -19,7 +19,7 @@
             <!-- EDIT FORM -->
             <!-- ----------- -->
             <form asp-controller="Products"
-                  asp-action="Edit"
+                  asp-action="Update"
                   method="post"
                   enctype="multipart/form-data">
                 <div class="form-wrapper">
@@ -87,7 +87,13 @@
                                         <input id="productImage"
                                                type="file"
                                                asp-for=@Model.Image
-                                               accept="image/*" />
+                                               accept="image/*"
+                                        />
+                                        <input id="productImageUrl"
+                                               type="text"
+                                               asp-for="@Model.ImageUrl"
+                                               value="@Model.ImageUrl" 
+                                         />
                                     </div>
                                     <span asp-validation-for="ImageUrl" class="error-message" id="error-image"></span>
                                 </div>
@@ -179,6 +185,7 @@
                         <div class="close" id="image-preview-close">
                             <i class="iconoir-cancel"></i>
                         </div>
+                        <img src="@(string.Format("data:image/png;base64,{0}", Model.ImageUrl))" style="width: 90%" />
                     </div>
                 </div>
 
@@ -197,6 +204,4 @@
     </div>
 </div>
 
-@section Scripts {
-     <script src="~/js/product-create.js" asp-append-version="true"></script>
- }
+@section Scripts { <script src="~/js/product-create.js" asp-append-version="true"></script> }

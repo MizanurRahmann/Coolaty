@@ -7,5 +7,6 @@ namespace CoolatyMVC.Services.Products
         Task<IEnumerable<ProductModel>> GetAllProducts(int pageNumber, int pageSize, string filterBy, string requestComeFrom="Customer");
         Task<ProductModel> GetSingleProduct(int id);
         Task Create(ProductModel model);
+        void Update(ProductModel model);
     }
 }
