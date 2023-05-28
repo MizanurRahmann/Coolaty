@@ -2,8 +2,9 @@
 using CoolatyMVC.Services.Service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CoolatyWeb.Controllers
+namespace CoolatyMVC.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class ProductsController : Controller
     {
         private readonly IService _services;
@@ -12,7 +13,7 @@ namespace CoolatyWeb.Controllers
 
         public ProductsController(
             IService services,
-            ILogger<ProductsController> logger, 
+            ILogger<ProductsController> logger,
             IHttpContextAccessor sessionContext)
         {
             _logger = logger;
@@ -33,7 +34,7 @@ namespace CoolatyWeb.Controllers
         public async Task<IActionResult> Details(int id)
         {
             ProductModel data = await _services.Products.GetSingleProduct(id);
-            return View("~/Views/Products/Details.cshtml", data);
+            return View("~/Areas/Customer/Views/Products/Details.cshtml", data);
         }
     }
 }

@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coolaty ・ @ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    @RenderSection("Styles", false)
+</head>
+<body>
+    <div class="layout">
+        <div class="layout-wrapper">
+            <div class="menu">
+                <div class="banner">Coolaty</div>
+                <div class="menu-wrapper">
+                    <div class="upper-menu">
+                        <a 
+                            class="menu-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Dashboard" ? "active" : "")"
+                            asp-area="Admin"
+                            asp-controller="Dashboard"
+                            asp-action="Index"
+                        >
+                            <i class="iconoir-home"></i> Dashboard
+                        </a>
+                        <a href="" class="menu-link">
+                            <i class="iconoir-simple-cart"></i> Orders
+                        </a>
+                        <a 
+                           class="menu-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Products" ? "active" : "")"
+                           asp-area="Admin"
+                           asp-controller="Products"
+                           asp-action="Index"
+                        >
+                            <i class="iconoir-shopping-bag"></i>Products
+                        </a>
+                        <a href="" class="menu-link">
+                            <i class="iconoir-component"></i> Categories
+                        </a>
+                        <a href="" class="menu-link">
+                            <i class="iconoir-user"></i> Users
+                        </a>
+                    </div>
+                    <div class="bottom-menu">
+                        <a href="" class="menu-link">
+                            <i class="iconoir-settings"></i> Settings
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="top-menu">
+                    <div class="menu-item">
+                        <i class="iconoir-bell"></i>
+                    </div>
+                    <div class="menu-item">
+                        M
+                    </div>
+                </div>
+                <div class="main-container">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+        <div class="error-wrapper">
+            <div class="inner">
+                <img src="~/img/Construction site_Flatline.png" alt="" />
+                <h1>Something Went Wrong</h1>
+                <p>Soory, admin panel is not developed for small devices.</p>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

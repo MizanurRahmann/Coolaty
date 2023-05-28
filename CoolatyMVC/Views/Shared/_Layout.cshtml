@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coolaty ・ @ViewData["Title"]</title>
+    <link rel="icon" href="~/img/logo.png">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
@@ -18,7 +19,8 @@
                    class="link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")"
                    asp-controller="Home"
                    asp-action="Index">
-                    COOLATY
+                    <img src="~/img/logo.png" alt="" />
+                    <span>COOLATY</span>
                 </a>
             </div>
             <div class="links">
