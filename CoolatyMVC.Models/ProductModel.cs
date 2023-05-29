@@ -20,6 +20,7 @@ namespace CoolatyMVC.Models
         public string? SubName { get; set; }
 
         [Required(ErrorMessage = "Product price is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Price must be greater than 0.")]
         [DisplayName("product price")]
         public int Price { get; set; }
 
@@ -28,18 +29,22 @@ namespace CoolatyMVC.Models
         public string? Compound { get; set; }
 
         [Required(ErrorMessage = "Product proteins is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Must be greater than 0.")]
         [DisplayName("product proteins")]
         public decimal? Proteins { get; set; }
 
         [Required(ErrorMessage = "Product fat is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Must be greater than 0.")]
         [DisplayName("product fat")]
         public decimal? Fats { get; set; }
 
         [Required(ErrorMessage = "Product carbohydrates is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Must be greater than 0.")]
         [DisplayName("product carbohydrates")]
         public decimal? Carbohydrates { get; set; }
 
         [Required(ErrorMessage = "Product calories is required.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Must be greater than 0.")]
         [DisplayName("product calories")]
         public decimal? Calories { get; set; }
 
@@ -50,10 +55,10 @@ namespace CoolatyMVC.Models
         [NotMapped]
         [DisplayName("product image")]
         [MaxFileSize(500)]
-        [AllowedFileType(new string[] { ".jpg", ".png", ".jpeg" })]
+        [AllowedFileType(new string[] { ".jpg", ".png", ".jpeg", ".webp" })]
         public IFormFile? Image { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Product Category is required.")]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
         public virtual CategoryModel? Category { get; set; }
