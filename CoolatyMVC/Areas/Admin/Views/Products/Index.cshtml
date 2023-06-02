@@ -1,3 +1,69 @@
-﻿@{ ViewData["Title"] = "Products"; }
+﻿@section Styles { <link rel="stylesheet" href="~/css/products-admin.css" asp-append-version="true" /> }
+    @{
+    ViewData["Title"] = "Products";
+}
+@model IEnumerable<ProductModel>
 
-<h1>Product</h1>
+<div class="adProducts">
+    @if (Model != null && Model.Count() > 0)
+    {
+        <div class="heading">
+            <div class="heading-name">
+                <h2>Products</h2>
+            </div>
+            <div class="options">
+                <form>
+                    <div class="icon"><i class="iconoir-search"></i></div>
+                    <input type="text" value="" placeholder="Search here..." />
+                </form>
+                <a class="create-product-button"
+               asp-area="Admin"
+               asp-controller="Products"
+               asp-action="Create">
+                    <i class="iconoir-plus"></i>
+                    Create
+                </a>
+            </div>
+        </div>
+
+        <div class="product-box-container">
+            <div class="product-box">
+                @foreach (var product in Model)
+                {
+                    <div class="aproduct">
+                        <a class="product-link"
+                            asp-area="Admin"
+                            asp-controller="Products"
+                            asp-action="Update"
+                            asp-route-id=@product.Id
+                        >
+                            <div class="inner"></div>
+                            <div class="content-box">
+                                <div class="image">
+                                    <img src="@(string.Format("data:image/png;base64,{0}", product.ImageUrl))" alt="" />
+                                </div>
+                                <div class="content">
+                                    <h3>@product.Name</h3>
+                                    <p>Serving Weight 80R</p>
+                                    <h2>@product.Price <span>$</span></h2>
+                                </div>
+                            </div>
+                            <div class="cart-button">
+                                <div class="wrapper">
+                                    <div class="cart-button-circle"></div>
+                                    <div class="cart-button-text" id="cart-box">
+                                        <i class="iconoir-edit-pencil"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        @await Html.PartialAsync("~/Areas/Admin/Views/Products/_NotFound.cshtml");
+    }
+</div>

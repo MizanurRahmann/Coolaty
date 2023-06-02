@@ -1,0 +1,481 @@
+﻿.addProducts {
+    position: relative;
+}
+
+.addProducts .heading {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.addProducts .heading h2 {
+    display: inline-block;
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    color: var(--color-admin-text);
+}
+
+.addProducts .heading a {
+    text-decoration: none;
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-tertiary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+}
+
+.addProducts .common-container {
+    height: 92vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.common-container::-webkit-scrollbar-track {
+    background-color: #F6F7FA;
+}
+
+.common-container::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.common-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-admin-text);
+    border-radius: 10px;
+}
+
+.addProducts .product-creation {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+form .form-wrapper {
+    width: 100%;
+    margin-top: 1rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+
+form .w-100 {
+    width: 100%;
+}
+
+form .w-70 {
+    width: 70%;
+}
+
+form .w-27 {
+    width: 27.6%;
+}
+
+form .w-25 {
+    width: 25%;
+}
+
+form .w-23 {
+    width: 23.2%;
+}
+
+form .block {
+    display: flex;
+}
+
+form .block:not(:first-child) {
+    margin-top: 3rem;
+}
+
+form .block-desc {
+    width: 25%;
+}
+
+form .block-desc h3,
+form .block-desc p {
+    color: var(--color-admin-text);
+}
+
+form .block-desc h3 {
+    margin-top: -1rem;
+}
+
+form .block-fields {
+    width: 75%;
+}
+
+form .block-fields .field-wrapper {
+    justify-content: space-between;
+    align-items: center;
+}
+
+form .block-fields .field-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    position: relative;
+}
+
+form .block-fields .field-container span.error-message {
+    display: block;
+    height: 1rem;
+    font-size: 0.8rem;
+}
+
+form .block-fields label {
+    color: var(--color-admin-text);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+form .block-fields label span {
+    display: block;
+    color: var(--color-secondary);
+    color: red;
+}
+
+form .block-fields .field-wrapper span.error-message {
+    display: block;
+    color: red;
+    margin-top: 0.2rem;
+}
+
+form .block-fields input,
+form .block-fields textarea {
+    width: 100%;
+    height: 3rem;
+    background: var(--color-input-background);
+    color: var(--color-admin-text);
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+}
+
+form .block-fields textarea {
+    height: 5rem;
+    padding: 1rem;
+    font-family: var(--font-barlow);
+    font-weight: 500;
+}
+
+form .block-fields .field-container .symbol {
+    height: 2rem;
+    width: 2rem;
+    background: #fff;
+    color: var(--color-admin-text);
+    font-weight: 500;
+    border-radius: 0.3rem;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 1.75rem;
+}
+
+form .block-fields .select-dropdown {
+    position: relative;
+    height: 3rem;
+    min-width: 14rem;
+    padding: 0 5px 0 15px;
+    border-radius: 0.3rem;
+    background: var(--color-input-background);
+    text-align: left;
+    line-height: 45px;
+    color: var(--color-admin-text);
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+form .block-fields .select-dropdown .select-drop-down-field {
+    display: none;
+}
+
+form .block-fields .select-dropdown::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -2px;
+    width: 0;
+    height: 0;
+    border-width: 6px 6px 0 6px;
+    border-style: solid;
+    border-color: #a0a0a0 transparent;
+}
+
+form .block-fields .select-dropdown.active::before {
+    border-width: 0 6px 6px 6px;
+}
+
+form .block-fields .select-dropdown .dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border-radius: inherit;
+    box-shadow: inherit;
+    background: inherit;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    transition: 0.5s ease;
+    -webkit-transform: scaleY(0);
+    -moz-transform: scaleY(0);
+    -ms-transform: scaleY(0);
+    transform: scaleY(0);
+    -webkit-transform-origin: top;
+    -moz-transform-origin: top;
+    -ms-transform-origin: top;
+    transform-origin: top;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 3;
+}
+
+form .block-fields .select-dropdown span,
+form .block-fields .select-dropdown .dropdown li {
+    font-family: var(--font-barlow);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+form .block-fields .select-dropdown .dropdown li {
+    height: 3rem;
+    padding-left: 1rem;
+    display: flex;
+    align-items: center;
+    background: var(--color-white);
+    border-bottom: 1px solid #dddde1;
+    overflow: hidden;
+    -webkit-transition: 0.5s ease;
+    -moz-transition: 0.5s ease;
+    -ms-transition: 0.5s ease;
+    transition: 0.5s ease;
+}
+
+form .block-fields .select-dropdown .dropdown li:last-child {
+    border-bottom: none;
+}
+
+form .block-fields .select-dropdown .dropdown li:hover {
+    background: #f6f7fa;
+}
+
+form .block-fields .select-dropdown.active .dropdown {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: scaleY(1);
+    -moz-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    transform: scaleY(1);
+}
+
+form .block-fields .image-field {
+    height: 3rem;
+    position: relative;
+    background: var(--color-input-background);
+    border-radius: 0.3rem;
+    border: 1px dashed #a0a0a0;
+    font-size: 0.9rem;
+    font-family: var(--font-barlow);
+    font-weight: 500;
+    color: var(--color-admin-text);
+}
+
+form .block-fields .image-field .image-field-text,
+form .block-fields .image-field input {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+form .block-fields .image-field input {
+    width: calc(100% - 3rem);
+    margin-left: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    opacity: 0;
+}
+
+form .block-fields .image-field .image-field-text {
+    padding: 0 1rem 0 0.6rem;
+}
+
+form .block-fields .image-field .image-field-text .in .image {
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-white);
+    margin-right: 0.5rem;
+    border-radius: 0.3rem;
+    cursor: pointer;
+}
+
+form .block-fields .image-field .image-field-text .in .image i,
+form .block-fields .image-field .image-field-text .in .image img {
+    transition: 0.3s;
+}
+
+form .block-fields .image-field .image-field-text .in .image:hover i,
+form .block-fields .image-field .image-field-text .in .image:hover img{
+    transform: scale(1.2);
+}
+
+.addProducts .heading,
+form .block-fields .field-wrapper,
+form .block-fields label,
+form .block-fields .select-dropdown,
+form .block-fields .select-dropdown .dropdown li,
+form .block-fields .image-field .image-field-text .in,
+form .block-fields .image-field .image-field-text .in .image,
+form .block-fields .field-container .symbol,
+.addProducts .button-box .btn {
+    display: flex;
+    align-items: center;
+}
+
+form .block-fields .image-field .image-field-text .in .image,
+form .block-fields .field-container .symbol,
+.addProducts .button-box .btn {
+    justify-content: center;
+}
+
+form .image-field #productImageUrl {
+    display: none;
+}
+
+form .image-preview {
+    width: 100%;
+    height: 92vh;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+form .image-preview .container {
+    width: 30%;
+    height: 70vh;
+    background: var(--color-white);
+    position: relative;
+    border-radius: 0.3rem;
+}
+
+form .image-preview .container .head {
+    display: inline-block;
+    position: absolute;
+    top: 0.8rem;
+    left: 0.8rem;
+    color: var(--color-admin-text);
+    font-weight: 600;
+}
+
+form .image-preview .container .close {
+    height: 2rem;
+    width: 2rem;
+    background: var(--color-tertiary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    color: var(--color-white);
+    cursor: pointer;
+}
+
+form .image-preview .container img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+form .image-preview .container .close i {
+    transition: 0.3s;
+}
+
+form .image-preview .container .close:hover i {
+    transform: scale(1.4);
+}
+
+form .image-preview .container img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.addProducts .button-box {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+.addProducts .button-box .btn {
+    text-decoration: none;
+    width: 10rem;
+    height: 3rem;
+    padding: 0 1rem;
+    font-family: var(--font-barlow);
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addProducts .button-box .btn.btn-primary {
+    background: var(--color-tertiary);
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.addProducts .button-box .btn.btn-secondary {
+    background: #dae0e5;
+    color: var(--color-admin-text);
+    width: 7rem;
+}
+
+.addProducts .button-box .btn.btn-secondary i {
+    margin-right: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.addProducts .button-box .btn.btn-primary:hover {
+    background: var(--color-tertiary2);
+}
+
+.addProducts .button-box .btn.btn-secondary:hover {
+    background: #aeb3b7;
+}
+
+@keyframes scaleToNormal {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+@keyframes scaleToZero {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
