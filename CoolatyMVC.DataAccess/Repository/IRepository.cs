@@ -8,5 +8,6 @@ namespace CoolatyMVC.Data.Repository
         ICategoryRepository Category { get; }
         IProductRepository Products { get; }
         void Save();
+        Task SaveAsync();
     }
 }

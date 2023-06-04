@@ -4,9 +4,9 @@ namespace CoolatyMVC.Services.Products
 {
     public interface IProductService
     {
-        Task<IEnumerable<ProductModel>> GetAllProducts(int pageNumber, int pageSize, string filterBy, string requestComeFrom="Customer");
-        Task<ProductModel> GetSingleProduct(int id);
-        Task Create(ProductModel model);
-        void Update(ProductModel model);
+        Task<IEnumerable<Product>> GetAllProducts(int pageNumber, int pageSize, string filterBy, string requestComeFrom="Customer");
+        Task<Product> GetSingleProduct(int id);
+        Task Create(Product model);
+        void Update(Product model);
     }
 }

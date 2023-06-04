@@ -1,6 +1,8 @@
 ﻿using CoolatyMVC.Services.Products;
 using CoolatyMVC.Services.Category;
 using CoolatyMVC.Data.Repository;
+using CoolatyMVC.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace CoolatyMVC.Services.Service
 {
@@ -15,6 +17,13 @@ namespace CoolatyMVC.Services.Service
             _repo = repo;
             Category = new CategoryService(_repo);
             Products = new ProductService(_repo);
+        }
+
+        public async Task<byte[]> GetBytes(IFormFile image)
+        {
+            await using var memoryStream = new MemoryStream();
+            await image.CopyToAsync(memoryStream);
+            return memoryStream.ToArray();
         }
     }
 }

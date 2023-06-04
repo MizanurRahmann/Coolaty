@@ -1,61 +1,9 @@
-﻿.addProducts {
-    position: relative;
-}
-
-.addProducts .heading {
-    width: 100%;
-    height: 3.5rem;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-}
-
-.addProducts .heading h2 {
-    display: inline-block;
-    font-family: var(--font-barlow);
-    text-transform: capitalize;
-    color: var(--color-admin-text);
-}
-
-.addProducts .heading a {
-    text-decoration: none;
-    display: inline-block;
-    width: 2.5rem;
-    height: 2.5rem;
-    background: var(--color-tertiary);
-    color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.3rem;
-}
-
-.addProducts .common-container {
-    height: 92vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-}
-
-.common-container::-webkit-scrollbar-track {
-    background-color: #F6F7FA;
-}
-
-.common-container::-webkit-scrollbar {
-    width: 10px;
-    background-color: #F5F5F5;
-}
-
-.common-container::-webkit-scrollbar-thumb {
-    background-color: var(--color-admin-text);
-    border-radius: 10px;
-}
-
-.addProducts .product-creation {
+﻿.addProducts .product-creation {
     width: 100%;
     padding: 1rem 2rem;
 }
 
-form .form-wrapper {
+.addProducts form .form-wrapper {
     width: 100%;
     margin-top: 1rem;
     background: #fff;
@@ -318,7 +266,7 @@ form .block-fields .image-field .image-field-text {
 form .block-fields .image-field .image-field-text .in .image {
     width: 2rem;
     height: 2rem;
-    background: var(--color-white);
+    background: #fff;
     margin-right: 0.5rem;
     border-radius: 0.3rem;
     cursor: pointer;

@@ -1,8 +1,8 @@
 ﻿@section Styles { <link rel="stylesheet" href="~/css/products-add.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Products"; }
-@model ProductModel
+@model ProductWithCategoryVM
 
-<div class="addProducts">
+<div class="addCreateCommon addProducts">
     <div class="common-container">
         <div class="heading">
             <h2>Create Product</h2>
@@ -19,7 +19,7 @@
             <!-- EDIT FORM -->
             <!-- ----------- -->
             <form asp-controller="Products"
-                  asp-action="Update"
+                  asp-action="Upsert"
                   method="post"
                   enctype="multipart/form-data">
                 <div class="form-wrapper">
@@ -32,82 +32,103 @@
                             <div class="field-wrapper">
                                 <!-- name field -->
                                 <div class="field-container w-70">
-                                    <label asp-for=@Model.Name>Name<span>*</span></label>
+                                    <label asp-for=@Model.Product.Name>Name<span>*</span></label>
+                                    <input type="hidden" asp-for=@Model.Product.Id />
                                     <input id="productName"
                                            type="text"
-                                           asp-for=@Model.Name
-                                           value=@Model.Name
+                                           asp-for=@Model.Product.Name
+                                           value=@Model.Product.Name
                                            placeholder="Enter product name" />
-                                    <span asp-validation-for="Name" class="error-message" id="error-name"></span>
+                                    <span asp-validation-for="Product.Name" class="error-message" id="error-name"></span>
                                 </div>
                                 <!-- price field -->
                                 <div class="field-container w-27">
-                                    <label asp-for=@Model.Price>Price<span>*</span></label>
+                                    <label asp-for=@Model.Product.Price>Price<span>*</span></label>
                                     <input id="productPrice"
                                            type="text"
-                                           asp-for=@Model.Price
-                                           value=@Model.Price
+                                           asp-for=@Model.Product.Price
+                                           value=@Model.Product.Price
                                            placeholder="Enter product price" />
                                     <div class="symbol">৳</div>
-                                    <span asp-validation-for="Price" class="error-message" id="error-price"></span>
+                                    <span asp-validation-for="Product.Price" class="error-message" id="error-price"></span>
                                 </div>
                             </div>
                             <div class="field-wrapper">
                                 <div class="field-container w-25">
                                     <!-- category field -->
-                                    <label asp-for=@Model.CategoryId>Category<span>*</span></label>
+                                    <label asp-for=@Model.Product.CategoryId>Category<span>*</span></label>
                                     <div class="select-dropdown" id="selectDropdown">
                                         <input id="productCategory"
                                                class="select-drop-down-field"
                                                type="text"
-                                               asp-for=@Model.CategoryId
-                                               value=@Model.CategoryId
+                                               asp-for=@Model.Product.CategoryId
+                                               value=@Model.Product.CategoryId
                                                class="select-drop-down-field"
                                          />
-                                        <span>Select Category</span>
+                                        <span>
+                                            @if (Model.Product != null && Model.Product.Category != null)
+                                            {
+                                                <span>@Model.Product.Category.Name</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Select Category</span>
+                                            }
+                                        </span>
                                         <ul class="dropdown">
-                                            <li id="1">Classic</li>
-                                            <li id="2">Cup</li>
+                                             @if (Model.Category != null)
+                                             {
+                                                 @foreach (var cat in Model.Category)
+                                                 {
+                                                    <li id="@cat.Id">@cat.Name</li>
+                                                 }
+                                             }
                                         </ul>
                                     </div>
-                                    <span asp-validation-for="CategoryId" class="error-message" id="error-category"></span>
+                                    <span asp-validation-for="Product.CategoryId" class="error-message" id="error-category"></span>
                                 </div>
                                 <!-- image field -->
                                 <div class="field-container w-70">
-                                    <label asp-for=@Model.Image>Image<span>*</span></label>
+                                    <label asp-for=@Model.Product.Image>Image<span>*</span></label>
                                     <div class="image-field">
                                         <div class="image-field-text">
                                             <div class="in">
                                                 <div class="image" id="image-preview-button">
-                                                    <img src="@(string.Format("data:image/png;base64,{0}", Model.ImageUrl))" height="100%" />
+                                                    @if (string.IsNullOrEmpty(Model.Product.ImageUrl))
+                                                    {
+                                                        <i class="iconoir-add-media-image"></i>
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="@(string.Format("data:image/png;base64,{0}", Model.Product.ImageUrl))" height="100%" />
+                                                    }
                                                 </div>
                                                 <span id="label-title">Select another file</span>
                                             </div>
                                         </div>
                                         <input id="productImage"
                                                type="file"
-                                               asp-for=@Model.Image
+                                               asp-for=@Model.Product.Image
                                                accept="image/*"
                                         />
                                         <input id="productImageUrl"
                                                type="text"
-                                               asp-for="@Model.ImageUrl"
-                                               value="@Model.ImageUrl" 
-                                         />
+                                               asp-for="@Model.Product.ImageUrl"
+                                               value="@Model.Product.ImageUrl" />
                                     </div>
-                                    <span asp-validation-for="ImageUrl" class="error-message" id="error-image"></span>
+                                    <span asp-validation-for="Product.ImageUrl" class="error-message" id="error-image"></span>
                                 </div>
                             </div>
                             <div class="field-wrapper">
                                 <!-- description field -->
                                 <div class="field-container w-100">
-                                    <label asp-for=@Model.SubName>Description<span>*</span></label>
+                                    <label asp-for=@Model.Product.SubName>Description<span>*</span></label>
                                     <textarea id="productDescription"
-                                              asp-for=@Model.SubName
-                                              value=@Model.SubName
+                                              asp-for=@Model.Product.SubName
+                                              value=@Model.Product.SubName
                                               placeholder="Enter product description"
                                     ></textarea>
-                                    <span asp-validation-for="SubName" class="error-message" id="error-description"></span>
+                                    <span asp-validation-for="Product.SubName" class="error-message" id="error-description"></span>
                                 </div>
                             </div>
                         </div>
@@ -122,56 +143,56 @@
                             <div class="field-wrapper">
                                 <!-- compound field -->
                                 <div class="field-container w-100">
-                                    <label asp-for=@Model.Compound>Compounds<span>*</span></label>
+                                    <label asp-for=@Model.Product.Compound>Compounds<span>*</span></label>
                                     <textarea id="productCompund"
-                                              asp-for=@Model.Compound
-                                              value=@Model.Compound
+                                              asp-for=@Model.Product.Compound
+                                              value=@Model.Product.Compound
                                               placeholder="Enter product compund"
                                     ></textarea>
-                                    <span asp-validation-for="Compound" class="error-message" id="error-compound"></span>
+                                    <span asp-validation-for="Product.Compound" class="error-message" id="error-compound"></span>
                                 </div>
                             </div>
                             <div class="field-wrapper">
                                 <!-- fat field -->
                                 <div class="field-container w-23">
-                                    <label asp-for=@Model.Fats>Fat<span>*</span></label>
+                                    <label asp-for=@Model.Product.Fats>Fat<span>*</span></label>
                                     <input id="productFat"
                                            type="text"
-                                           asp-for=@Model.Fats
-                                           value=@Model.Fats
+                                           asp-for=@Model.Product.Fats
+                                           value=@Model.Product.Fats
                                            placeholder="Enter product fat"
                                      />
-                                    <span asp-validation-for="Fats" class="error-message" id="error-fat"></span>
+                                    <span asp-validation-for="Product.Fats" class="error-message" id="error-fat"></span>
                                 </div>
                                 <!-- protien field -->
                                 <div class="field-container w-23">
-                                    <label asp-for=@Model.Proteins>Protien<span>*</span></label>
+                                    <label asp-for=@Model.Product.Proteins>Protien<span>*</span></label>
                                     <input id="productProtien"
                                            type="text"
-                                           asp-for=@Model.Proteins
-                                           value=@Model.Proteins
+                                           asp-for=@Model.Product.Proteins
+                                           value=@Model.Product.Proteins
                                            placeholder="Enter product protien" />
-                                    <span asp-validation-for="Proteins" class="error-message" id="error-protein"></span>
+                                    <span asp-validation-for="Product.Proteins" class="error-message" id="error-protein"></span>
                                 </div>
                                 <!-- carbohydrate field -->
                                 <div class="field-container w-23">
-                                    <label asp-for=@Model.Carbohydrates>Carbohydrate<span>*</span></label>
+                                    <label asp-for=@Model.Product.Carbohydrates>Carbohydrate<span>*</span></label>
                                     <input id="productCarbohydrates"
                                            type="text"
-                                           asp-for=@Model.Carbohydrates
-                                           value=@Model.Carbohydrates
+                                           asp-for=@Model.Product.Carbohydrates
+                                           value=@Model.Product.Carbohydrates
                                            placeholder="Enter product carbohydrate" />
-                                    <span asp-validation-for="Carbohydrates" class="error-message" id="error-carbohydrates"></span>
+                                    <span asp-validation-for="Product.Carbohydrates" class="error-message" id="error-carbohydrates"></span>
                                 </div>
                                 <!-- calories field -->
                                 <div class="field-container w-23">
-                                    <label asp-for=@Model.Calories>Calories<span>*</span></label>
+                                    <label asp-for=@Model.Product.Calories>Calories<span>*</span></label>
                                     <input id="productCalories"
                                            type="text"
-                                           asp-for=@Model.Calories
-                                           value=@Model.Calories
+                                           asp-for=@Model.Product.Calories
+                                           value=@Model.Product.Calories
                                            placeholder="Enter product calories" />
-                                    <span asp-validation-for="Calories" class="error-message" id="error-calories"></span>
+                                    <span asp-validation-for="Product.Calories" class="error-message" id="error-calories"></span>
                                 </div>
                             </div>
                         </div>
@@ -185,7 +206,7 @@
                         <div class="close" id="image-preview-close">
                             <i class="iconoir-cancel"></i>
                         </div>
-                        <img src="@(string.Format("data:image/png;base64,{0}", Model.ImageUrl))" style="width: 90%" />
+                        <img src="@(string.Format("data:image/png;base64,{0}", Model.Product.ImageUrl))" style="width: 90%" />
                     </div>
                 </div>
 

@@ -1,0 +1,283 @@
+﻿.addCategories .category-creation {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+
+.addCategories form .form-wrapper {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.addCategories form .block {
+    display: flex;
+}
+
+.addCategories form .block:not(:first-child) {
+    margin-top: 3rem;
+}
+
+.addCategories form .block-desc {
+    width: 25%;
+}
+
+.addCategories form .block-desc h3,
+.addCategories form .block-desc p {
+    color: var(--color-admin-text);
+}
+
+.addCategories form .block-desc h3 {
+    margin-top: -1rem;
+}
+
+.addCategories form .block-fields {
+    width: 75%;
+}
+
+.addCategories form .d-none {
+    display: none;
+}
+
+.addCategories form .block-fields .field-wrapper {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addCategories form .block-fields .field-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.addCategories form .block-fields label span {
+    display: block;
+    color: var(--color-secondary);
+    color: red;
+}
+
+.addCategories form .block-fields .field-container span.error-message {
+    display: block;
+    font-size: 0.8rem;
+    margin: 1rem 0;
+}
+
+.addCategories form .block-fields label {
+    color: var(--color-admin-text);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    padding: 0;
+}
+
+.addCategories .image-group-container,
+.addCategories .image-group-container-edit {
+    width: 10rem;
+    height: 10rem;
+    border: 1px dashed #444;
+    background:#FAFCFD;
+    border-radius: 0.3rem;
+}
+
+.addCategories form .block-fields input:not([type="file"]) {
+    width: 60%;
+    height: 3rem;
+    background: var(--color-input-background);
+    color: var(--color-admin-text);
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+}
+
+.addCategories .image-group {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+}
+
+.addCategories .image-group label {
+    display: block;
+    width: 10rem;
+    height: 10rem;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.addCategories .image-group label div {
+    text-align: center;
+    color: var(--color-border);
+}
+
+.addCategories .image-group label div i {
+    font-size: 2rem;
+}
+.addCategories .image-group label div p {
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: var(--color-barlow);
+}
+
+.addCategories .image-group input {
+    width: 10rem;
+    height: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.addCategories .image-group-container-preview,
+.addCategories .image-group-container-preview-edit {
+    width: 10rem;
+    height: 10rem;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.addCategories .image-group-container-preview .layer,
+.addCategories .image-group-container-preview-edit .layer {
+    width: 10rem;
+    height: 10rem;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15rem;
+    position: relative;
+}
+
+.addCategories .image-group-container-preview .layer .x {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--color-tertiary);
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.3rem;
+    opacity: 0;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.addCategories .image-group-container-preview .layer:hover .x {
+    opacity: 1;
+}
+
+.addCategories .image-group-container-preview .layer p,
+.addCategories .image-group-container-preview-edit .layer p {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.addCategories .image-group-container-preview:hover .layer,
+.addCategories .image-group-container-preview-edit:hover .layer {
+    opacity: 1;
+}
+
+.addCategories span.error-message {
+    display: block;
+    color: red;
+    margin-top: 0.2rem;
+}
+.addCategories .button-box {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+.addCategories .button-box .btn {
+    text-decoration: none;
+    width: 10rem;
+    height: 3rem;
+    padding: 0 1rem;
+    font-family: var(--font-barlow);
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.addCategories .button-box .btn.btn-primary {
+    background: var(--color-tertiary);
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.addCategories .button-box .btn.btn-secondary {
+    background: #dae0e5;
+    color: var(--color-admin-text);
+    width: 7rem;
+}
+
+.addCategories .button-box .btn.btn-secondary i {
+    margin-right: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.addCategories .button-box .btn.btn-primary:hover {
+    background: var(--color-tertiary2);
+}
+
+.addCategories .button-box .btn.btn-secondary:hover {
+    background: #aeb3b7;
+}
+
+.message {
+    width: 60%;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    padding: 0.8rem;
+    background: #eeecf9;
+    border-radius: 0.3rem;
+    margin-top: 1.5rem;
+}
+
+.message .message-icon {
+    width: 12%;
+    padding: 0;
+    font-size: 1.1rem;
+}
+.message .message-icon .container {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    background: #ccc7ec;
+    color: #2b2360;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+}
+
+.message .message-text {
+    color: #4d3eac;
+    font-size: 0.8rem;
+    font-weight: 500;
+}

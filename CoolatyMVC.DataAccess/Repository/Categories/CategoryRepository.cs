@@ -1,4 +1,5 @@
 ﻿using CoolatyMVC.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CoolatyMVC.Data.Repository.Category
 {
@@ -16,14 +17,35 @@ namespace CoolatyMVC.Data.Repository.Category
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<CategoryModel>> GetAllCategories()
+        public async Task<IEnumerable<Models.Category>> GetAllCategories(int pageNumber, int pageSize, string search)
         {
-            var result = _db.Category.Select(c => new CategoryModel {
-                Id = c.Id,
-                Name = c.Name,
-            });
+            var result = _db.Category.AsQueryable();
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                result = result.Where(category => category.Name.Contains(search));
+            }
+
+            result = result.OrderBy(p => p.CreatedAt)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize);
 
             return await Task.FromResult(result);
+        }
+
+        public async Task<Models.Category> GetSingleCategory(int categoryId)
+        {
+            return await _db.Category.FirstOrDefaultAsync(c => c.Id == categoryId);
+        }
+
+        public async Task Create(Models.Category model)
+        {
+            await _db.Category.AddAsync(model);
+        }
+
+        public void Update(Models.Category model)
+        {
+            _db.Category.Update(model);
         }
         #endregion
     }
