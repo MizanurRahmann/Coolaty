@@ -28,7 +28,7 @@ namespace CoolatyMVC.Areas.Admin.Controllers
 
         #region Methods
         [HttpGet]
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index([FromQuery(Name = "search")] string search)
         {
             var productData = await _services.Products.GetAllProducts(1, 100, search, "Admin");
             return View(productData);

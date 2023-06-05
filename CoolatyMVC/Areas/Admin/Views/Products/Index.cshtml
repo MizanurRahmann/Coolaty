@@ -3,29 +3,29 @@
 @model IEnumerable<Product>
 
 <div class="adProducts">
-    @if (Model != null && Model.Count() > 0)
-    {
-        <div class="heading">
-            <div class="heading-name">
-                <h2>Products</h2>
-            </div>
-            <div class="options">
-                <form>
-                    <div class="icon"><i class="iconoir-search"></i></div>
-                    <input type="text" value="" placeholder="Search here..." />
-                </form>
-                <a class="create-product-button"
-                   asp-area="Admin"
-                   asp-controller="Products"
-                   asp-action="Upsert"
-                >
-                    <i class="iconoir-plus"></i>
-                    Create
-                </a>
-            </div>
+    <div class="heading">
+        <div class="heading-name">
+            <h2>Products</h2>
         </div>
+        <div class="options">
+            <form>
+                <div class="icon"><i class="iconoir-search"></i></div>
+                <input type="text" id="product-search" placeholder="Search here..." />
+            </form>
+            <a class="create-product-button"
+                asp-area="Admin"
+                asp-controller="Products"
+                asp-action="Upsert"
+            >
+                <i class="iconoir-plus"></i>
+                Create
+            </a>
+        </div>
+    </div>
 
-        <div class="product-box-container">
+    <div class="product-box-container">
+        @if (Model != null && Model.Count() > 0)
+        {
             <div class="product-box">
                 @foreach (var product in Model)
                 {
@@ -59,10 +59,12 @@
                     </div>
                 }
             </div>
-        </div>
-    }
-    else
-    {
-        @await Html.PartialAsync("~/Areas/Admin/Views/Products/_NotFound.cshtml");
-    }
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Areas/Admin/Views/Products/_NotFound.cshtml");
+        }
+    </div>
 </div>
+
+@section Scripts { <script src="~/js/admin/admin-product.js" asp-append-version="true"></script> }
