@@ -1,4 +1,4 @@
-﻿    using CoolatyMVC.Data.Repository.Category;
+﻿    using CoolatyMVC.Data.Repository.Categories;
 using CoolatyMVC.Data.Repository.Products;
 
 namespace CoolatyMVC.Data.Repository

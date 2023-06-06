@@ -1,4 +1,4 @@
-﻿@section Styles { <link rel="stylesheet" href="~/css/products-add.css" asp-append-version="true" /> }
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/products-add.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Products"; }
 @model ProductWithCategoryVM
 
@@ -6,12 +6,21 @@
     <div class="common-container">
         <div class="heading">
             <h2>Create Product</h2>
-            <a class="heading-link"
-               asp-area="Admin"
-               asp-controller="Products"
-               asp-action="Index">
-                <i class="iconoir-nav-arrow-left"></i>
-            </a>
+            <div class="button-box">
+                @if (Model.Product.Id != 0)
+                {
+                    <div class="heading-button" id="product-delete-btn">
+                        <i class="iconoir-trash"></i>
+                    </div>
+                }    
+                <a class="heading-link"
+                   asp-area="Admin"
+                   asp-controller="Products"
+                   asp-action="Index"
+                >
+                    <i class="iconoir-cancel"></i>
+                </a>
+            </div>
         </div>
 
         <div class="product-creation">
@@ -218,11 +227,19 @@
                        asp-action="Index">
                         <i class="iconoir-nav-arrow-left"></i> Back
                     </a>
-                    <button class="btn btn-primary">Submit</button>
+                    @if(Model.Product.Id != 0)
+                    {
+                        <button class="btn btn-primary">Update</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary">Create</button>
+                    }
                 </div>
             </form>
         </div>
+        @await Html.PartialAsync("~/Areas/Admin/Views/Products/_ModalDelete.cshtml", Model.Product)
     </div>
 </div>
 
-@section Scripts { <script src="~/js/product-create.js" asp-append-version="true"></script> }
+@section Scripts { <script src="~/js/admin/admin-product-upsert.js" asp-append-version="true"></script> }

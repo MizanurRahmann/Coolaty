@@ -42,6 +42,12 @@ namespace CoolatyMVC.Services.Products
              _repo.Products.Update(model);
             _repo.Save();
         }
+
+        public void Delete (Product model)
+        {
+            _repo.Products.Delete(model);
+            _repo.Save();
+        }
         #endregion
     }
 }

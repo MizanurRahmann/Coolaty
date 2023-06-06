@@ -1,5 +1,5 @@
 ﻿using CoolatyMVC.Services.Products;
-using CoolatyMVC.Services.Category;
+using CoolatyMVC.Services.Categories;
 using Microsoft.AspNetCore.Http;
 
 namespace CoolatyMVC.Services.Service

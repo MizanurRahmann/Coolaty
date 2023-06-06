@@ -1,5 +1,5 @@
 ﻿using CoolatyMVC.Services.Products;
-using CoolatyMVC.Services.Category;
+using CoolatyMVC.Services.Categories;
 using CoolatyMVC.Data.Repository;
 using CoolatyMVC.Models;
 using Microsoft.AspNetCore.Http;

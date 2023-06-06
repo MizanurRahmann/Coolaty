@@ -20,6 +20,10 @@
     $("#productCarbohydrates").blur(function () { validationForRealNumber("productCarbohydrates", "error-carbohydrates", "Carbohydrates"); });
     $("#productCalories").blur(function () { validationForRealNumber("productCalories", "error-calories", "Calories"); });
     $("#productImage").change(function () { previewController(this); });
+
+    // Delete Modal Controller
+    $("#product-delete-btn").click(showDeleteModal);
+    $("#product-delete-close-btn").click(closeDeleteModal);
 });
 
 // DROPDOWN CONTROLLER
@@ -128,4 +132,16 @@ const hidePreview = () => {
     $("#image-preview .container").css("animation-name", "scaleToZero");
     $("#image-preview .container").css("animation-duration", "0.3s");
     setTimeout(() => { $("#image-preview").css("display", "none"); }, 310);
+}
+
+const showDeleteModal = () => {
+    $(".delete-modal-container").css("display", "flex");
+    $(".delete-modal").css("animation-name", "scaleToNormal");
+    $(".delete-modal").css("animation-duration", "0.5s");
+}
+
+const closeDeleteModal = () => {
+    $(".delete-modal").css("animation-name", "scaleToZero");
+    $(".delete-modal").css("animation-duration", "0.3s");
+    setTimeout(() => { $(".delete-modal-container").css("display", "none"); }, 310);
 }

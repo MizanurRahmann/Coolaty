@@ -1,0 +1,19 @@
+﻿@model Category
+
+<div class="delete-modal-container">
+    <div class="delete-modal">
+        <img src="~/img/delete.png"/>
+        <h1>Delete Category?</h1>
+        <p>Are you sure to delete <b>'@(Model.Name)'</b> category? If you delete this category all products under this category also be deleted.</p>
+        <form 
+            class="button-box"
+            asp-controller="Categories"
+            asp-action="Delete"
+            method="post"
+        >
+            <input asp-for="@Model.Id" value="@Model.Id" hidden />
+            <div class="btn" id="category-delete-close-btn">Cancel</div>
+            <button class="btn">Delete</button>
+        </form>
+    </div>
+</div>

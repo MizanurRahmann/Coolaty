@@ -1,5 +1,4 @@
 ﻿using CoolatyMVC.Models;
-using CoolatyMVC.Models.ViewModels;
 using CoolatyMVC.Services.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -91,6 +90,23 @@ namespace CoolatyMVC.Areas.Admin.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Category data = await _services.Category.GetSingleCategory(id);
+
+            if (data != null)
+            {
+                _services.Category.Delete(data);
+                TempData["success"] = "Deleted Successfully!";
+                return RedirectToAction("Index");
+            }
+
+            TempData["error"] = "Something went wrong!";
+            return RedirectToAction("Index");
         }
         #endregion
     }

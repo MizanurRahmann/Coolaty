@@ -1,6 +1,10 @@
 ﻿$(function () {
     $("#categoryImage").change(function () { showPreview(this); });
     $("#preview-cancel-layer").click(function () { closePreview(this) });
+
+    // Delete Modal Controller
+    $("#category-delete-btn").click(showDeleteModal);
+    $("#category-delete-close-btn").click(closeDeleteModal);
 });
 
 // Input Image Preview Controller Functions
@@ -35,4 +39,16 @@ const closePreview = (input) => {
     $(".image-group-container").show();
     $(".image-group-container-preview").hide();
     $("#TourModel0").val(null);
+}
+
+const showDeleteModal = () => {
+    $(".delete-modal-container").css("display", "flex");
+    $(".delete-modal").css("animation-name", "scaleToNormal");
+    $(".delete-modal").css("animation-duration", "0.5s");
+}
+
+const closeDeleteModal = () => {
+    $(".delete-modal").css("animation-name", "scaleToZero");
+    $(".delete-modal").css("animation-duration", "0.3s");
+    setTimeout(() => { $(".delete-modal-container").css("display", "none"); }, 310);
 }

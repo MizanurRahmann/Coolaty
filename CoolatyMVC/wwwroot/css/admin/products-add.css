@@ -403,6 +403,9 @@ form .image-preview .container img {
 .addProducts .button-box .btn.btn-secondary {
     background: #dae0e5;
     color: var(--color-admin-text);
+}
+
+.addProducts .button-box .btn.btn-secondary {
     width: 7rem;
 }
 

@@ -111,6 +111,23 @@ namespace CoolatyMVC.Areas.Admin.Controllers
             model.Category = await _services.Category.GetAllCategories(1, 100, "");
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            Product data = await _services.Products.GetSingleProduct(id);
+
+            if (data != null)
+            {
+                _services.Products.Delete(data);
+                TempData["success"] = "Deleted Successfully!";
+                return RedirectToAction("Index");
+            }
+
+            TempData["error"] = "Something went wrong!";
+            return RedirectToAction("Index");
+        }
         #endregion
     }
 }

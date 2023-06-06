@@ -9,5 +9,6 @@ namespace CoolatyMVC.Data.Repository.Products
         Task<Product> GetSingleProduct(int productId);
         Task Create(Product model);
         void Update(Product model);
+        void Delete(Product model);
     }
 }

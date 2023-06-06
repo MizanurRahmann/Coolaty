@@ -48,7 +48,7 @@ namespace CoolatyMVC.Data.Repository.Products
         public async Task<Product> GetSingleProduct(int productId)
         {
             return await _db.Products.Include(p => p.Category)
-                                      .FirstOrDefaultAsync(p => p.Id == productId);
+                .FirstOrDefaultAsync(p => p.Id == productId);
         }
 
         public async Task Create(Product model)
@@ -59,6 +59,11 @@ namespace CoolatyMVC.Data.Repository.Products
         public void Update(Product model)
         {
             _db.Products.Update(model);
+        }
+
+        public void Delete(Product model)
+        {
+            _db.Products.Remove(model);
         }
         #endregion
     }

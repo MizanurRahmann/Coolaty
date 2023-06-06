@@ -1,0 +1,19 @@
+﻿@model Product
+
+<div class="delete-modal-container">
+    <div class="delete-modal">
+        <img src="~/img/delete.png"/>
+        <h1>Delete Product?</h1>
+        <p>Are you sure to delete <b>'@(Model.Name)'</b> product? You can't undo this action.</p>
+        <form 
+            class="button-box"
+              asp-controller="Products"
+              asp-action="Delete"
+              method="post"
+        >
+            <input asp-for="@Model.Id" value="@Model.Id" hidden />
+            <div class="btn" id="product-delete-close-btn">Cancel</div>
+            <button class="btn">Delete</button>
+        </form>
+    </div>
+</div>

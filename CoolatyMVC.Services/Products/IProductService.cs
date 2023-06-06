@@ -8,5 +8,6 @@ namespace CoolatyMVC.Services.Products
         Task<Product> GetSingleProduct(int id);
         Task Create(Product model);
         void Update(Product model);
+        void Delete(Product model);
     }
 }

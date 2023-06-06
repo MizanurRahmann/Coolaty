@@ -1,4 +1,4 @@
-﻿@section Styles { <link rel="stylesheet" href="~/css/categories-admin.css" asp-append-version="true" /> }
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/categories-admin.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Categories"; }
 @model IEnumerable<Category>
 
@@ -38,14 +38,12 @@
                         </div>
                         <div class="options">
                             <a asp-area="Admin"
-                    asp-controller="Categories"
-                    asp-action="Upsert"
-                    asp-route-id=@category.Id
-                    class="edit">
+                                asp-controller="Categories"
+                                asp-action="Upsert"
+                                asp-route-id=@category.Id
+                                class="edit"
+                            >
                                 <i class="iconoir-edit-pencil"></i>
-                            </a>
-                            <a class="delete">
-                                <i class="iconoir-trash"></i>
                             </a>
                         </div>
                     </div>

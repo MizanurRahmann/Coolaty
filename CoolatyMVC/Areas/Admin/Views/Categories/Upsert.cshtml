@@ -1,4 +1,4 @@
-﻿@section Styles { <link rel="stylesheet" href="~/css/categories-add.css" asp-append-version="true" /> }
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/categories-add.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Categories"; }
 @model Category
 
@@ -8,13 +8,22 @@
         <!-- HEADING -->
         <div class="heading">
             <h2>Create Category</h2>
-            <a class="heading-link"
-               asp-area="Admin"
-               asp-controller="Categories"
-               asp-action="Index"
-            >
-                <i class="iconoir-nav-arrow-left"></i>
-            </a>
+            <div class="button-box">
+                @if (Model.Id != 0)
+                {
+                    <div class="heading-button" id="category-delete-btn">
+                        <i class="iconoir-trash"></i>
+                    </div>
+                }
+                <a 
+                   class="heading-link"
+                   asp-area="Admin"
+                   asp-controller="Categories"
+                   asp-action="Index"
+                >
+                    <i class="iconoir-nav-arrow-left"></i>
+                </a>
+            </div>
         </div>
 
         <!-- FORM -->
@@ -97,7 +106,8 @@
                 </div>
             </form>
         </div>
+        @await Html.PartialAsync("~/Areas/Admin/Views/Categories/_ModalDelete.cshtml", Model)
     </div>
 </div>
 
-@section Scripts { <script src="~/js/category-create.js" asp-append-version="true"></script> }
+@section Scripts { <script src="~/js/admin/admin-category-upsert.js" asp-append-version="true"></script> }
