@@ -1,0 +1,148 @@
+﻿.signin-container {
+    width: 100%;
+    height: 99.9vh;
+    position: relative;
+}
+.signin {
+    width: 30%;
+    position: absolute;
+    top: 50%;
+    left: 5rem;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.signin section {
+    width: 100%;
+    background: var(--color-white);
+    border-radius: 0.5rem;
+    padding: 3rem 2rem;
+}
+.signin section h2,
+.signin section p,
+.signin section label {
+    color: #444;
+}
+.signin section .form-box {
+    margin-bottom: 1rem;
+    background: transparent;
+}
+.signin section p {
+    font-size: 1rem;
+    margin-top: -0.4rem;
+}
+.signin section p a,
+.signin section label.title a {
+    text-decoration: none;
+    color: var(--color-secondary) !important;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.signin section label.title,
+.signin section span {
+    font-size: 0.8rem;
+}
+
+.signin section label.title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+}
+.signin section label.title a {
+    float: right;
+}
+.signin section .form-box input {
+    outline: none;
+    border: none;
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 0.5rem 1rem;
+    background: var(--color-white);
+    border-radius: 0.25rem;
+}
+.signin section .form-box input:focus {
+    outline: none;
+}
+.signin section .submit-button {
+    width: 100%;
+    padding: 0.8rem;
+    outline: none;
+    border: none;
+    border-radius: 0.25rem;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    transition: 0.3s;
+    font-weight: 400;
+}
+
+.signin section .submit-button:hover {
+    background: var(--color-secondary2);
+}
+
+.signin section p a,:hover
+.signin section label.title a:hover {
+    color: var(--color-secondary2);
+}
+.signin-container img {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+.signin-container img.l1 {
+    z-index: 1;
+}
+.signin-container img.l2 {
+    right: 0;
+    bottom: 20%;
+    width: 10%;
+    z-index: 2;
+}
+.signin-container img.auth {
+    width: 50%;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+}
+
+@media only screen and (max-width: 600px) {
+    .signin-container img {
+        display: none;
+    }
+    .signin {
+        width: calc(100% - 6rem);
+        left: 3rem;
+    }
+    .signin section {
+        padding: 9rem 4rem;
+        border-radius: 2rem;
+    }
+    .signin section h2 {
+        font-size: 8rem;
+    }
+    .signin section p {
+        margin-bottom: 8rem;
+    }
+    .signin section p,
+    .signin section label,
+    .signin section label.title {
+        font-size: 3.5rem;
+    }
+    .signin section .form-box {
+        margin-bottom: 4rem;
+    }
+    .signin section .form-box input {
+        padding: 2rem 4rem;
+        font-size: 3.5rem;
+    }
+    .signin section .submit-button {
+        padding: 2rem 4rem;
+        border-radius: 1rem;
+        font-size: 3.5rem;
+        margin-top: 2rem;
+    }
+}
