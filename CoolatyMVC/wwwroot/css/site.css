@@ -173,19 +173,29 @@ h6 {
     border-radius: 0.25rem;
     padding: 0.5rem;
 }
-.navigation-container .sublinks .sublinks-inner a {
+.navigation-container .sublinks .sublinks-inner a,
+.navigation-container .sublinks button {
     display: flex;
     width: 100%;
     margin-bottom: 0.8rem;
     font-weight: 400;
     align-items: center;
     cursor: pointer;
+    background: transparent;
     color: var(--color-secondary);
     text-decoration: none;
+    outline: none;
+    border: none;
 }
 
-.navigation-container .sublinks .sublinks-inner a i {
+.navigation-container .sublinks .sublinks-inner a i, 
+.navigation-container .sublinks button i {
     margin-right: 0.5rem;
+}
+
+.navigation-container .sublinks form,
+.navigation-container .sublinks button {
+    width: 100%;
 }
 
 /* PRODUCT */

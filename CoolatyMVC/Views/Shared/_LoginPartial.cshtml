@@ -10,10 +10,12 @@
             <i class="iconoir-user"></i>
             My Profile
         </a>
-        <a>
-            <i class="iconoir-log-out"></i>
-            Signout
-        </a>
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="logout-btn">
+                <i class="iconoir-log-out"></i>
+                Signout
+            </button>
+        </form>
     }
     else
     {
@@ -26,7 +28,7 @@
         </a>
         <a
             asp-area="Identity"
-            asp-page="/Account/Login"
+            asp-page="/Account/Register"
         >
             <i class="iconoir-add-user"></i>
             Signup

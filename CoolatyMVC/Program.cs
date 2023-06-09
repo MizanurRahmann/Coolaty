@@ -3,6 +3,8 @@ using CoolatyMVC.Data.Repository;
 using CoolatyMVC.Services.Service;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using CoolatyMVC.Services.EmailSender;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +17,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlSer
     builder.Configuration.GetConnectionString("DefaultConnection")
 ));
 
-builder.Services.AddDefaultIdentity<IdentityUser>()
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 // 3. session
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
@@ -24,7 +27,9 @@ builder.Services.AddSession(options => { options.IdleTimeout = TimeSpan.FromSeco
 // 4. register repositories
 builder.Services.AddScoped<Repository, Repository>();
 
-// 5. register custom services
+// 5. register services
+builder.Services.AddRazorPages();
+builder.Services.AddScoped<IEmailSender, FakeEmailSender>();
 builder.Services.AddScoped<IService, Service>();
 
 

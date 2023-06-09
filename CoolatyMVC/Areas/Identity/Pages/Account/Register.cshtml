@@ -13,18 +13,28 @@
                 </p>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-box">
+                    <label asp-for="Input.Name" class="title"></label>
+                    <input asp-for="Input.Name" aria-required="true" />
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="form-box">
+                    <label asp-for="Input.PhoneNumber" class="title"></label>
+                    <input asp-for="Input.PhoneNumber" aria-required="true" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-box">
                     <label asp-for="Input.Email" class="title"></label>
-                    <input asp-for="Input.Email" autocomplete="username" aria-required="true" />
+                    <input asp-for="Input.Email" aria-required="true" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-box">
                     <label asp-for="Input.Password" class="title"></label>
-                    <input asp-for="Input.Password" autocomplete="new-password" aria-required="true" />
+                    <input asp-for="Input.Password" aria-required="true" />
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div class="form-box">
                     <label asp-for="Input.ConfirmPassword" class="title"></label>
-                    <input asp-for="Input.ConfirmPassword" autocomplete="new-password" aria-required="true" />
+                    <input asp-for="Input.ConfirmPassword" aria-required="true" />
                     <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                 </div>
                 <button id="registerSubmit" type="submit" class="submit-button">Register</button>

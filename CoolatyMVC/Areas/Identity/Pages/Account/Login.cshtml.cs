@@ -101,7 +101,7 @@ namespace CoolatyMVC.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
 
@@ -115,6 +115,7 @@ namespace CoolatyMVC.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    TempData["success"] = "Signed in successfully!";
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
