@@ -1,5 +1,7 @@
-﻿using CoolatyMVC.Data.Repository.Categories;
+﻿using CoolatyMVC.Data.Repository.AppUsers;
+using CoolatyMVC.Data.Repository.Categories;
 using CoolatyMVC.Data.Repository.Products;
+using CoolatyMVC.Data.Repository.ShopingCarts;
 
 namespace CoolatyMVC.Data.Repository
 {
@@ -7,6 +9,8 @@ namespace CoolatyMVC.Data.Repository
     {
         ICategoryRepository Category { get; }
         IProductRepository Products { get; }
+        IShopingCartRepository ShopingCart { get; }
+        IAppUserRepository AppUser { get; }
         void Save();
         Task SaveAsync();
     }
