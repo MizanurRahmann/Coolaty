@@ -22,15 +22,26 @@ namespace CoolatyMVC.Services.ShopingCarts
             return await _repo.ShopingCart.GetAllProductsAddedToCart();
         }
 
+        public async Task<ShopingCart> GetSingleCartItem(string userId, int productId)
+        {
+            return await _repo.ShopingCart.GetSingleCartItem(userId, productId);
+        }
+
         public async Task AddToCart(ShopingCart model)
         {
             await _repo.ShopingCart.AddToCart(model);
             _repo.Save();
         }
 
-        public void UpdateCart(ShopingCart model)
+        public void Increment(ShopingCart model, int count)
         {
-            _repo.ShopingCart.UpdateCart(model);
+            _repo.ShopingCart.Increment(model, count);
+            _repo.Save();
+        }
+
+        public void Decrement(ShopingCart model, int count)
+        {
+            _repo.ShopingCart.Decrement(model, count);
             _repo.Save();
         }
 
