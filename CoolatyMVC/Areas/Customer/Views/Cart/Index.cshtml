@@ -1,0 +1,129 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/customer/cart.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Cart"; }
+@model ShopingCartVM
+
+<form
+    class="cart-page"
+>
+    <div class="cart-container">
+        <h1 class="primary-heading">Cart</h1>
+        @if (Model != null && Model.ShoppingCart != null && Model.ShoppingCart.Count() > 0)
+        {
+            <div class="cart-info">
+                <div class="table">
+                    <div class="table-inner">
+                        <div class="table-th row">
+                            <div class="product">Product</div>
+                            <div class="price">Price</div>
+                            <div class="quantity">Quantity</div>
+                            <div class="totalprice">Total Price</div>
+                            <div class="option">
+                                <i class="iconoir-nav-arrow-down"></i>
+                            </div>
+                        </div>
+                        @foreach (var item in Model.ShoppingCart)
+                        {
+                            <div class="row">
+                                <div class="product">
+                                    <div class="image">
+                                        <img src="@(string.Format("data:image/png;base64,{0}", item.Product.ImageUrl))" alt="" />
+                                    </div>
+                                    <div class="detail">
+                                        <h4>@item.Product.Name</h4>
+                                        <p>Classic</p>
+                                        <h5 class="mobile-ptice">$@(item.Product.Price * item.Count) <span>$@item.Product.Price per unit</span></h5>
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    $ @item.Product.Price
+                                </div>
+                                <div class="quantity">
+                                    <div class="inner">
+                                        @if(item.Count > 1)
+                                        {
+                                            <a 
+                                                asp-area="Customer"
+                                                asp-controller="Cart"
+                                                asp-action="Decrement"
+                                                asp-route-cartId="@item.Id"
+                                                class="box"
+                                                id="decreament"
+                                            >
+                                                <div class="box-text"> - </div>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="box">
+                                                <div class="box-text"> - </div>
+                                            </a>
+                                        }
+                                        
+                                        <div class="amnt">
+                                            <input id="selectedItem" type="text" value="@item.Count">
+                                        </div>
+                                        @if (item.Count < 100)
+                                        {
+                                            <a 
+                                                asp-area="Customer"
+                                                asp-controller="Cart"
+                                                asp-action="Increment"
+                                                asp-route-cartId="@item.Id"
+                                                class="box"
+                                                id="increament"
+                                            >
+                                                <div class="box-text"> + </div>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            <a class="box">
+                                                <div class="box-text"> + </div>
+                                            </a>
+                                        }
+                                        
+                                    </div>
+                                </div>
+                                <div class="totalprice">$ @(item.Product.Price * item.Count)</div>
+                                <div class="option">
+                                    <a 
+                                        asp-area="Customer"
+                                        asp-controller="Cart"
+                                        asp-action="Delete"
+                                        asp-route-cartId="@item.Id"
+                                        class="trash"
+                                    >
+                                        <i class="iconoir-trash"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="summary-container">
+                    <div class="summary">
+                        <div class="summary-inner">
+                            <div class="info">
+                                <div class="label">Subtotal</div>
+                                <div class="value">$ @Model.TotalPrice</div>
+                            </div>
+                            <div class="info">
+                                <div class="label">Discount</div>
+                                <div class="value">$ @Model.ShippingCost</div>
+                            </div>
+                            <div class="info last">
+                                <div class="label">Grand Total</div>
+                                <div class="value">$ @(Model.TotalPrice + Model.ShippingCost)</div>
+                            </div>
+                            <button>Checkout Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Areas/Customer/Views/Cart/_EmptyCart.cshtml");
+        }
+    </div>
+</form>

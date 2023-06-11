@@ -60,7 +60,9 @@ namespace CoolatyMVC.Areas.Customer.Controllers
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
             shopingCart.AppUserId = claim.Value;
 
-            ShopingCart cartFromDb = await _services.ShopingCart.GetSingleCartItem(claim.Value, shopingCart.ProductId);
+            ShopingCart cartFromDb = await _services.ShopingCart.GetSingleCartItem(
+                u => u.AppUserId == claim.Value && u.ProductId == shopingCart.ProductId
+             );
 
             if(cartFromDb == null)
             {
@@ -71,7 +73,8 @@ namespace CoolatyMVC.Areas.Customer.Controllers
                 _services.ShopingCart.Increment(cartFromDb, shopingCart.Count);
             }
 
-            return RedirectToAction(nameof(Index));
+            TempData["success"] = "Added to Cart.";
+            return RedirectToAction("Index");
         }
     }
 }

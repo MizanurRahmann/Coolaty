@@ -1,11 +1,12 @@
 ﻿using CoolatyMVC.Models;
+using System.Linq.Expressions;
 
 namespace CoolatyMVC.Data.Repository.ShopingCarts
 {
     public interface IShopingCartRepository
     {
-        Task<IEnumerable<ShopingCart>> GetAllProductsAddedToCart();
-        Task<ShopingCart> GetSingleCartItem(string userId, int productId);
+        Task<IEnumerable<ShopingCart>> GetAllProductsAddedToCart(string userId);
+        Task<ShopingCart> GetSingleCartItem(Expression<Func<ShopingCart, bool>> filter);
         Task AddToCart(ShopingCart model);
         int Increment(ShopingCart shopingCart, int count);
         int Decrement(ShopingCart shopingCart, int count);

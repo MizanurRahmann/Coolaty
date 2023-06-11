@@ -1,5 +1,6 @@
 ﻿using CoolatyMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 
 namespace CoolatyMVC.Data.Repository.ShopingCarts
 {
@@ -17,15 +18,19 @@ namespace CoolatyMVC.Data.Repository.ShopingCarts
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<ShopingCart>> GetAllProductsAddedToCart()
+        public async Task<IEnumerable<ShopingCart>> GetAllProductsAddedToCart(string userId)
         {
-            var result = _db.ShopingCarts.ToList();
+            var result = _db.ShopingCarts
+                .Include(item => item.Product)
+                .Where(item => item.AppUserId == userId);
+
             return await Task.FromResult(result);
         }
 
-        public async Task<ShopingCart> GetSingleCartItem(string userId, int productId)
+        public async Task<ShopingCart> GetSingleCartItem(Expression<Func<ShopingCart, bool>> filter)
         {
-            return await _db.ShopingCarts.FirstOrDefaultAsync(c => c.AppUserId == userId && c.ProductId == productId);
+
+            return await _db.ShopingCarts.FirstOrDefaultAsync(filter);
         }
 
         public async Task AddToCart(ShopingCart model)

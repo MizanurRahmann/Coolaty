@@ -1,5 +1,7 @@
 ﻿using CoolatyMVC.Models;
 using CoolatyMVC.Data.Repository;
+using CoolatyMVC.Models.ViewModels;
+using System.Linq.Expressions;
 
 namespace CoolatyMVC.Services.ShopingCarts
 {
@@ -17,14 +19,22 @@ namespace CoolatyMVC.Services.ShopingCarts
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<ShopingCart>> GetAllProductsAddedToCart()
+        public async Task<ShopingCartVM> GetAllProductsAddedToCart(string userId)
         {
-            return await _repo.ShopingCart.GetAllProductsAddedToCart();
+            ShopingCartVM cartInfo = new()
+            {
+                ShoppingCart = await _repo.ShopingCart.GetAllProductsAddedToCart(userId),
+                ShippingCost = 100,
+            };
+
+            cartInfo.TotalPrice = calculateTotalPrice(cartInfo.ShoppingCart);
+
+            return cartInfo;
         }
 
-        public async Task<ShopingCart> GetSingleCartItem(string userId, int productId)
+        public async Task<ShopingCart> GetSingleCartItem(Expression<Func<ShopingCart, bool>> filter)
         {
-            return await _repo.ShopingCart.GetSingleCartItem(userId, productId);
+            return await _repo.ShopingCart.GetSingleCartItem(filter);
         }
 
         public async Task AddToCart(ShopingCart model)
@@ -49,6 +59,18 @@ namespace CoolatyMVC.Services.ShopingCarts
         {
             _repo.ShopingCart.DeleteFromCart(model);
             _repo.Save();
+        }
+        #endregion
+
+        #region Private Methods
+        private int calculateTotalPrice(IEnumerable<ShopingCart> shopingCart)
+        {
+            int totalPrice = 0;
+            foreach (var product in shopingCart)
+            {
+                totalPrice += product.Product.Price * product.Count;
+            }
+            return totalPrice;
         }
         #endregion
     }
