@@ -1,22 +1,18 @@
 ﻿.products {
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
 }
-
-    .products .products-conteiner {
-        margin-top: 8rem;
-        padding: 0 7rem;
-    }
-
-        .products .products-conteiner h1 {
-            font-size: 3vw;
-        }
-
+.products .products-conteiner {
+    margin-top: 8rem;
+    padding: 0 7rem;
+}
+.products .products-conteiner h1 {
+    font-size: 3vw;
+}
 .filter-container {
     display: flex;
     margin-top: 1rem;
 }
-
 .filter-block {
     width: 4rem;
     height: 4rem;
@@ -28,34 +24,58 @@
     justify-content: center;
     cursor: pointer;
 }
-    .filter-block.active {
-        border: 1px solid var(--color-secondary);
-    }
-
-    .filter-block img {
-        width: 1.7rem;
-        transition: 0.3s;
-    }
-
-    .filter-block:hover img {
-        transform: scale(1.2);
-    }
-
+.filter-block.active {
+    border: 1px solid var(--color-secondary);
+}
+.filter-block img {
+    width: 1.7rem;
+    transition: 0.3s;
+}
+.filter-block:hover img {
+    transform: scale(1.2);
+}
 .products .product-box {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    margin-block-start: 2rem;
 }
-.products .error-container {
-    width: 100%;
-    min-height: 60vh;
-    text-align: center;
-    background: var(--color-primary2);
-    border-radius: 0.5rem;
-    padding: 1.2rem;
+.products .empty-container {
+    height: 50vh;
+}
+.products .empty-container-inner {
+    height: calc(50vh - 1rem);
+}
+.all-empty .empty-container {
+    height: 70vh;
+    margin-top: -0.5rem;
+}
+.all-empty .empty-container-inner {
+    height: calc(70vh - 1rem);
 }
 
-.products .error-container img {
-    height: 40vh;
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+@media only screen and (max-width: 600px) {
+    .products .products-conteiner {
+        margin-top: 25rem;
+        padding: 0 5rem;
+    }
+    .products .products-conteiner h1 {
+        font-size: 7rem;
+    }
+    .filter-block {
+        width: 12rem;
+        height: 12rem;
+        margin-right: 3rem;
+        margin-bottom: 2rem;
+    }
+    .filter-block img {
+        width: 6rem;
+    }
+    .products .empty-container-inner {
+    height: calc(60vh - 1rem);
+}
+    .all-empty .empty-container-inner {
+        height: calc(75vh - 1rem);
+    }
 }
