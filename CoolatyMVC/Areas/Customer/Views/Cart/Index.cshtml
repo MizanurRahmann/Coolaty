@@ -2,7 +2,7 @@
 @{ ViewData["Title"] = "Cart"; }
 @model ShopingCartVM
 
-<form
+<div
     class="cart-page"
 >
     <div class="cart-container">
@@ -115,7 +115,7 @@
                                 <div class="label">Grand Total</div>
                                 <div class="value">$ @(Model.TotalPrice + Model.ShippingCost)</div>
                             </div>
-                            <button>Checkout Now</button>
+                            <a class="checkout" asp-action="Checkout">Checkout Now</a>
                         </div>
                     </div>
                 </div>
@@ -126,4 +126,4 @@
             @await Html.PartialAsync("~/Areas/Customer/Views/Cart/_EmptyCart.cshtml");
         }
     </div>
-</form>
+</div>

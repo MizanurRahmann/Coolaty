@@ -1,0 +1,280 @@
+﻿.checkout-page {
+     min-height: 80vh;
+     width: 100%;
+}
+.checkout-page .checkout-container {
+    margin-top: 8rem;
+    padding: 0 7rem;
+}
+.checkout-container .checkout-info {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.checkout-container .checkout-info .info {
+    width: 70%;
+}
+.checkout-container .checkout-info .summary-container {
+    width: 30%;
+    padding-left: 0.5rem;
+}
+.checkout-container .checkout-info .info .info-inner,
+.checkout-container .checkout-info .summary-container .summary-inner {
+    width: 100%;
+    min-height: 10rem;
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 0.5rem solid var(--color-primary2);
+}
+.checkout-container .checkout-info .info .info-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+}
+.checkout-container .checkout-info h5 {
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.form-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.form-box .g-100 {
+    width: 100%;
+}
+.form-box .g-50 {
+    width: 49%;
+}
+.form-box label {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.form-box input,
+.checkout-container .checkout-info .summary-container .coupon-box input {
+    width: 100%;
+    height: 3rem;
+    background: var(--color-primary2);
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+}
+.form-checkbox {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 2px solid var(--color-primary2);
+    border-radius: 0.25rem;
+}
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 2rem;
+    cursor: pointer;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--color-secondary);
+    border-radius: 100%;
+    background: transparent;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-secondary);
+    position: absolute;
+    top: 0.265rem;
+    left: 0.265rem;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+[type="radio"] + label h6 {
+    font-family: var(--font-barlow);
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+[type="radio"] + label p {
+    font-size: 0.8rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0;
+}
+.checkout-container .checkout-info .summary-container .coupon-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.checkout-container .checkout-info .summary-container .coupon-box .apply-btn {
+    width: fit-content;
+    height: 3rem;
+    padding: 1rem 1.5rem;
+    margin-left: 0.5rem;
+    outline: none;
+    border: none;
+    border: 2px solid var(--color-primary2);
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.checkout-container .checkout-info .summary-container .coupon-box .apply-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+.checkout-container .checkout-info .summary-container .summary .info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+}
+.checkout-container .checkout-info .summary-container .summary .info .value {
+    font-weight: 500;
+}
+.checkout-container .checkout-info .summary-container .summary .info.last {
+    border-top: 2px solid var(--color-primary2);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+.checkout-container .checkout-info .summary-container .summary button {
+    outline: none;
+    border: none;
+    width: 100%;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    padding: 0.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+}
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+@media only screen and (max-width: 600px) {
+    .checkout-page .checkout-container {
+        margin-top: 25rem;
+        padding: 0 5rem;
+    }
+    .checkout-page .checkout-container h1 {
+        font-size: 7rem;
+        margin-bottom: 4rem;
+    }
+    .checkout-container .checkout-info .info .info-inner {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+    }
+    .checkout-container .checkout-info,
+    .checkout-container .checkout-info .info .info-inner,
+    .checkout-container .checkout-info .summary-container .summary-inner {
+        padding: 0;
+        border: none;
+    }
+    .checkout-container .checkout-info .info,
+    .checkout-container .checkout-info .summary-container, 
+    .form-box .g-50 {
+        width: 100%;
+    }
+    .checkout-container .checkout-info h5,
+    .checkout-container .checkout-info .summary-container .summary-inner .info div {
+        font-size: 4rem;
+        margin-bottom: 3rem;
+    }
+    .form-box {
+        margin-bottom: 0;
+    }
+    .form-box input {
+        margin-bottom: 3rem;
+    }
+    .form-box label {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .form-box input,
+    .checkout-container .checkout-info .summary-container .coupon-box input {
+        height: 11rem;
+        font-size: 4rem;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+    }
+    .form-checkbox {
+        padding: 3rem;
+        margin-bottom: 2rem;
+        border-radius: 1.5rem;
+    }
+    .checkout-container .checkout-info .summary-container .coupon-box {
+        margin-bottom: 4rem;
+    }
+    [type="radio"]:checked + label:before,
+    [type="radio"]:not(:checked) + label:before {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    [type="radio"]:checked + label:after,
+    [type="radio"]:not(:checked) + label:after {
+        width: 3rem;
+        height: 3rem;
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+    [type="radio"]:checked + label,
+    [type="radio"]:not(:checked) + label
+    {
+        padding-left: 6rem;
+    }
+    [type="radio"] + label h6 {
+        font-size: 4rem;
+    }
+    [type="radio"] + label p {
+        font-size: 3rem;
+        margin-top: -0.5rem;
+    }
+    .checkout-container .checkout-info .summary-container .coupon-box .apply-btn {
+        height: 11rem;
+        font-size: 4rem;
+        border-radius: 1.5rem;
+        padding: 1rem 5.5rem;
+    }
+    .checkout-container .checkout-info .summary-container .summary button {
+        padding: 2rem 15rem;
+        font-size: 3.5rem;
+        border-radius: 1.5rem;
+        margin: 2rem 0 4rem 0;
+    }
+}

@@ -62,5 +62,10 @@ namespace CoolatyMVC.Areas.Customer.Controllers
             _services.ShopingCart.DeleteFromCart(cartFromDb);
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult Checkout()
+        {
+            return View();
+        }
     }
 }
