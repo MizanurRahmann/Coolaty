@@ -63,9 +63,23 @@ namespace CoolatyMVC.Areas.Customer.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult Checkout()
+        public async Task<IActionResult> Checkout()
         {
-            return View();
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            var cartItems = await _services.ShopingCart.GetAllProductsAddedToCart(claim.Value);
+
+            cartItems.OrderHeader.AppUser = await _services.AppUser.GetUserInfo(claim.Value);
+            cartItems.OrderHeader.Name = cartItems.OrderHeader.AppUser.Name;
+            cartItems.OrderHeader.Phone = cartItems.OrderHeader.AppUser.PhoneNumber;
+            cartItems.OrderHeader.Email = cartItems.OrderHeader.AppUser.Email;
+            cartItems.OrderHeader.Address = cartItems.OrderHeader.AppUser.Village;
+            cartItems.OrderHeader.Thana = cartItems.OrderHeader.AppUser.Thana;
+            cartItems.OrderHeader.District = cartItems.OrderHeader.AppUser.Division;
+            cartItems.OrderHeader.PostalCode = cartItems.OrderHeader.AppUser.PostalCode;
+
+            return View(cartItems);
         }
     }
 }

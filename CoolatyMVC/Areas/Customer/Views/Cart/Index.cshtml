@@ -105,15 +105,15 @@
                         <div class="summary-inner">
                             <div class="info">
                                 <div class="label">Subtotal</div>
-                                <div class="value">$ @Model.TotalPrice</div>
+                                <div class="value">$ @Model.OrderHeader.OrderTotal</div>
                             </div>
                             <div class="info">
                                 <div class="label">Discount</div>
-                                <div class="value">$ @Model.ShippingCost</div>
+                                <div class="value">$ @Model.OrderHeader.ShippingPrice</div>
                             </div>
                             <div class="info last">
                                 <div class="label">Grand Total</div>
-                                <div class="value">$ @(Model.TotalPrice + Model.ShippingCost)</div>
+                                <div class="value">$ @(Model.OrderHeader.OrderTotal + Model.OrderHeader.ShippingPrice)</div>
                             </div>
                             <a class="checkout" asp-action="Checkout">Checkout Now</a>
                         </div>

@@ -1,5 +1,6 @@
 ﻿using CoolatyMVC.Data.Repository.AppUsers;
 using CoolatyMVC.Data.Repository.Categories;
+using CoolatyMVC.Data.Repository.Orders;
 using CoolatyMVC.Data.Repository.Products;
 using CoolatyMVC.Data.Repository.ShopingCarts;
 
@@ -11,6 +12,7 @@ namespace CoolatyMVC.Data.Repository
         public ICategoryRepository Category { get; private set; }
         public IProductRepository Products { get; private set; }
         public IShopingCartRepository ShopingCart { get; private set; }
+        public IOrderRepository Order { get; private set; }
         public IAppUserRepository AppUser { get; private set;  }
 
         public Repository(ApplicationDbContext db)
@@ -19,6 +21,7 @@ namespace CoolatyMVC.Data.Repository
             Category = new CategoryRepository(_db);
             Products = new ProductRepository(_db);
             ShopingCart = new ShopingCartRepository(_db);
+            Order = new OrderRepository(_db);
             AppUser = new AppUserRepository(_db);
         }
 
