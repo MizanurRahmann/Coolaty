@@ -54,6 +54,11 @@ namespace CoolatyMVC.Data.Repository.ShopingCarts
         {
             _db.ShopingCarts.Remove(model);
         }
+
+        public void DeleteListOfCartItem(IEnumerable<ShopingCart> cartItems)
+        {
+            _db.ShopingCarts.RemoveRange(cartItems);
+        }
         #endregion
     }
 }

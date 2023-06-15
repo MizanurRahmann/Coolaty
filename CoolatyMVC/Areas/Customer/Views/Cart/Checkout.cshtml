@@ -4,7 +4,13 @@
 
 @if(Model != null)
 {
-    <form class="checkout-page">
+    <form 
+        class="checkout-page"
+        asp-controller="Cart"
+        asp-action="Checkout"
+        method="post"
+        enctype="multipart/form-data"
+    >
         <div class="checkout-container">
             <h1 class="primary-heading">Checkout</h1>
 
@@ -16,46 +22,40 @@
                         <div class="form-box">
                             <div class="g-100">
                                 <label>Full Name*</label>
-                                <input asp-for="@Model.OrderHeader.Name" type="text" placeholder="Enter your full name" />
-                                <span asp-validation-for="@Model.OrderHeader.Name" class="text-error"></span>
+                                <input id="c-name" asp-for="@Model.OrderHeader.Name" type="text" placeholder="Enter your full name" />
                             </div>
                         </div>
                         <div class="form-box">
                             <div class="g-50">
                                 <label>Phone*</label>
-                                <input asp-for="@Model.OrderHeader.Phone" type="text" placeholder="Enter your phone number (only digits)" />
-                                <span asp-validation-for="@Model.OrderHeader.Phone" class="text-error"></span>
+                                <input id="c-phone" asp-for="@Model.OrderHeader.Phone" type="text" placeholder="Enter your phone number (only digits)" />
                             </div>
                             <div class="g-50">
                                 <label>Email*</label>
-                                <input asp-for="@Model.OrderHeader.Email" type="text" placeholder="Enter your email address" />
-                                <span asp-validation-for="@Model.OrderHeader.Email" class="text-error"></span>
+                                <input id="c-email" asp-for="@Model.OrderHeader.Email" type="email" placeholder="Enter your email address" />
+                                <span asp-validation-for="@Model.OrderHeader.AppUserId"></span>
                             </div>
                         </div>
                         <div class="form-box">
                             <div class="g-100">
                                 <label>Address*</label>
-                                <input asp-for="@Model.OrderHeader.Address" type="text" placeholder="Enter your village / city " />
-                                <span asp-validation-for="@Model.OrderHeader.Address" class="text-error"></span>
+                                <input id="c-address" asp-for="@Model.OrderHeader.Address" type="text" placeholder="Enter your village / city " />
                             </div>
                         </div>
                         <div class="form-box">
                             <div class="g-50">
                                 <label>Thana*</label>
-                                <input asp-for="@Model.OrderHeader.Thana" type="text" placeholder="Enter your Thana" />
-                                <span asp-validation-for="@Model.OrderHeader.Thana" class="text-error"></span>
+                                <input id="c-thana" asp-for="@Model.OrderHeader.Thana" type="text" placeholder="Enter your Thana" />
                             </div>
                             <div class="g-50">
                                 <label>District*</label>
-                                <input asp-for="@Model.OrderHeader.District" type="text" placeholder="Enter your email district" />
-                                <span asp-validation-for="@Model.OrderHeader.District" class="text-error"></span>
+                                <input id="c-district" asp-for="@Model.OrderHeader.District" type="text" placeholder="Enter your email district" />
                             </div>
                         </div>
                         <div class="form-box">
                             <div class="g-100">
                                 <label>Postal Code*</label>
-                                <input asp-for="@Model.OrderHeader.PostalCode" type="text" placeholder="Enter your postal code" />
-                                <span asp-validation-for="@Model.OrderHeader.PostalCode" class="text-error"></span>
+                                <input id="c-post" asp-for="@Model.OrderHeader.PostalCode" type="text" placeholder="Enter your postal code" />
                             </div>
                         </div>
                     </div>
@@ -171,7 +171,7 @@
 }
 else
 {
-
+    <div>Something Went Wrong</div>
 }
 
 @section Scripts { <script src="~/js/customer/checkout.js" asp-append-version="true"></script> }

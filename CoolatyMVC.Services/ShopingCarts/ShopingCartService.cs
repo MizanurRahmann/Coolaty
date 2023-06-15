@@ -61,6 +61,12 @@ namespace CoolatyMVC.Services.ShopingCarts
             _repo.ShopingCart.DeleteFromCart(model);
             _repo.Save();
         }
+
+        public void DeleteListOfCartItem(IEnumerable<ShopingCart> cartItems)
+        {
+            _repo.ShopingCart.DeleteListOfCartItem(cartItems);
+            _repo.Save();
+        }
         #endregion
 
         #region Private Methods

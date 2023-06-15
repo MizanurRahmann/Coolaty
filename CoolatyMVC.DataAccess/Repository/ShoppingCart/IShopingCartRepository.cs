@@ -11,5 +11,6 @@ namespace CoolatyMVC.Data.Repository.ShopingCarts
         int Increment(ShopingCart shopingCart, int count);
         int Decrement(ShopingCart shopingCart, int count);
         void DeleteFromCart(ShopingCart model);
+        void DeleteListOfCartItem(IEnumerable<ShopingCart> cartItems);
     }
 }

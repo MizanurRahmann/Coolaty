@@ -1,10 +1,5 @@
 ﻿using CoolatyMVC.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoolatyMVC.Data.Repository.Orders
 {
@@ -56,7 +51,7 @@ namespace CoolatyMVC.Data.Repository.Orders
             _db.Orders.Remove(model);
         }
 
-        public async void UpdateStatus(int orderId, string orderStatus, string? paymentStatus = null)
+        public async Task UpdateStatus(int orderId, string orderStatus, string? paymentStatus = null)
         {
             var order = await _db.Orders.FirstOrDefaultAsync(c => c.Id == orderId);
 

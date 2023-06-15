@@ -1,8 +1,8 @@
 ﻿using CoolatyMVC.Models;
 
-namespace CoolatyMVC.Data.Repository.Orders
+namespace CoolatyMVC.Services.Orders
 {
-    public interface IOrderRepository
+    public interface IOrderService
     {
         Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search);
         Task<Order> GetSingleOrder(int orderId);

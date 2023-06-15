@@ -26,25 +26,25 @@ namespace CoolatyMVC.Models
         public string? SessionId { get; set; }
         public string? PaymentIntentId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string Name { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Phone is required.")]
         public string Phone { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Email is required.")]
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Address is required.")]
         public string Address { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Thana is required.")]
         public string Thana { get; set; }
-        [Required]
+        [Required(ErrorMessage = "District is required.")]
         public string District { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Postal code is required.")]
         public string PostalCode { get; set; }
 
         [Required]
         public int ShippingPrice { get; set; }
 
-        public string AppliedCoupon { get; set; }
-        public int DiscountAmount { get; set; }
+        public string? AppliedCoupon { get; set; }
+        public int? DiscountAmount { get; set; }
     }
 }

@@ -4,6 +4,8 @@ using CoolatyMVC.Services.ShopingCarts;
 using CoolatyMVC.Data.Repository;
 using Microsoft.AspNetCore.Http;
 using CoolatyMVC.Services.AppUsers;
+using CoolatyMVC.Services.Orders;
+using CoolatyMVC.Services.OrderDetails;
 
 namespace CoolatyMVC.Services.Service
 {
@@ -13,6 +15,8 @@ namespace CoolatyMVC.Services.Service
         public ICategoryService Category { get; private set; }
         public IProductService Products { get; private set; }
         public IShopingCartService ShopingCart { get; private set; }
+        public IOrderService Order { get; private set; }
+        public IOrderDetailsService OrderDetails { get; private set; }
         public IAppUserService AppUser { get; private set; }
 
         public Service(Repository repo)
@@ -21,6 +25,8 @@ namespace CoolatyMVC.Services.Service
             Category = new CategoryService(_repo);
             Products = new ProductService(_repo);
             ShopingCart = new ShopingCartService(_repo);
+            Order = new OrderService(_repo);
+            OrderDetails = new OrderDetailsService(_repo);
             AppUser = new AppUserService(_repo);
         }
 

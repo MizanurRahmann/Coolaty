@@ -57,6 +57,11 @@
     font-size: 0.8rem;
     margin-bottom: 0.5rem;
 }
+.form-box .input-validation-error {
+    border: 2px solid #EC4E2C;
+    background: #F7CFC7;
+}
+
 .form-box input,
 .checkout-container .checkout-info .summary-container .coupon-box input {
     width: 100%;
