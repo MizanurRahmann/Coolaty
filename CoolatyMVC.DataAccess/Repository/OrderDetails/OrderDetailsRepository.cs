@@ -26,7 +26,7 @@ namespace CoolatyMVC.Data.Repository.Orders
 
         public async Task<OrderDetail> GetOrderDetail(int orderId)
         {
-            return await _db.OrderDetails.FirstOrDefaultAsync(c => c.Id == orderId);
+            return await _db.OrderDetails.FirstOrDefaultAsync(c => c.OrderId == orderId);
         }
 
         public void Create(OrderDetail model)

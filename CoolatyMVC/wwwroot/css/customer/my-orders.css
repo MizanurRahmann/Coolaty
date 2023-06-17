@@ -1,0 +1,141 @@
+﻿.my-orders-page {
+     min-height: 80vh;
+     width: 100%;
+}
+.my-orders-page .my-orders-container {
+    margin-top: 8rem;
+    padding: 0 7rem;
+}
+.my-orders-container .table {
+    background: var(--color-primary2);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+.my-orders-container .table .table-inner {
+    width: 100%;
+    min-height: 10rem;
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+.my-orders-container .table .table-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+.my-orders-container .table .table-th {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+.my-orders-container .table .row {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+.my-orders-container .table .row,
+.my-orders-container .table .row a {
+    color: var(--color-secondary);
+}
+.my-orders-container .table .row:not(:last-child) {
+    border-bottom: 1px solid var(--color-primary2);
+}
+
+.my-orders-container .table .row .id {
+    width: 10%;
+}
+.my-orders-container .table .row .date {
+    width: 10%;
+}
+.my-orders-container .table .row .owner {
+    width: 20%;
+}
+.my-orders-container .table .row .price {
+    width: 10%;
+}
+.my-orders-container .table .row .status {
+    width: 10%;
+}
+.my-orders-container .table .row .id a {
+    text-decoration: none;
+    color: var(--color-secondary);
+}
+.my-orders-container .table .row .id a i {
+    transform: rotate(-45deg);
+}
+.my-orders-container .table .row .id a:hover {
+    text-decoration: underline;
+}
+.my-orders-container .table .row .status {
+    display: flex;
+    align-items: center;
+}
+.my-orders-container .table .row .status span {
+    display: inline-block;
+}
+.my-orders-container .table .row .status span.circle {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.2rem;
+    border-radius: 50%;
+}
+.my-orders-container .table .row .status span.Pending {
+    background: #F28B0C;
+}
+.my-orders-container .table .row .status span.Canceled {
+    background: #F20519;
+}
+.my-orders-container .table .row .status span.Shipped {
+    background: #9D49F2;
+}
+.my-orders-container .table .row .status span.Paid,
+.my-orders-container .table .row .status span.Done {
+    background: #289809;
+}
+.my-orders-container .table .table-th .ps,
+.my-orders-container .table .table-th .ss {
+    display: none;
+}
+
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+@media only screen and (max-width: 600px) {
+    .my-orders-page .my-orders-container {
+        margin-top: 25rem;
+        padding: 0 5rem;
+    }
+    .my-orders-page .my-orders-container h1{
+        font-size: 7rem;
+        margin-bottom: 4rem;
+    }
+    .my-orders-container .table .row {
+        padding: 2rem 0;
+    }
+    .my-orders-container .table .row .id,
+    .my-orders-container .table .row .price {
+        width: 20%;
+    }
+    .my-orders-container .table .row .date,
+    .my-orders-container .table .row .status {
+        width: 30%;
+    }
+    .my-orders-container .table .row .owner,
+    .my-orders-container .table .row .price,
+    .my-orders-container .table .row .status {
+        display: none;
+    }
+    .my-orders-container .table .row .id a {
+        font-weight: 500;
+    }
+    .my-orders-container .table .row .ss,
+    .my-orders-container .table .row .ps {
+        display: block;
+    }
+    .my-orders-container .table .row * {
+        font-size: 3rem;
+    }
+    .my-orders-container .table .row .status span.circle {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+    }
+}

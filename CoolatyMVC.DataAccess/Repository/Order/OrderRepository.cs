@@ -31,6 +31,12 @@ namespace CoolatyMVC.Data.Repository.Orders
             return await Task.FromResult(result);
         }
 
+        public async Task<IEnumerable<Order>> GetMyOrders(string userId)
+        {
+            var result = _db.Orders.Where(item => item.AppUserId == userId);
+            return await Task.FromResult(result);
+        }
+
         public async Task<Order> GetSingleOrder(int orderId)
         {
             return await _db.Orders.FirstOrDefaultAsync(c => c.Id == orderId);

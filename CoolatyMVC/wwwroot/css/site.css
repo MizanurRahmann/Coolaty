@@ -856,12 +856,14 @@ h6 {
         border-radius: 1.25rem;
         padding: 2rem;
     }
-    .navigation-container .sublinks .sublinks-inner a {
+    .navigation-container .sublinks .sublinks-inner a,
+    .navigation-container .sublinks button {
         font-size: 3rem;
         margin-bottom: 3rem;
     }
 
-    .navigation-container .sublinks .sublinks-inner a i {
+    .navigation-container .sublinks .sublinks-inner a i,
+    .navigation-container .sublinks button i {
         margin-right: 2rem;
     }
 

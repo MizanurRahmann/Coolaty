@@ -23,6 +23,11 @@ namespace CoolatyMVC.Services.Orders
             return await _repo.Order.GetAllOrders(pageNumber, pageSize, search);
         }
 
+        public async Task<IEnumerable<Order>> GetMyOrders(string userId)
+        {
+            return await _repo.Order.GetMyOrders(userId);
+        }
+
         public async Task<Order> GetSingleOrder(int id)
         {
             return await _repo.Order.GetSingleOrder(id);

@@ -3,8 +3,6 @@ using CoolatyMVC.Models.ViewModels;
 using CoolatyMVC.Services.Service;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.CodeAnalysis;
 using System.Security.Claims;
 
 namespace CoolatyMVC.Areas.Customer.Controllers

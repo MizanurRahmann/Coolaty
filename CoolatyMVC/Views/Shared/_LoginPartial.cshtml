@@ -10,6 +10,14 @@
             <i class="iconoir-user"></i>
             My Profile
         </a>
+        <a
+            asp-area="Customer"
+            asp-controller="Order"
+            asp-action="MyOrders"
+        >
+            <i class="iconoir-simple-cart"></i>
+            My Orders
+        </a>
         <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
             <button id="logout" type="submit" class="logout-btn">
                 <i class="iconoir-log-out"></i>

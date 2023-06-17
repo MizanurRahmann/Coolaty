@@ -1,0 +1,172 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/customer/checkout.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Order Details"; }
+@model OrderVM
+
+<form class="orderDetail-page">
+    <div class="orderDetail-container">
+        <h1 class="primary-heading">Order Details</h1>
+
+        <div class="orderDetail-info">
+            <div class="info">
+                <div class="info-inner">
+                    <h5>Shipping Address</h5>
+
+                    <div class="form-box">
+                        <div class="g-100">
+                            <label>Full Name*</label>
+                            <input 
+                                id="c-name" 
+                                asp-for="@Model.OrderHeader.Name" 
+                                type="text" 
+                                placeholder="Enter your full name"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)" 
+                            />
+                        </div>
+                    </div>
+                    <div class="form-box">
+                        <div class="g-50">
+                            <label>Phone*</label>
+                            <input 
+                                id="c-phone" 
+                                asp-for="@Model.OrderHeader.Phone" 
+                                type="text" 
+                                placeholder="Enter your phone number (only digits)"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)" 
+                            />
+                        </div>
+                        <div class="g-50">
+                            <label>Email*</label>
+                            <input 
+                                id="c-email" 
+                                asp-for="@Model.OrderHeader.Email" 
+                                type="email" 
+                                placeholder="Enter your email address"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)" 
+                            />
+                        </div>
+                    </div>
+                    <div class="form-box">
+                        <div class="g-100">
+                            <label>Address*</label>
+                            <input 
+                                id="c-address" 
+                                asp-for="@Model.OrderHeader.Address" 
+                                type="text" 
+                                placeholder="Enter your village / city"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)" 
+                            />
+                        </div>
+                    </div>
+                    <div class="form-box">
+                        <div class="g-50">
+                            <label>Thana*</label>
+                            <input 
+                                id="c-thana" 
+                                asp-for="@Model.OrderHeader.Thana" 
+                                type="text" 
+                                placeholder="Enter your Thana"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)" 
+                            />
+                        </div>
+                        <div class="g-50">
+                            <label>District*</label>
+                            <input 
+                                id="c-district" 
+                                asp-for="@Model.OrderHeader.District" 
+                                type="text" 
+                                placeholder="Enter your email district"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)" 
+                            />
+                        </div>
+                    </div>
+                    <div class="form-box">
+                        <div class="g-100">
+                            <label>Postal Code*</label>
+                            <input 
+                                id="c-post" 
+                                asp-for="@Model.OrderHeader.PostalCode" 
+                                type="text" 
+                                placeholder="Enter your postal code"
+                                disabled="@(Model.OrderHeader.OrderStatus == "Pending" ? false : true)"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="info-inner">
+                    <div class="header">
+                        <h5>Payment Info</h5>
+                        <div class="status @Model.OrderHeader.PaymentStatus">
+                            <span class="circle"></span>
+                            <span>@Model.OrderHeader.PaymentStatus</span>
+                        </div>
+                    </div>
+                    @if(Model.OrderHeader.PaymentStatus == "Pending")
+                    {
+                        <div class="pending-payment">
+                            <h4>Please select a payment method, otherwise your order will not be placed.</h4>
+                            <a>Payment</a>
+                            <img src="~/img/customer/pay.png" />
+                        </div>
+                    }
+                    else
+                    {
+                        <div>Done</div>
+                    }
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="summary-container">
+                <div class="summary">
+                    <div class="summary-inner">
+                        <h5>Order Summary</h5>
+                        <div class="info">
+                            <div class="label">Subtotal</div>
+                            <div class="value">৳ @Model.OrderHeader.OrderTotal</div>
+                            <input 
+                                id="totalCost"
+                                asp-for="@Model.OrderHeader.OrderTotal"
+                                value="@Model.OrderHeader.OrderTotal"
+                                hidden 
+                            />
+                        </div>
+                        <div class="info">
+                            <div class="label">Discount</div>
+                            <div class="value" id="discount-amnt-txt">
+                                -৳ @(Model.OrderHeader.DiscountAmount == null ? 00 : Model.OrderHeader.DiscountAmount)
+                            </div>
+                            <input 
+                                id="discountCost"
+                                asp-for="@Model.OrderHeader.DiscountAmount"
+                                value="@(Model.OrderHeader.DiscountAmount == null ? 00 : Model.OrderHeader.DiscountAmount)"
+                                hidden 
+                            />
+                        </div>
+                        <div class="info">
+                            <div class="label">Shipping Cost</div>
+                            <div class="value" id="selected-shipping-cost">৳ @Model.OrderHeader.ShippingPrice</div>
+                            <input 
+                                id="totalCost"
+                                asp-for="@Model.OrderHeader.ShippingPrice"
+                                value="@Model.OrderHeader.ShippingPrice"
+                                hidden 
+                            />
+                        </div>
+                        <div class="info last">
+                            <div class="label">Grand Total</div>
+                            <div class="value" id="payable-amnt-txt">
+                                ৳ @(Model.OrderHeader.OrderTotal + Model.OrderHeader.ShippingPrice - (Model.OrderHeader.DiscountAmount == null ? 0 : Model.OrderHeader.DiscountAmount))
+                            </div>
+                        </div>
+                        @if(Model.OrderHeader.OrderStatus == "Pending")
+                        {
+                            <button>Update Order Info</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
