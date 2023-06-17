@@ -1,0 +1,113 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/categories-add.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Categories"; }
+@model Category
+
+
+<div class="addCreateCommon addCategories">
+    <div class="common-container">
+        <!-- HEADING -->
+        <div class="heading">
+            <h2>Create Category</h2>
+            <div class="button-box">
+                @if (Model.Id != 0)
+                {
+                    <div class="heading-button" id="category-delete-btn">
+                        <i class="iconoir-trash"></i>
+                    </div>
+                }
+                <a 
+                   class="heading-link"
+                   asp-area="Admin"
+                   asp-controller="Categories"
+                   asp-action="Index"
+                >
+                    <i class="iconoir-nav-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="category-creation">
+            <form
+                  asp-controller="Categories"
+                  asp-action="Upsert"
+                  method="post"
+                  enctype="multipart/form-data"
+            >
+                <div class="form-wrapper">
+                    <div class="block">
+                        <div class="block-desc">
+                            <p>01</p>
+                            <h3>BASIC DESCRIPTION</h3>
+                        </div>
+                        <div class="block-fields">
+                            <div class="field-wrapper">
+                                <!-- image field -->
+                                <label class="label">Category Icon <span>*</span></label>
+                                <div class="image-group-container @(string.IsNullOrEmpty(Model.ImageUrl) ? "" : "d-none")">
+                                    <div class="image-group">
+                                        <label asp-for=@Model.Image>
+                                            <div>
+                                                <i class="iconoir-add-media-image"></i>
+                                                <p>Category Icon</p>
+                                            </div>
+                                        </label>
+                                        <input asp-for=@Model.Image accept="image/*" id="categoryImage" />
+                                    </div>
+                                </div>
+                                <!-- image preview -->
+                                <div 
+                                    class="image-group-container-preview @(string.IsNullOrEmpty(Model.ImageUrl) ? "d-none" : "")"
+                                     style="background: url(@(string.Format("data:image/png;base64,{0}", Model.ImageUrl))) no-repeat center center / cover">
+                                    <div class="layer" id="preview-cancel-layer">
+                                        <div class="x">
+                                            <i class="iconoir-cancel"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <span asp-validation-for="ImageUrl" class="error-message" id="error-image"></span>
+                                <span asp-validation-for="Image" class="error-message" id="error-image"></span>
+                                <!-- message -->
+                                <div class="message">
+                                    <div class="message-icon">
+                                        <div class="container">
+                                            <i class="iconoir-sparks"></i>
+                                        </div>
+                                    </div>
+                                    <div class="message-text">
+                                        Please select an transparent background image for category icon for better UI experience.
+                                    </div>
+                                </div>
+                                <!-- name -->
+                                <div class="field-wrapper">
+                                    <label class="label" asp-for=@Model.Name>Name<span>*</span></label>
+                                    <input id="productName"
+                                           type="text"
+                                           asp-for=@Model.Name
+                                           placeholder="Enter category name" 
+                                    />
+                                    <span asp-validation-for="Name" class="error-message" id="error-name"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button Box -->
+                <div class="button-box">
+                    <a class="btn btn-secondary"
+                       asp-area="Admin"
+                       asp-controller="Categories"
+                       asp-action="Index">
+                        <i class="iconoir-nav-arrow-left"></i> Back
+                    </a>
+                    <button class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        @await Html.PartialAsync("~/Areas/Admin/Views/Categories/_ModalDelete.cshtml", Model)
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/admin/admin-category-upsert.js" asp-append-version="true"></script> }

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace CoolatyMVC.Models
 {
-    public class ProductModel
+    public class Product
     {
         [Key]
         public int Id { get; set; }
@@ -61,7 +61,7 @@ namespace CoolatyMVC.Models
         [Required(ErrorMessage = "Product Category is required.")]
         [ForeignKey("Category")]
         public int CategoryId { get; set; }
-        public virtual CategoryModel? Category { get; set; }
+        public virtual Category? Category { get; set; }
 
         [DisplayName("product created")]
         public DateTime? CreateDate { get; set; }

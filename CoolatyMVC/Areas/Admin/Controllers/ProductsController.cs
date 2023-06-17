@@ -1,6 +1,6 @@
 ﻿using CoolatyMVC.Models;
+using CoolatyMVC.Models.ViewModels;
 using CoolatyMVC.Services.Service;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CoolatyMVC.Areas.Admin.Controllers
@@ -27,32 +27,45 @@ namespace CoolatyMVC.Areas.Admin.Controllers
         #endregion
 
         #region Methods
-        // GET ALL PRODUCT
         [HttpGet]
-        public async Task<IActionResult> Index(string search)
+        public async Task<IActionResult> Index([FromQuery(Name = "search")] string search)
         {
-            var productData = await _services.Products.GetAllProducts(1, 10, search, "Admin");
+            var productData = await _services.Products.GetAllProducts(1, 100, search, "Admin");
             return View(productData);
         }
 
-        // GET ADD NEW PRODUCT PAGE
         [HttpGet]
-        public IActionResult Create()
+        public async Task<IActionResult> Upsert(int? id)
         {
-            return View("~/Areas/Admin/Views/Products/Create.cshtml");
+            ProductWithCategoryVM productWithCategory = new()
+            {
+                Product = new(),
+                Category = (IEnumerable<Category>) await _services.Category.GetAllCategories(1, 100, "")
+            };
+
+            if (id == null || id == 0)
+            {
+                return View(productWithCategory);
+            }
+            else
+            {
+                productWithCategory.Product = await _services.Products.GetSingleProduct((int) id);
+            }
+
+            return View(productWithCategory);
         }
 
-        // POST NEW PRODUCT
         [HttpPost]
-        public async Task<IActionResult> Create(ProductModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Upsert(ProductWithCategoryVM model)
         {
             // convert image file to base64 string
             string hexString = "";
-            if (model.Image != null)
+            if (model.Product?.Image != null)
             {
-                var bytes = await GetBytes(model);
+                var bytes = await _services.GetBytes(model.Product.Image);
                 hexString = Convert.ToBase64String(bytes);
-                model.ImageUrl = hexString;
+                model.Product.ImageUrl = hexString;
             }
 
             // clear previous validation & rerun validation function
@@ -62,88 +75,58 @@ namespace CoolatyMVC.Areas.Admin.Controllers
             // check model validty
             if (ModelState.IsValid)
             {
-                var domainModel = new ProductModel()
+                var domainModel = new Product()
                 {
-                    Id = model.Id,
-                    Name = model.Name,
-                    ImageUrl = model.ImageUrl,
-                    Price = model.Price,
-                    SubName = model.SubName,
-                    Compound = model.Compound,
-                    Calories = model.Calories,
-                    Carbohydrates = model.Carbohydrates,
-                    Proteins = model.Proteins,
-                    Fats = model.Fats,
-                    CategoryId = model.CategoryId,
+                    Id = model.Product.Id,
+                    Name = model.Product.Name,
+                    ImageUrl = model.Product.ImageUrl,
+                    Price = model.Product.Price,
+                    SubName = model.Product.SubName,
+                    Compound = model.Product.Compound,
+                    Calories = model.Product.Calories,
+                    Carbohydrates = model.Product.Carbohydrates,
+                    Proteins = model.Product.Proteins,
+                    Fats = model.Product.Fats,
+                    CategoryId = model.Product.CategoryId,
                 };
 
-                await _services.Products.Create(domainModel);
+                if (model.Product.Id == 0)
+                {
+                    await _services.Products.Create(domainModel);
+                    TempData["success"] = "Created Successfully!";
+                }
+                else
+                {
+                    _services.Products.Update(domainModel);
+                    TempData["success"] = "Updated Successfully!";
+                }
+
                 return RedirectToAction("Index");
             }
-            return View(model);
-        }
 
-        [HttpGet]
-        public async Task<IActionResult> Update(int id)
-        {
-            var viewData = await _services.Products.GetSingleProduct(id);
-            
-            if(viewData == null)
+            if(model.Product.CategoryId == 0)
             {
-                return View("~/Areas/Admin/Views/Products/_NotFound.cshtml");
+                ModelState.AddModelError("Product.CategoryId", "Product Category is required.");
             }
-
-            return View("~/Areas/Admin/Views/Products/Update.cshtml", viewData);
+            model.Category = await _services.Category.GetAllCategories(1, 100, "");
+            return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(ProductModel model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
         {
-            // convert image file to base64 string
-            string hexString = "";
-            if (model.Image != null)
+            Product data = await _services.Products.GetSingleProduct(id);
+
+            if (data != null)
             {
-                var bytes = await GetBytes(model);
-                hexString = Convert.ToBase64String(bytes);
-                model.ImageUrl = hexString;
-            }
-
-            // clear previous validation & rerun validation function
-            ModelState.Clear();
-            TryValidateModel(model);
-
-            // check model validty
-            if (ModelState.IsValid)
-            {
-                var domainModel = new ProductModel()
-                {
-                    Id = model.Id,
-                    Name = model.Name,
-                    ImageUrl = model.ImageUrl,
-                    Price = model.Price,
-                    SubName = model.SubName,
-                    Compound = model.Compound,
-                    Calories = model.Calories,
-                    Carbohydrates = model.Carbohydrates,
-                    Proteins = model.Proteins,
-                    Fats = model.Fats,
-                    CategoryId = model.CategoryId,
-                };
-
-                _services.Products.Update(domainModel);
-                TempData["success"] = "Updated Successfully!";
+                _services.Products.Delete(data);
+                TempData["success"] = "Deleted Successfully!";
                 return RedirectToAction("Index");
             }
-            return View(model);
-        }
-        #endregion
 
-        #region Private Methods
-        private async Task<byte[]> GetBytes(ProductModel model)
-        {
-            await using var memoryStream = new MemoryStream();
-            await model.Image.CopyToAsync(memoryStream);
-            return memoryStream.ToArray();
+            TempData["error"] = "Something went wrong!";
+            return RedirectToAction("Index");
         }
         #endregion
     }

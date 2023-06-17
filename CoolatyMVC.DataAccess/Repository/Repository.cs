@@ -1,4 +1,4 @@
-﻿using CoolatyMVC.Data.Repository.Category;
+﻿    using CoolatyMVC.Data.Repository.Categories;
 using CoolatyMVC.Data.Repository.Products;
 
 namespace CoolatyMVC.Data.Repository
@@ -19,6 +19,11 @@ namespace CoolatyMVC.Data.Repository
         public void Save()
         {
             _db.SaveChanges();
+        }
+
+        public async Task SaveAsync()
+        {
+            await _db.SaveChangesAsync();
         }
 
     }

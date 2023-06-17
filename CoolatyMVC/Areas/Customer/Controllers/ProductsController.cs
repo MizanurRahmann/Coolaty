@@ -33,7 +33,7 @@ namespace CoolatyMVC.Areas.Customer.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
-            ProductModel data = await _services.Products.GetSingleProduct(id);
+            Product data = await _services.Products.GetSingleProduct(id);
             return View("~/Areas/Customer/Views/Products/Details.cshtml", data);
         }
     }

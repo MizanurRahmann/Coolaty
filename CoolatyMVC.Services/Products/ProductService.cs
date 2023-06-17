@@ -17,7 +17,7 @@ namespace CoolatyMVC.Services.Products
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<ProductModel>> GetAllProducts(int pageNumber, int pageSize, string filterBy, string requestComeFrom = "Customer")
+        public async Task<IEnumerable<Product>> GetAllProducts(int pageNumber, int pageSize, string filterBy, string requestComeFrom = "Customer")
         {
             if (requestComeFrom == "Admin")
             {
@@ -26,20 +26,26 @@ namespace CoolatyMVC.Services.Products
             return await _repo.Products.GetAllProducts(pageNumber, pageSize, filterBy);
         }
 
-        public async Task<ProductModel> GetSingleProduct(int id)
+        public async Task<Product> GetSingleProduct(int id)
         {
             return await _repo.Products.GetSingleProduct(id);
         }
 
-        public async Task Create(ProductModel model)
+        public async Task Create(Product model)
         {
             await _repo.Products.Create(model);
+            await _repo.SaveAsync();
+        }
+
+        public void Update(Product model)
+        {
+             _repo.Products.Update(model);
             _repo.Save();
         }
 
-        public void Update(ProductModel model)
+        public void Delete (Product model)
         {
-             _repo.Products.Update(model);
+            _repo.Products.Delete(model);
             _repo.Save();
         }
         #endregion

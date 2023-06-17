@@ -7,10 +7,10 @@
     --color-primary2: #f7dcc0;
     --color-secondary: #b00e2f;
     --color-secondary2: #9e0d2a;
-    --color-tertiary: #5545BF;
-    --color-tertiary2: #443799;
+    --color-tertiary: #635FD9;
+    --color-tertiary2: #726FBF;
     --color-white: #f7f7fa;
-    --color-input-background: #e6e9eb;
+    --color-input-background: #f5f6f7;
     --color-border: #383737;
     --color-admin-text: #444;
     --font-bebas: "Bebas Neue", sans-serif;
@@ -411,7 +411,7 @@ h6 {
 .layout .content .main-container {
     width: 100%;
     height: 100%;
-    background: #f5f6fa;
+    background: #f3f4f5;
 }
 
 /* ERROR */
@@ -453,7 +453,7 @@ h6 {
 
 .common-error-wrapper {
     width: 100%;
-    height: 92vh;
+    height: 83vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -474,6 +474,168 @@ h6 {
 
 .common-error-wrapper .inner p {
     color: #4d4e4f;
+}
+
+/* Common Create Page */
+.addCreateCommon {
+    position: relative;
+}
+
+.addCreateCommon .heading {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addCreateCommon button-box {
+    width: fit-content;
+    display: flex;
+}
+
+.addCreateCommon .heading h2 {
+    display: inline-block;
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    color: var(--color-admin-text);
+}
+
+.addCreateCommon .heading a,
+.addCreateCommon .heading .heading-button {
+    text-decoration: none;
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    background: var(--color-tertiary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+.addCreateCommon .heading a {
+    background: #dae0e5;
+    color: var(--color-admin-text);
+}
+
+.addCreateCommon .heading a i,
+.addCreateCommon .heading .heading-button i {
+    transition: all 0.3s;
+}
+
+.addCreateCommon .heading a:hover i,
+.addCreateCommon .heading .heading-button:hover i {
+    transform: scale(1.2);
+}
+
+.addCreateCommon .common-container {
+    height: 92vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.addCreateCommon .common-container::-webkit-scrollbar-track {
+    background-color: #F6F7FA;
+}
+
+.addCreateCommon .common-container::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+.addCreateCommon .common-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-admin-text);
+    border-radius: 10px;
+}
+
+/* Common Delete Modal */
+.delete-modal-container {
+    width: 100%;
+    height: 92vh;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.delete-modal{
+    width: 30%;
+    height: 70vh;
+    background: var(--color-white);
+    position: relative;
+    border-radius: 0.3rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.delete-modal img {
+    height: 35vh;
+    margin-block: 1rem;
+}
+
+.delete-modal h1,
+.delete-modal p {
+    font-size: 1.5rem;
+    color: #444;
+    text-align: center
+}
+
+.delete-modal p {
+    font-size: 0.9rem;
+}
+
+.delete-modal p b {
+    font-weight: 600;
+}
+
+.delete-modal .btn {
+    text-decoration: none;
+    width: 10rem;
+    height: 3rem;
+    padding: 0 1rem;
+    font-family: var(--font-barlow);
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0 0.5rem; 
+}
+
+.delete-modal button {
+    padding: 0;
+    background: #d11a2a;
+    color: var(--color-white);
+}
+
+.delete-modal button:hover {
+    background: #a71522;
+    color: var(--color-white);
+}
+
+.delete-modal input {
+    display: none;
+}
+
+#product-delete-close-btn,
+#category-delete-close-btn {
+    background: #dae0e5;
+    color: var(--color-admin-text);
+}
+
+#product-delete-close-btn:hover,
+#category-delete-close-btn {
+    background: #aeb3b7;
 }
 
 @media only screen and (max-width: 1300px) {

@@ -18,7 +18,7 @@ namespace CoolatyMVC.Data.Repository.Products
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<ProductModel>> GetAllProducts(int pageNumber, int pageSize, string filterBy)
+        public async Task<IEnumerable<Product>> GetAllProducts(int pageNumber, int pageSize, string filterBy)
         {
             var result = _db.Products
                 .Where(p => p.Category.Name == filterBy)
@@ -29,7 +29,7 @@ namespace CoolatyMVC.Data.Repository.Products
             return await Task.FromResult(result);
         }
 
-        public async Task<IEnumerable<ProductModel>> GetAllProductsForAdmin(int pageNumber, int pageSize, string filterBy)
+        public async Task<IEnumerable<Product>> GetAllProductsForAdmin(int pageNumber, int pageSize, string filterBy)
         {
             var result = _db.Products.AsQueryable();
 
@@ -45,19 +45,25 @@ namespace CoolatyMVC.Data.Repository.Products
             return await Task.FromResult(result);
         }
 
-        public async Task<ProductModel> GetSingleProduct(int productId)
+        public async Task<Product> GetSingleProduct(int productId)
         {
-            return await _db.Products.FirstOrDefaultAsync(p => p.Id == productId);
+            return await _db.Products.Include(p => p.Category)
+                .FirstOrDefaultAsync(p => p.Id == productId);
         }
 
-        public async Task Create(ProductModel model)
+        public async Task Create(Product model)
         {
             await _db.Products.AddAsync(model);
         }
 
-        public void Update(ProductModel model)
+        public void Update(Product model)
         {
             _db.Products.Update(model);
+        }
+
+        public void Delete(Product model)
+        {
+            _db.Products.Remove(model);
         }
         #endregion
     }

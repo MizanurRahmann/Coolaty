@@ -1,0 +1,60 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/categories-admin.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Categories"; }
+@model IEnumerable<Category>
+
+<div class="adminCategory">
+    <div class="heading">
+        <div class="heading-name">
+            <h2>Categories</h2>
+        </div>
+        <div class="options">
+            <form>
+                <div class="icon"><i class="iconoir-search"></i></div>
+                <input type="text" id="category-search" placeholder="Search here..." />
+            </form>
+            <a class="create-category-button"
+                asp-area="Admin"
+                asp-controller="Categories"
+                asp-action="Upsert"
+            >
+                <i class="iconoir-plus"></i>
+                Create
+            </a>
+        </div>
+    </div>
+
+    <div class="category-container">
+        @if (Model != null && Model.Count() > 0)
+        {
+            <div class="categories">
+                @foreach (var category in Model)
+                {
+                    <div class="acategory">
+                        <div class="data">
+                            <div class="cat-image">
+                                <img src="@(string.Format("data:image/png;base64,{0}", category.ImageUrl))" alt="" />
+                            </div>
+                            <div class="cat-name">@category.Name</div>
+                        </div>
+                        <div class="options">
+                            <a asp-area="Admin"
+                                asp-controller="Categories"
+                                asp-action="Upsert"
+                                asp-route-id=@category.Id
+                                class="edit"
+                            >
+                                <i class="iconoir-edit-pencil"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Areas/Admin/Views/Categories/_NotFound.cshtml");
+        }
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/admin/admin-category.js" asp-append-version="true"></script> }
