@@ -10,7 +10,7 @@
         <div class="inner"></div>
         <div class="content-box">
             <div class="image">
-                <img src="~/img/passion fruit.png" alt="" />
+                <img src="@(string.Format("data:image/png;base64,{0}", Model.ImageUrl))" alt="" />
             </div>
             <div class="content">
                 <h3>@Model.Name</h3>

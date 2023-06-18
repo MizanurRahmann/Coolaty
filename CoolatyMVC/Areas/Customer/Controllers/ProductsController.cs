@@ -1,4 +1,5 @@
 ﻿using CoolatyMVC.Models;
+using CoolatyMVC.Models.ViewModels;
 using CoolatyMVC.Services.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,8 +26,13 @@ namespace CoolatyMVC.Areas.Customer.Controllers
         [HttpGet]
         public async Task<IActionResult> Index([FromQuery(Name = "category")] string search)
         {
-            var productData = await _services.Products.GetAllProducts(1, 10, search);
-            return View(productData);
+            ProductListWithCategoryVM productListWithCategory = new()
+            {
+                Product = await _services.Products.GetAllProducts(1, 10, search),
+                Category = await _services.Category.GetAllCategories(1, 10, "")
+            };
+
+            return View(productListWithCategory);
         }
 
         // GET SINGLE PRODUCT

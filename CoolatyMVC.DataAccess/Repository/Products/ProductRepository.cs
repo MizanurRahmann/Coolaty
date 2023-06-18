@@ -20,9 +20,14 @@ namespace CoolatyMVC.Data.Repository.Products
         #region Methods
         public async Task<IEnumerable<Product>> GetAllProducts(int pageNumber, int pageSize, string filterBy)
         {
-            var result = _db.Products
-                .Where(p => p.Category.Name == filterBy)
-                .OrderBy(p => p.Name)
+            var result = _db.Products.AsQueryable();
+
+            if (!string.IsNullOrEmpty(filterBy))
+            {
+                result = result.Where(product => product.Category.Name == filterBy);
+            }
+
+            result = result.OrderBy(p => p.CreateDate)
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize);
 
