@@ -1,6 +1,6 @@
 ﻿@section Styles { <link rel="stylesheet" href="~/css/products.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Products"; } 
-@model IEnumerable<Product>
+@model ProductListWithCategoryVM
 
 <div class="products">
     <div class="products-conteiner">
@@ -8,24 +8,24 @@
         <p>Here are some of our products</p>
 
         <div class="filter-container">
-            <a 
-               href="@Url.Action("Index", "Products", new { category = "classic" })"
-               class="filter-block @(Context.Request.Query["category"].ToString() == "classic" ? "active" : "")"
-            >
-                <img src="~/img/ice-cream.png" alt="" />
-            </a>
-            <a 
-               href="@Url.Action("Index", "Products", new { category = "cup" })"
-               class="filter-block @(Context.Request.Query["category"].ToString() == "cup" ? "active" : "")"
-            >
-                <img src="~/img/frozen-yogurt.png" alt="" />
-            </a>
+            @if (Model.Category != null && Model.Category.Count() > 0)
+            {
+                @foreach (var category in Model.Category)
+                {
+                    <a 
+                        href="@Url.Action("Index", "Products", new { category = category.Name })"
+                        class="filter-block @(Context.Request.Query["category"].ToString() == category.Name ? "active" : "")"
+                    >
+                        <img src="@(string.Format("data:image/png;base64,{0}", category.ImageUrl))" alt="" />
+                    </a>
+                }
+            }
         </div>
 
         <div class="product-box">
-            @if (Model != null && Model.Count() > 0)
+            @if (Model.Product != null && Model.Product.Count() > 0)
             {
-                @foreach (var product in Model)
+                @foreach (var product in Model.Product)
                 {
                     @await Html.PartialAsync("~/Views/Shared/_Product.cshtml", product)
                 }

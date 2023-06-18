@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CoolatyMVC.Models;
+using CoolatyMVC.Models.ViewModels;
+using CoolatyMVC.Services.Service;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CoolatyMVC.Areas.Customer.Controllers
 {
@@ -6,15 +9,25 @@ namespace CoolatyMVC.Areas.Customer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IService _services;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(
+            ILogger<HomeController> logger,
+            IService services)
         {
             _logger = logger;
+            _services = services;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ProductListWithCategoryVM productListWithCategory = new()
+            {
+                Product = await _services.Products.GetAllProducts(1, 10, ""),
+                Category = await _services.Category.GetAllCategories(1, 10, "")
+            };
+
+            return View(productListWithCategory);
         }
     }
 }

@@ -26,13 +26,13 @@
             <div class="links">
                 <a 
                    class="link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")"
-                   href="@Url.Action("Index", "Home", new { category = "classic" })"
+                   href="@Url.Action("Index", "Home")"
                 >
                     Home
                 </a>
                 <a 
                    class="link @(ViewContext.RouteData.Values["Controller"].ToString() == "Products" ? "active" : "")"
-                   href="@Url.Action("Index", "Products", new { category = "classic" })"
+                   href="@Url.Action("Index", "Products", new { category = ViewData["FirstCategoryName"] })"
                 >
                     Products
                 </a>
