@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+<div class="sublinks-inner">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <a>
+            <i class="iconoir-user"></i>
+            My Profile
+        </a>
+        <form id="logoutForm" class="form-inline" asp-area="Identity" asp-page="/Account/logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button id="logout" type="submit" class="logout-btn">
+                <i class="iconoir-log-out"></i>
+                Signout
+            </button>
+        </form>
+    }
+    else
+    {
+        <a
+            asp-area="Identity"
+            asp-page="/Account/Login"
+        >
+            <i class="iconoir-log-in"></i>
+            Signin
+        </a>
+        <a
+            asp-area="Identity"
+            asp-page="/Account/Register"
+        >
+            <i class="iconoir-add-user"></i>
+            Signup
+        </a>
+    }
+</div>

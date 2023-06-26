@@ -1,0 +1,49 @@
+﻿@page
+@section Styles { <link rel="stylesheet" href="~/css/identity/auth.css" asp-append-version="true" /> }
+@model RegisterModel
+@{ ViewData["Title"] = "Signup"; }
+
+<div class="signin-container">
+    <div class="signin">
+        <section>
+            <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <h2>Sign up</h2>
+                <p>
+                    Alread have an account? <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl">Sign in</a>.
+                </p>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-box">
+                    <label asp-for="Input.Name" class="title"></label>
+                    <input asp-for="Input.Name" aria-required="true" />
+                    <span asp-validation-for="Input.Name" class="text-danger"></span>
+                </div>
+                <div class="form-box">
+                    <label asp-for="Input.PhoneNumber" class="title"></label>
+                    <input asp-for="Input.PhoneNumber" aria-required="true" />
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-box">
+                    <label asp-for="Input.Email" class="title"></label>
+                    <input asp-for="Input.Email" aria-required="true" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-box">
+                    <label asp-for="Input.Password" class="title"></label>
+                    <input asp-for="Input.Password" aria-required="true" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="form-box">
+                    <label asp-for="Input.ConfirmPassword" class="title"></label>
+                    <input asp-for="Input.ConfirmPassword" aria-required="true" />
+                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <button id="registerSubmit" type="submit" class="submit-button">Register</button>
+            </form>
+        </section>
+    </div>
+    <img src="~/img/l1.png" class="l1" />
+    <img src="~/img/l2.png" class="l2" />
+    <img src="~/img/auth.png" class="auth" />
+</div>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

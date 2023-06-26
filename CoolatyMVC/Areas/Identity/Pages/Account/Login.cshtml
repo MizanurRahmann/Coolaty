@@ -1,0 +1,49 @@
+﻿@page
+@model LoginModel
+@section Styles { <link rel="stylesheet" href="~/css/identity/auth.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Signin"; }
+
+<div class="signin-container">
+    <div class="signin">
+        <section>
+            <form id="account" method="post">
+                <h2>Sign in</h2>
+                <p>
+                    New here? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Create new account</a>.
+                </p>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-box">
+                    <label asp-for="Input.Email" class="title">Email</label>
+                    <input asp-for="Input.Email" autocomplete="username" aria-required="true" placeholder="Email address" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-box">
+                    <label asp-for="Input.Password" class="title">
+                        Password
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </label>
+                    <input asp-for="Input.Password" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div>
+                    <div class="checkbox">
+                        <label asp-for="Input.RememberMe" class="form-label">
+                            <input asp-for="Input.RememberMe" />
+                            @Html.DisplayNameFor(m => m.Input.RememberMe)
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <button id="login-submit" type="submit" class="submit-button">Log in</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <img src="~/img/l1.png" class="l1"/>
+    <img src="~/img/l2.png" class="l2" />
+    <img src="~/img/auth.png" class="auth"  />
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

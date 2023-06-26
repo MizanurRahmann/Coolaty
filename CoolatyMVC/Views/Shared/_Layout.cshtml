@@ -16,23 +16,30 @@
         <div class="navigation-container">
             <div class="brand">
                 <a 
-                   class="link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")"
+                   class="link"
+                   asp-area="Customer"
                    asp-controller="Home"
-                   asp-action="Index">
+                   asp-action="Index"
+                >
                     <img src="~/img/logo.png" alt="" />
                     <span>COOLATY</span>
                 </a>
             </div>
             <div class="links">
                 <a 
-                   class="link @(ViewContext.RouteData.Values["Controller"].ToString() == "Home" ? "active" : "")"
-                   href="@Url.Action("Index", "Home")"
+                   class="link"
+                   asp-area="Customer"
+                   asp-action="Index"
+                   asp-controller="Home"
                 >
                     Home
                 </a>
                 <a 
-                   class="link @(ViewContext.RouteData.Values["Controller"].ToString() == "Products" ? "active" : "")"
-                   href="@Url.Action("Index", "Products", new { category = ViewData["FirstCategoryName"] })"
+                   class="link"
+                   asp-area="Customer"
+                   asp-action="Index"
+                   asp-controller="Products"
+                   asp-route-category="@ViewData["FirstCategoryName"]"
                 >
                     Products
                 </a>
@@ -40,10 +47,13 @@
                 <a href="#" class="block">
                     <i class="iconoir-shopping-bag-alt"></i>
                 </a>
-                <a href="" class="block">
+                <div href="" class="block" id="sublinks-btn">
                     <i class="iconoir-user"></i>
-                </a>
+                </div>
             </div>
+            <div class="sublinks" id="sublinks">
+                @Html.Partial("_LoginPartial.cshtml")
+             </div>
         </div>
     </nav>
     <section class="main-section">
