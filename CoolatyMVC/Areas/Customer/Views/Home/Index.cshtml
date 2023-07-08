@@ -1,7 +1,6 @@
-﻿@section Styles { <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" /> }
-@model ProductListWithCategoryVM
+﻿@section Styles { <link rel="stylesheet" href="~/css/customer/home.css" asp-append-version="true" /> }
+@model IEnumerable<Product>
 @{ ViewData["Title"] = "Home"; }
-@{ ViewData["FirstCategoryName"] = Model.Category.FirstOrDefault()?.Name; }
 
 <div class="home">
     <!-- BANNER -->

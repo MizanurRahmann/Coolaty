@@ -21,13 +21,8 @@ namespace CoolatyMVC.Areas.Customer.Controllers
 
         public async Task<IActionResult> Index()
         {
-            ProductListWithCategoryVM productListWithCategory = new()
-            {
-                Product = await _services.Products.GetAllProducts(1, 10, ""),
-                Category = await _services.Category.GetAllCategories(1, 10, "")
-            };
-
-            return View(productListWithCategory);
+            var productData = await _services.Products.GetAllProducts(1, 100, "");
+            return View(productData);
         }
     }
 }

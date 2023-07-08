@@ -1,9 +1,12 @@
-﻿@section Styles { <link rel="stylesheet" href="~/css/productDetails.css" asp-append-version="true" /> }
+﻿@section Styles { <link rel="stylesheet" href="~/css/customer/productDetails.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Detail"; }
-@model Product
+@model ShopingCart
 
-<div class="singleproduct">
-    @if(Model != null)
+<form 
+    class="singleproduct"
+    method="post"
+>
+    @if(Model != null && Model.Product != null)
     {
         <div class="info-container">
             <div class="image">
@@ -12,56 +15,57 @@
                     <div class="cart-button-box">
                         <div class="total-price">
                             <h1>
-                                <span id="disable-productPrice">@Model.Price</span>
-                                <span id="productPrice">@Model.Price</span>
+                                <span id="disable-productPrice">@Model.Product.Price</span>
+                                <span id="productPrice">@Model.Product.Price</span>
                                 <span id="sign">$</span>
                             </h1>
                         </div>
-                        <form class="amount">
+                        <div class="amount">
                             <div class="box" id="decreament">
                                 <div class="box-text"> - </div>
                             </div>
                             <div class="amnt">
-                                <input id="selectedItem" type="text" value="01">
+                                <input id="selectedItem" type="text" asp-for=@Model.Count value="@Model.Count">
+                                <input asp-for=@Model.ProductId value="@Model.ProductId" hidden />
                             </div>
                             <div class="box" id="increament">
                                 <div class="box-text"> + </div>
                             </div>
-                            <div class="submit-button">
+                            <button type="submit" class="submit-button">
                                 <i class="iconoir-shopping-bag-alt"></i>
                                 <span>Add to cart</span>
-                            </div>
-                        </form>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="info">
                 <div class="info-wrapper">
-                    <h1>@Model.Name</h1>
+                    <h1>@Model.Product.Name</h1>
                     <div class="description">
-                        <p>@Model.SubName</p>
+                        <p>@Model.Product.SubName</p>
                     </div>
                     <div class="compund">
                         <h3>Compound</h3>
-                        <p>@Model.Compound</p>
+                        <p>@Model.Product.Compound</p>
                     </div>
                     <div class="energy">
                         <h3>Energy Values</h3>
                         <div class="values">
                             <div class="desc">Protien</div>
-                            <div class="value">@(Model.Proteins)g</div>
+                            <div class="value">@(Model.Product.Proteins)g</div>
                         </div>
                         <div class="values">
                             <div class="desc">Fats</div>
-                            <div class="value">@(Model.Fats)g</div>
+                            <div class="value">@(Model.Product.Fats)g</div>
                         </div>
                         <div class="values">
                             <div class="desc">Carbohydrates</div>
-                            <div class="value">@(Model.Carbohydrates)g</div>
+                            <div class="value">@(Model.Product.Carbohydrates)g</div>
                         </div>
                         <div class="values">
                             <div class="desc">Calories</div>
-                            <div class="value">@(Model.Calories)kcal</div>
+                            <div class="value">@(Model.Product.Calories)kcal</div>
                         </div>
                     </div>
                     <div class="terms">
@@ -128,6 +132,6 @@
             <div class="aproduct"></div>
         </div>
     </div>
-</div>
+</form>
 
-@section Scripts { <script src="~/js/product.js" asp-append-version="true"></script> }
+@section Scripts { <script src="~/js/customer/product.js" asp-append-version="true"></script> }

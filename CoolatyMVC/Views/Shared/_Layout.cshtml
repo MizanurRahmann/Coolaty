@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @RenderSection("Styles", false)
 </head>
@@ -39,12 +40,16 @@
                    asp-area="Customer"
                    asp-action="Index"
                    asp-controller="Products"
-                   asp-route-category="@ViewData["FirstCategoryName"]"
                 >
                     Products
                 </a>
                 <a href="#" class="link">FAQ</a>
-                <a href="#" class="block">
+                <a 
+                    class="block"
+                    asp-area="Customer"
+                    asp-action="Index"
+                    asp-controller="Cart"
+                >
                     <i class="iconoir-shopping-bag-alt"></i>
                 </a>
                 <div href="" class="block" id="sublinks-btn">
@@ -57,6 +62,7 @@
         </div>
     </nav>
     <section class="main-section">
+        <partial name="_Toaster" />
         @RenderBody()
     </section>
 

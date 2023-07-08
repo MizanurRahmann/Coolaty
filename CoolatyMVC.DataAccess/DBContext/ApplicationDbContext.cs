@@ -15,5 +15,7 @@ namespace CoolatyMVC.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Category { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<ShopingCart> ShopingCarts { get; set; }
+
     }
 }
