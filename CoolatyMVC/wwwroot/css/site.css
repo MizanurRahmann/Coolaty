@@ -465,7 +465,7 @@ h6 {
     background: #f3f4f5;
 }
 
-/* ERROR */
+/* GENERAL ERROR FOR ADMIN */
 .layout .error-wrapper {
     width: 100%;
     height: 100vh;
@@ -527,7 +527,60 @@ h6 {
     color: #4d4e4f;
 }
 
-/* Common Create Page */
+/* COMMON ERROR FOR CUSTOMER */
+.empty-container {
+    width: 100%;
+    height: 70vh;
+    background: var(--color-primary2);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+.empty-container-inner {
+    width:100%;
+    height: calc(70vh - 1rem);
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.25rem;
+}
+.empty-container-inner .wrapper .image {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    background: var(--color-primary2);
+    margin-bottom: 1rem;
+    position: relative;
+}
+.empty-container-inner .wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.empty-container-inner .wrapper .image img {
+    position: absolute;
+    width: 90%;
+    transform: rotate(-5deg);
+    top: -1rem;
+    left: 0;
+}
+.empty-container-inner a {
+    display: inline-block;
+    padding: 0.5rem 3.5rem;
+    text-decoration: none;
+    color: var(--color-white);
+    background: var(--color-secondary);
+    border-radius: 0.25rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.empty-container-inner a:hover {
+    background: var(--color-secondary2);
+}
+
+/* Common Create Page for admin */
 .addCreateCommon {
     position: relative;
 }
@@ -848,5 +901,31 @@ h6 {
 
     .aproduct .product-link .content h2 {
         font-size: 4.5rem;
+    }
+    .empty-container {
+        height: 80vh;
+        background: var(--color-primary);
+    }
+    .empty-container-inner {
+        height: calc(80vh - 1rem);
+    }
+    .empty-container-inner .wrapper .image {
+        width: 25rem;
+        height: 25rem;
+        margin-bottom: 4rem;
+    }
+    .empty-container-inner .wrapper h2 {
+        font-size: 6rem;
+    }
+    .empty-container-inner .wrapper p {
+        width: 100%;
+        text-align: center;
+        font-size: 3.5rem;
+    }
+    .empty-container-inner a {
+        padding: 2rem 15rem;
+        font-size: 3.5rem;
+        border-radius: 0.5rem;
+        margin-top: 2rem;
     }
 }

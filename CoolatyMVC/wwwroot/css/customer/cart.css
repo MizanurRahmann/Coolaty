@@ -173,58 +173,6 @@
     border-radius: 0.25rem;
     margin-top: 0.5rem;
 }
-.empty-cart {
-    width: 100%;
-    height: 70vh;
-    background: var(--color-primary2);
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-}
-.empty-cart-inner {
-    width:100%;
-    height: calc(70vh - 1rem);
-    background: var(--color-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.25rem;
-}
-.empty-cart-inner .wrapper .image {
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    background: var(--color-primary2);
-    margin-bottom: 1rem;
-    position: relative;
-}
-.empty-cart-inner .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.empty-cart-inner .wrapper .image img {
-    position: absolute;
-    width: 90%;
-    transform: rotate(-5deg);
-    top: -1rem;
-    left: 0;
-}
-.empty-cart-inner a {
-    display: inline-block;
-    padding: 0.5rem 3.5rem;
-    text-decoration: none;
-    color: var(--color-white);
-    background: var(--color-secondary);
-    border-radius: 0.25rem;
-    font-weight: 400;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.empty-cart-inner a:hover {
-    background: var(--color-secondary2);
-}
-
 /* ///////////////////////////////////////// */
 /* ///////////////////////////////////////// */
 @media only screen and (max-width: 600px) {

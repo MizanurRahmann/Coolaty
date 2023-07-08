@@ -11,7 +11,7 @@
         <div class="info-container">
             <div class="image">
                 <div class="wrapper">
-                    <img src="~/img/passion fruit.png" alt="" />
+                    <img src="@(string.Format("data:image/png;base64,{0}", Model.Product.ImageUrl))" alt="" />
                     <div class="cart-button-box">
                         <div class="total-price">
                             <h1>

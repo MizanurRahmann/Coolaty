@@ -2,10 +2,10 @@
 @{ ViewData["Title"] = "Products"; } 
 @model ProductListWithCategoryVM
 
-<div class="products">
+<div class="products @(Model.Category != null && Model.Category.Count() == 0 ? "all-empty" : "")"
+>
     <div class="products-conteiner">
         <h1>CATALOG</h1>
-        <p>Here are some of our products</p>
 
         <div class="filter-container">
             @if (Model.Category != null && Model.Category.Count() > 0)
@@ -32,10 +32,16 @@
             }
             else
             {
-                <div class="error-container">
-                    <img src="~/img/closed.png" alt="">
-                    <h1>PRODUCT NOT FOUND</h1>
-                    <p>Sorry we are unable to find any product.</p>
+                <div class="empty-container">
+                    <div class="empty-container-inner">
+                        <div class="wrapper">
+                            <div class="image">
+                                <img src="~/img/customer/search-not-found.png" />
+                            </div>
+                            <h1>PRODUCT NOT FOUND</h1>
+                            <p>Sorry we are unable to find any product.</p>
+                        </div>
+                    </div>
                 </div>
             }
         </div>
