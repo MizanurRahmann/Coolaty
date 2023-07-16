@@ -4,6 +4,7 @@ using CoolatyMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoolatyMVC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230715071754_addOrderModelsToDb")]
+    partial class addOrderModelsToDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -49,7 +52,36 @@ namespace CoolatyMVC.Data.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("CoolatyMVC.Models.Order", b =>
+            modelBuilder.Entity("CoolatyMVC.Models.OrderDetails", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("CoolatyMVC.Models.Orders", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,14 +97,8 @@ namespace CoolatyMVC.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("AppliedCoupon")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Carrier")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DiscountAmount")
-                        .HasColumnType("int");
 
                     b.Property<string>("District")
                         .IsRequired()
@@ -136,35 +162,6 @@ namespace CoolatyMVC.Data.Migrations
                     b.HasIndex("AppUserId");
 
                     b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("CoolatyMVC.Models.OrderDetail", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Price")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderDetails");
                 });
 
             modelBuilder.Entity("CoolatyMVC.Models.Product", b =>
@@ -483,20 +480,9 @@ namespace CoolatyMVC.Data.Migrations
                     b.HasDiscriminator().HasValue("AppUser");
                 });
 
-            modelBuilder.Entity("CoolatyMVC.Models.Order", b =>
+            modelBuilder.Entity("CoolatyMVC.Models.OrderDetails", b =>
                 {
-                    b.HasOne("CoolatyMVC.Models.AppUser", "AppUser")
-                        .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("AppUser");
-                });
-
-            modelBuilder.Entity("CoolatyMVC.Models.OrderDetail", b =>
-                {
-                    b.HasOne("CoolatyMVC.Models.Order", "Order")
+                    b.HasOne("CoolatyMVC.Models.Orders", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -511,6 +497,17 @@ namespace CoolatyMVC.Data.Migrations
                     b.Navigation("Order");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("CoolatyMVC.Models.Orders", b =>
+                {
+                    b.HasOne("CoolatyMVC.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
                 });
 
             modelBuilder.Entity("CoolatyMVC.Models.Product", b =>

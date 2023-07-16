@@ -1,0 +1,80 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/customer/my-orders.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "My Orders"; }
+@model OrderVM
+
+<div class="my-orders-page">
+    <div class="my-orders-container">
+        <h1 class="primary-heading">My Orders</h1>
+
+        @if (Model != null && Model.OrderItems != null && Model.OrderItems.Count() > 0)
+        {
+            <div class="table">
+                <div class="table-inner">
+                    <div class="table-th row">
+                        <div class="id">Id</div>
+                        <div class="date">Date</div>
+                        <div class="owner">Ordered By</div>
+                        <div class="price">Price</div>
+                        <div class="price">Shipping Cost</div>
+                        <div class="price">Discount</div>
+                        <div class="price">Payable Price</div>
+                        <div class="price ps">Price</div>
+                        <div class="status">Payment Status</div>
+                        <div class="status">Order Status</div>
+                        <div class="status ss">Status</div>
+                    </div>
+                    @foreach (var item in Model.OrderItems)
+                    {
+                        <div class="row">
+                            <div class="id">
+                                <a
+                                    asp-area="Customer"
+                                    asp-controller="Order"
+                                    asp-action="MyOrders"
+                                    asp-route-orderId="@item.Id"
+                                >
+                                    <i class="iconoir-link"></i> @item.Id
+                                </a>
+                            </div>
+                            <div class="date">@item.OrderDate.ToShortDateString()</div>
+                            <div class="owner">@item.Name</div>
+                            <div class="price">৳ @item.OrderTotal</div>
+                            <div class="price">৳ @item.ShippingPrice</div>
+                            <div class="price">-৳ @(item.DiscountAmount == null ? 0 : item.DiscountAmount)</div>
+                            <div class="price ps">৳ @(item.OrderTotal + item.ShippingPrice - (item.DiscountAmount == null ? 0 : item.DiscountAmount))</div>
+                            <div class="status">
+                                <span class="circle @item.PaymentStatus"></span>
+                                <span>@item.PaymentStatus</span>
+                             </div>
+                            <div class="status ss">
+                                <span class="circle @item.OrderStatus"></span>
+                                <span>@item.OrderStatus</span>
+                             </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="empty-container">
+                <div class="empty-container-inner">
+                    <div class="wrapper">
+                        <div class="image">
+                            <img src="~/img/customer/empty-orders.png" />
+                        </div>
+                        <h2>Your Order is empty</h2>
+                        <p>Check our catalog and order something for you</p>
+                        <a 
+                            asp-area="Customer"
+                            asp-controller="Products"
+                            asp-action="Index"
+                        >
+                            Catalog
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

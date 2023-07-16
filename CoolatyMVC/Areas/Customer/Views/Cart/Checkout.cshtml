@@ -1,0 +1,179 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/customer/Checkout.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Checkout"; }
+@model ShopingCartVM
+
+@if(Model != null)
+{
+    <form 
+        class="checkout-page"
+        asp-controller="Cart"
+        asp-action="Checkout"
+        method="post"
+        enctype="multipart/form-data"
+    >
+        <div class="checkout-container">
+            <h1 class="primary-heading">Checkout</h1>
+
+            <div class="checkout-info">
+                <div class="info">
+                    <div class="info-inner">
+                        <h5>Shipping Address</h5>
+
+                        <div class="form-box">
+                            <div class="g-100">
+                                <label>Full Name*</label>
+                                <input id="c-name" asp-for="@Model.OrderHeader.Name" type="text" placeholder="Enter your full name" />
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="g-50">
+                                <label>Phone*</label>
+                                <input id="c-phone" asp-for="@Model.OrderHeader.Phone" type="text" placeholder="Enter your phone number (only digits)" />
+                            </div>
+                            <div class="g-50">
+                                <label>Email*</label>
+                                <input id="c-email" asp-for="@Model.OrderHeader.Email" type="email" placeholder="Enter your email address" />
+                                <span asp-validation-for="@Model.OrderHeader.AppUserId"></span>
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="g-100">
+                                <label>Address*</label>
+                                <input id="c-address" asp-for="@Model.OrderHeader.Address" type="text" placeholder="Enter your village / city " />
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="g-50">
+                                <label>Thana*</label>
+                                <input id="c-thana" asp-for="@Model.OrderHeader.Thana" type="text" placeholder="Enter your Thana" />
+                            </div>
+                            <div class="g-50">
+                                <label>District*</label>
+                                <input id="c-district" asp-for="@Model.OrderHeader.District" type="text" placeholder="Enter your email district" />
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="g-100">
+                                <label>Postal Code*</label>
+                                <input id="c-post" asp-for="@Model.OrderHeader.PostalCode" type="text" placeholder="Enter your postal code" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-inner">
+                        <h5>Shipping Methods</h5>
+
+                        <div class="form-checkbox">
+                            <input type="radio" id="fast" name="radio-group" value="৳ 100" checked>
+                            <label for="fast">
+                                <div>
+                                    <h6>Fast Shiping</h6>
+                                    <p>01-03 business days</p>
+                                </div>
+                                <div>
+                                    <h6>৳ 100</h6>
+                                    <input 
+                                        id="shippingPriceField"
+                                        asp-for="@Model.OrderHeader.ShippingPrice" 
+                                        value="@Model.OrderHeader.ShippingPrice" 
+                                    hidden />
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="radio" id="regular" name="radio-group" value="৳ 50">
+                            <label for="regular">
+                                <div>
+                                    <h6>Regular Shiping</h6>
+                                    <p>03-14 business days</p>
+                                </div>
+                                <div>
+                                    <h6>৳ 50</h6>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-checkbox">
+                            <input type="radio" id="free" name="radio-group" value="৳ 00">
+                            <label for="free">
+                                <div>
+                                    <h6>Free Shiping</h6>
+                                    <p>07-30 business days</p>
+                                </div>
+                                <div>
+                                    <h6>৳ 00</h6>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-container">
+                    <div class="summary">
+                        <div class="summary-inner">
+                            <h5>Apply Discount</h5>
+                            <div class="coupon-box">
+                                <input 
+                                    id="couponTxt" 
+                                    asp-for="@Model.OrderHeader.AppliedCoupon" 
+                                    type="text" 
+                                    placeholder="Enter discount code" 
+                                />
+                                <div class="apply-btn" id="checkCouponValidtyBtn">Apply</div>
+                            </div>
+                            <div id="coupon-message-box" class="result-box success">
+                                Coupon applied successfully <span class="close"><i class="iconoir-cancel"></i></span>
+                            </div>
+
+                            <h5>Order Summary</h5>
+                            <div class="info">
+                                <div class="label">Subtotal</div>
+                                <div class="value">৳ @Model.OrderHeader.OrderTotal</div>
+                                <input 
+                                    id="totalCost"
+                                    asp-for="@Model.OrderHeader.OrderTotal"
+                                    value="@Model.OrderHeader.OrderTotal"
+                                    hidden 
+                                />
+                            </div>
+                            <div class="info">
+                                <div class="label">Discount</div>
+                                <div class="value" id="discount-amnt-txt">
+                                    -৳ @(Model.OrderHeader.DiscountAmount == null ? 00 : Model.OrderHeader.DiscountAmount)
+                                </div>
+                                <input 
+                                    id="discountCost"
+                                    asp-for="@Model.OrderHeader.DiscountAmount"
+                                    value="@(Model.OrderHeader.DiscountAmount == null ? 00 : Model.OrderHeader.DiscountAmount)"
+                                    hidden 
+                                />
+                            </div>
+                            <div class="info">
+                                <div class="label">Shipping Cost</div>
+                                <div class="value" id="selected-shipping-cost">৳ @Model.OrderHeader.ShippingPrice</div>
+                                <input 
+                                    id="totalCost"
+                                    asp-for="@Model.OrderHeader.ShippingPrice"
+                                    value="@Model.OrderHeader.ShippingPrice"
+                                    hidden 
+                                />
+                            </div>
+                            <div class="info last">
+                                <div class="label">Grand Total</div>
+                                <div class="value" id="payable-amnt-txt">
+                                    ৳ @(Model.OrderHeader.OrderTotal + Model.OrderHeader.ShippingPrice - (Model.OrderHeader.DiscountAmount == null ? 0 : Model.OrderHeader.DiscountAmount))
+                                </div>
+                            </div>
+                            <button>Place Order</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <div>Something Went Wrong</div>
+}
+
+@section Scripts { <script src="~/js/customer/checkout.js" asp-append-version="true"></script> }

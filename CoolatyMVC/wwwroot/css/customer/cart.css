@@ -14,10 +14,10 @@
     flex-wrap: wrap;
 }
 .cart-container .cart-info .table {
-    width: 75%;
+    width: 70%;
 }
 .cart-container .cart-info .summary-container {
-    width: 25%;
+    width: 30%;
     padding-left: 0.5rem;
 }
 
@@ -48,6 +48,12 @@
     display: flex;
     align-items: center;
     padding: 0.5rem 0;
+}
+.cart-container .cart-info .table .row,
+.cart-container .cart-info .table .row a,
+.cart-container .cart-info .table .row input,
+.summary-container .info div {
+    color: var(--color-secondary);
 }
 .cart-container .cart-info .table .row:not(:last-child) {
     border-bottom: 1px solid var(--color-primary2);
@@ -94,7 +100,6 @@
     height: 2rem;
     font-size: 1.5rem;
     background: var(--color-primary2);
-    color: #444;
     cursor: pointer;
 }
 .cart-container .cart-info .table .quantity .amnt {
@@ -136,7 +141,6 @@
 .cart-container .cart-info .table .option .trash {
     display: inline-block;
     text-decoration: none;
-    color: #444;
     padding: 0.2rem;
     cursor: pointer;
 }
@@ -152,9 +156,6 @@
     justify-content: space-between;
     padding-bottom: 0.5rem;
 }
-.cart-container .cart-info .summary-container .summary .info div {
-    color: #000;
-}
 .cart-container .cart-info .summary-container .summary .info .value {
     font-weight: 500;
 }
@@ -163,10 +164,11 @@
     padding-top: 0.5rem;
     margin-top: 0.5rem;
 }
-.cart-container .cart-info .summary-container .summary button {
-    outline: none;
-    border: none;
+.cart-container .cart-info .summary-container .summary a.checkout {
+    display: inline-block;
+    text-decoration: none;
     width: 100%;
+    text-align: center;
     background: var(--color-secondary);
     color: var(--color-white);
     padding: 0.5rem 2rem;
@@ -214,18 +216,17 @@
     }
     .cart-container .cart-info .detail h4,
     .cart-container .cart-info .detail p {
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .cart-container .cart-info .mobile-ptice {
         display: block;
-        font-size: 2.5rem;
+        font-size: 3.7rem;
         font-family: var(--font-barlow);
     }
     .cart-container .cart-info .mobile-ptice span {
         text-transform: lowercase;
         font-weight: normal;
         margin-left: 2rem;
-        color: #555;
     }
     .cart-container .cart-info .table .quantity {
         width: 28%;
@@ -237,11 +238,12 @@
     .cart-container .cart-info .table .quantity .box {
         width: 6.5rem;
         height: 6.5rem;
-        font-size: 5rem;
+        font-size: 7rem;
     }
     .cart-container .cart-info .table .quantity .amnt {
         width: 8rem;
         height: 6.5rem;
+        font-size: 4rem;
     }
     .cart-container .cart-info .table .price,
     .cart-container .cart-info .table .totalprice,
@@ -252,7 +254,7 @@
         display: none;
     }
     .cart-container .cart-info .summary-container .summary .info div {
-        font-size: 3rem;
+        font-size: 4rem;
     }
     .cart-container .cart-info .summary-container .summary .info {
         padding-bottom: 3rem;
@@ -261,11 +263,15 @@
         padding-top: 2rem;
         margin-top: 2rem;
     }
-    .cart-container .cart-info .summary-container .summary button {
+    .cart-container .cart-info .summary-container .summary a.checkout {
+        height: 11rem;
         padding: 4rem 8rem;
-        border-radius: 1rem;
+        border-radius: 1.5rem;
         margin-top: 2rem;
-        font-size: 3rem;
+        font-size: 4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .empty-cart {
         height: 95vh;
@@ -290,7 +296,7 @@
     .empty-cart-inner a {
         padding: 2rem 15rem;
         font-size: 3.5rem;
-        border-radius: 0.5rem;
+        border-radius: 1.5rem;
         margin-top: 2rem;
     }
 }

@@ -24,10 +24,11 @@ namespace CoolatyMVC.Services.ShopingCarts
             ShopingCartVM cartInfo = new()
             {
                 ShoppingCart = await _repo.ShopingCart.GetAllProductsAddedToCart(userId),
-                ShippingCost = 100,
+                OrderHeader = new()
             };
 
-            cartInfo.TotalPrice = calculateTotalPrice(cartInfo.ShoppingCart);
+            cartInfo.OrderHeader.OrderTotal = calculateTotalPrice(cartInfo.ShoppingCart);
+            cartInfo.OrderHeader.ShippingPrice = 100;
 
             return cartInfo;
         }
@@ -58,6 +59,12 @@ namespace CoolatyMVC.Services.ShopingCarts
         public void DeleteFromCart(ShopingCart model)
         {
             _repo.ShopingCart.DeleteFromCart(model);
+            _repo.Save();
+        }
+
+        public void DeleteListOfCartItem(IEnumerable<ShopingCart> cartItems)
+        {
+            _repo.ShopingCart.DeleteListOfCartItem(cartItems);
             _repo.Save();
         }
         #endregion

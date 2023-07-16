@@ -1,0 +1,483 @@
+﻿.checkout-page,
+.orderDetail-page {
+     min-height: 80vh;
+     width: 100%;
+}
+.checkout-page .checkout-container,
+.orderDetail-page .orderDetail-container {
+    margin-top: 8rem;
+    padding: 0 7rem;
+}
+.checkout-container .checkout-info,
+.orderDetail-container .orderDetail-info {
+    margin-top: 1rem;
+    padding: 1.5rem;
+    padding-left: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.checkout-container .checkout-info .info,
+.orderDetail-container .orderDetail-info .info {
+    width: 70%;
+}
+.checkout-container .checkout-info .summary-container,
+.orderDetail-container .orderDetail-info .summary-container{
+    width: 30%;
+    padding-left: 0.5rem;
+}
+.checkout-container .checkout-info .info .info-inner,
+.checkout-container .checkout-info .summary-container .summary-inner,
+.orderDetail-container .orderDetail-info .info .info-inner, 
+.orderDetail-container .orderDetail-info .summary-container .summary-inner {
+    width: 100%;
+    min-height: 10rem;
+    background: var(--color-primary);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 0.5rem solid var(--color-primary2);
+}
+.checkout-container .checkout-info .info .info-inner,
+.orderDetail-container .orderDetail-info .info .info-inner {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+}
+.checkout-container .checkout-info h5,
+.orderDetail-container .orderDetail-info h5 {
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+.form-box {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
+.form-box .g-100 {
+    width: 100%;
+}
+.form-box .g-50 {
+    width: 49%;
+}
+.form-box label {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+.form-box .input-validation-error {
+    border: 2px solid #EC4E2C;
+    background: #F7CFC7;
+}
+
+.form-box input,
+.checkout-container .checkout-info .summary-container .coupon-box input,
+.orderDetail-container .orderDetail-info .summary-container .coupon-box input {
+    width: 100%;
+    height: 3rem;
+    background: var(--color-primary2);
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+}
+.form-checkbox {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 2px solid var(--color-primary2);
+    border-radius: 0.25rem;
+}
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 2rem;
+    cursor: pointer;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid var(--color-secondary);
+    border-radius: 100%;
+    background: transparent;
+}
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-secondary);
+    position: absolute;
+    top: 0.265rem;
+    left: 0.265rem;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+[type="radio"] + label h6 {
+    font-family: var(--font-barlow);
+    font-size: 0.9rem;
+    text-transform: capitalize;
+    font-weight: 500;
+}
+[type="radio"] + label p {
+    font-size: 0.8rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0;
+}
+.checkout-container .checkout-info .summary-container .coupon-box,
+.checkout-container .checkout-info .summary-container .result-box,
+.orderDetail-container .orderDetail-info .summary-container .coupon-box,
+.orderDetail-container .orderDetail-info .summary-container .result-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.checkout-container .checkout-info .summary-container .result-box,
+.orderDetail-container .orderDetail-info .summary-container .result-box {
+    height: 2rem;
+    border-radius: 0.25rem;
+    font-size: 0.9rem !important;
+    position: relative;
+    padding-left: 0.5rem;
+    font-weight: 500;
+    color: #fff;
+    display: none;
+}
+.checkout-container .checkout-info .summary-container .result-box.success,
+.orderDetail-container .orderDetail-info .summary-container .result-box.success {
+    background: #41BF61;
+}
+.checkout-container .checkout-info .summary-container .result-box.error,
+.orderDetail-container .orderDetail-info .summary-container .result-box.error {
+    background: #F24130;
+}
+.checkout-container .checkout-info .summary-container .result-box .close,
+.orderDetail-container .orderDetail-info .summary-container .result-box .close {
+    position: absolute;
+    right: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem !important;
+    cursor: pointer;
+}
+.checkout-container .checkout-info .summary-container .coupon-box .apply-btn,
+.orderDetail-container .orderDetail-info .summary-container .coupon-box .apply-btn {
+    width: fit-content;
+    height: 3rem;
+    padding: 1rem 1.5rem;
+    margin-left: 0.5rem;
+    outline: none;
+    border: none;
+    border: 2px solid var(--color-primary2);
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.checkout-container .checkout-info .summary-container .coupon-box .apply-btn:hover,
+.orderDetail-container .orderDetail-info .summary-container .coupon-box .apply-btn:hover {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+.checkout-container .checkout-info .summary-container .summary .info,
+.orderDetail-container .orderDetail-info .summary-container .summary .info {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+}
+.checkout-container .checkout-info .summary-container .summary .info .value,
+.orderDetail-container .orderDetail-info .summary-container .summary .info .value {
+    font-weight: 500;
+}
+.checkout-container .checkout-info .summary-container .summary .info.last,
+.orderDetail-container .orderDetail-info .summary-container .summary .info.last{
+    border-top: 2px solid var(--color-primary2);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+}
+.checkout-container .checkout-info .summary-container .summary button,
+.orderDetail-container .orderDetail-info .summary-container .summary button {
+    outline: none;
+    border: none;
+    width: 100%;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    padding: 0.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-top: 0.5rem;
+    transition: 0.3s;
+}
+.checkout-container .checkout-info .summary-container .summary button:hover,
+.orderDetail-container .orderDetail-info .summary-container .summary button:hover {
+    background: var(--color-secondary2);
+}
+
+/*Order detail*/
+.orderDetail-container .orderDetail-info .info .info-inner .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .header h5 {
+    display: inline-block;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.2rem;
+    font-weight: 500;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status span {
+    display: inline-block;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status span.circle {
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.2rem;
+    border-radius: 50%;
+}
+/*Pending*/
+.orderDetail-container .orderDetail-info .info .info-inner .status.Pending {
+    background: #fad19e;
+    color: #F28B0C;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status.Pending .circle {
+    background: #F28B0C;
+}
+/*Canceled*/
+.orderDetail-container .orderDetail-info .info .info-inner .status.Canceled {
+    background: #fa9ba3;
+    color: #f20519;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status.Canceled .circle {
+    background: #f20519;
+}
+/*Shipped*/
+.orderDetail-container .orderDetail-info .info .info-inner .status.Shipped {
+    background: #e2c8fb;
+    color: #9D49F2;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status.Shipped .circle {
+    background: #9D49F2;
+}
+/*Paid*/
+.orderDetail-container .orderDetail-info .info .info-inner .status.Paid,
+.orderDetail-container .orderDetail-info .info .info-inner .status.Done {
+    background: #c4f4b6;
+    color: #289809;
+}
+.orderDetail-container .orderDetail-info .info .info-inner .status.Paid .circle,
+.orderDetail-container .orderDetail-info .info .info-inner .status.Done .circle {
+    background: #289809;
+}
+
+.orderDetail-container .pending-payment {
+    background: var(--color-primary2);
+    border: 2px solid var(--color-secondary);
+    border-radius: 0.25rem;
+    padding: 1rem;
+    margin-top: 1.5rem;
+    position: relative;
+}
+.orderDetail-container .pending-payment img {
+    position: absolute;
+    bottom: -1.2rem;
+    right: 0;
+    width: 32%;
+}
+.orderDetail-container .pending-payment h4 {
+    width: 55%;
+}
+.orderDetail-container .pending-payment a {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--color-secondary);
+    color: var(--color-white);
+    padding: 0.5rem 2rem;
+    border-radius: 0.25rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    font-weight: 400;
+    transition: 0.3s;
+}
+.orderDetail-container .pending-payment a:hover {
+    background: var(--color-secondary2);
+    color: var(--color-white);
+}
+
+/* ///////////////////////////////////////// */
+/* ///////////////////////////////////////// */
+@media only screen and (max-width: 600px) {
+    .checkout-page .checkout-container,
+    .orderDetail-page .orderDetail-container {
+        margin-top: 25rem;
+        padding: 0 5rem;
+    }
+    .checkout-page .checkout-container h1,
+    .orderDetail-page .orderDetail-container h1 {
+        font-size: 7rem;
+        margin-bottom: 4rem;
+    }
+    .checkout-container .checkout-info .info .info-inner,
+    .orderDetail-container .orderDetail-info .info .info-inner {
+        margin-top: 1rem;
+        margin-bottom: 4rem;
+    }
+    .checkout-container .checkout-info,
+    .checkout-container .checkout-info .info .info-inner,
+    .checkout-container .checkout-info .summary-container .summary-inner,
+    .orderDetail-container .orderDetail-info,
+    .orderDetail-container .orderDetail-info .info .info-inner,
+    .orderDetail-container .orderDetail-info .summary-container .summary-inner {
+        padding: 0;
+        border: none;
+    }
+    .checkout-container .checkout-info .info,
+    .checkout-container .checkout-info .summary-container,
+    .orderDetail-container .orderDetail-info .info,
+    .orderDetail-container .orderDetail-info .summary-container,
+    .form-box .g-50 {
+        width: 100%;
+    }
+    .checkout-container .checkout-info h5,
+    .checkout-container .checkout-info .summary-container .summary-inner .info div,
+    .orderDetail-container .orderDetail-info h5,
+    .orderDetail-container .orderDetail-info .summary-container .summary-inner .info div {
+        font-size: 4rem;
+        margin-bottom: 3rem;
+    }
+    .form-box {
+        margin-bottom: 0;
+    }
+    .form-box label {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+    .form-box input,
+    .checkout-container .checkout-info .summary-container .coupon-box input,
+    .orderDetail-container .orderDetail-info .summary-container .coupon-box input {
+        height: 11rem;
+        font-size: 4rem;
+        padding: 0 2rem;
+        border-radius: 1.5rem;
+    }
+    .form-box input {
+        margin-bottom: 4rem;
+    }
+    .form-checkbox {
+        padding: 3rem;
+        margin-bottom: 2rem;
+        border-radius: 1.5rem;
+    }
+    .checkout-container .checkout-info .summary-container .coupon-box,
+    .orderDetail-container .orderDetail-info .summary-container .coupon-box {
+        margin-bottom: 4rem;
+    }
+    [type="radio"]:checked + label:before,
+    [type="radio"]:not(:checked) + label:before {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+    [type="radio"]:checked + label:after,
+    [type="radio"]:not(:checked) + label:after {
+        width: 3rem;
+        height: 3rem;
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+    [type="radio"]:checked + label,
+    [type="radio"]:not(:checked) + label
+    {
+        padding-left: 6rem;
+    }
+    [type="radio"] + label h6 {
+        font-size: 4rem;
+    }
+    [type="radio"] + label p {
+        font-size: 3rem;
+        margin-top: -0.5rem;
+    }
+    .checkout-container .checkout-info .summary-container .coupon-box .apply-btn,
+    .orderDetail-container .orderDetail-info .summary-container .coupon-box .apply-btn {
+        height: 11rem;
+        font-size: 4rem;
+        border-radius: 1.5rem;
+        padding: 1rem 5.5rem;
+    }
+    .checkout-container .checkout-info .summary-container .summary button,
+    .orderDetail-container .orderDetail-info .summary-container .summary button{
+        padding: 2rem 15rem;
+        font-size: 3.5rem;
+        border-radius: 1.5rem;
+        margin: 2rem 0 4rem 0;
+    }
+    .orderDetail-container .orderDetail-info .info .info-inner .status {
+        padding: 0.7rem 3rem;
+        border-radius: 1rem;
+        font-size: 3rem;
+    }
+    .orderDetail-container .orderDetail-info .info .info-inner .status span.circle {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 2rem;
+    }
+    .orderDetail-container .pending-payment {
+        border-radius: 1rem;
+        padding: 3rem;
+        margin-top: 4rem;
+    }
+    .orderDetail-container .pending-payment h4 {
+        width: 80%;
+        font-size: 4rem;
+        line-height: 6rem;
+    }
+    .orderDetail-container .pending-payment img {
+        bottom: -5rem;
+        right: -4rem;
+        width: 45%;
+    }
+    .orderDetail-container .pending-payment a {
+        padding: 1rem 4rem;
+        border-radius: 1rem;
+        font-size: 4rem;
+    }
+}

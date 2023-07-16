@@ -4,6 +4,7 @@ using CoolatyMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoolatyMVC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230715103446_addColumnToOrderTable")]
+    partial class addColumnToOrderTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,13 +69,11 @@ namespace CoolatyMVC.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("AppliedCoupon")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Carrier")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("DiscountAmount")
-                        .HasColumnType("int");
 
                     b.Property<string>("District")
                         .IsRequired()
@@ -130,6 +131,9 @@ namespace CoolatyMVC.Data.Migrations
 
                     b.Property<string>("TrackingNumber")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("discountAmount")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
