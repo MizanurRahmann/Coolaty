@@ -1,0 +1,19 @@
+﻿@model ShippingService
+
+<div class="createService-modal-container">
+    <div class="createService-modal">
+        <img src="~/img/admin/goods-truck.png" />
+        <div class="btn" id="service-create-btn-close">
+            <i class="iconoir-cancel"></i>
+        </div>
+        <form 
+            class="create-box"
+            asp-controller="Shipping"
+            asp-action="ServiceCreate"
+            method="post"
+        >
+            <input type="text" placeholder="Enter service description"/>
+            <button class="btn">Create</button>    
+        </form>
+    </div>
+</div>

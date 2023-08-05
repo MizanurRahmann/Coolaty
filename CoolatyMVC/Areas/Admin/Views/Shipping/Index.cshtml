@@ -1,0 +1,60 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/shipping.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Shipping"; }
+
+<div class="shipping">
+    <div class="heading">
+        <div class="heading-name">
+            <div class="block"></div>
+            <h2>Shipping</h2>
+        </div>
+        <div class="options">
+            <a 
+                class="service-btn"
+                asp-area="Admin"
+                asp-controller="Shipping"
+                asp-action="Services"
+            >
+                <i class="iconoir-asana"></i>
+                Shipping Services
+            </a>
+        </div>
+    </div>
+
+    <div class="shipping-wrapper">
+        <div class="ship free">
+            <div class="block"></div>
+            <h6>Free Shiping</h6>
+            <h2>0 <span>৳</span></h2>
+            <div class="services">
+                <p><span><i class="iconoir-check-circle"></i></span>Takes 07-10 business days</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Track order anytime</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
+            </div>
+            <a>Update Shipping Plan</a>
+        </div>
+        <div class="ship regular">
+            <div class="block"></div>
+            <h6>Regular Shiping</h6>
+            <h2>50 <span>৳</span></h2>
+            <div class="services">
+                <p><span><i class="iconoir-check-circle"></i></span>Takes 07-10 business days</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Track order anytime</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
+            </div>
+            <a>Update Shipping Plan</a>
+        </div>
+        <div class="ship fast">
+            <div class="block"></div>
+            <h6>Fast Shiping</h6>
+            <h2>100 <span>৳</span></h2>
+            <div class="services">
+                <p><span><i class="iconoir-check-circle"></i></span>Takes 07-10 business days</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Track order anytime</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
+                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
+            </div>
+            <a>Update Shipping Plan</a>
+        </div>
+    </div>
+</div>

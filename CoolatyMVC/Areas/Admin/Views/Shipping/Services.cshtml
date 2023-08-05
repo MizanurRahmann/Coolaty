@@ -1,0 +1,30 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/shipping.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Shipping Services"; }
+@model IEnumerable<ShippingService>
+
+<div class="shipping">
+    <div class="heading">
+        <div class="heading-name">
+            <div class="block"></div>
+            <h2>Shipping Services</h2>
+        </div>
+        <div class="options">
+            <a class="service-btn" id="service-create-btn-open"><i class="iconoir-plus"></i> Add Services</a>
+            <a class="heading-link" asp-area="Admin" asp-controller="Shipping" asp-action="Index"><i class="iconoir-nav-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <div class="service-box-container">
+        @if (Model != null && Model.Count() > 0)
+        {
+
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Areas/Admin/Views/Shipping/_ServiceNotFound.cshtml");
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shipping/_ModalServiceCreate.cshtml", Model)
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/admin/admin-shipping.js" asp-append-version="true"></script> }
