@@ -1,0 +1,530 @@
+﻿.shipping .heading {
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shipping .heading .options {
+    display: flex;
+    align-items: center;
+}
+.shipping .heading h2 {
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    color: #444;
+}
+.shipping .heading a.service-btn,
+.block-fields .notfound .wrapper a {
+    height: 2.5rem;
+    padding: 0 1rem;
+    background: var(--color-tertiary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-family: var(--font-barlow);
+    font-weight: 500;
+    margin-left: 0.5rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+.shipping .heading a.heading-link {
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.3rem;
+    margin-left: 1rem;
+    cursor: pointer;
+    background: #dae0e5;
+    color: var(--color-admin-text);
+}
+.shipping .heading a i {
+    margin-right: 0.25rem;
+}
+.shipping-wrapper {
+    width: 100%;
+    height: 83.5vh;
+    padding: 2.2rem;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+.shipping-wrapper .ship {
+    width: 30%;
+    height: 50vh;
+    box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    position: relative;
+}
+.shipping-wrapper .ship:nth-child(2) {
+    height: 60vh;
+}
+.shipping-wrapper .ship:nth-child(3) {
+    height: 70vh;
+}
+.shipping-wrapper .ship:not(:nth-child(3n+3)) {
+    margin-right: 5%;
+}
+.shipping-wrapper .ship .block {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+}
+.shipping-wrapper .ship:nth-child(1) .block {
+    border: 0.4rem solid #49A8F6;
+}
+.shipping-wrapper .ship:nth-child(2) .block {
+    border: 0.4rem solid #CB77CB;
+}
+.shipping-wrapper .ship:nth-child(3) .block {
+    border: 0.4rem solid #F2911B;
+}
+.shipping-wrapper .ship h6,
+.shipping-wrapper .ship h2 {
+    color: var(--color-admin-text);
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.shipping-wrapper .ship h2 {
+    margin-top: -0.5rem;
+}
+.shipping-wrapper .ship h2 span {
+    font-size: 1rem;
+    font-weight: normal;
+    margin-left: -0.25rem;
+}
+.shipping-wrapper .ship .services {
+    margin-top: 1rem;
+}
+.shipping-wrapper .ship .services p {
+    display: flex;
+    align-content: center;
+    color: var(--color-admin-text);
+    margin-bottom: 0;
+}
+.shipping-wrapper .ship .services p span {
+    display: block;
+    margin-right: 0.5rem;
+}
+.shipping-wrapper .ship .services p span {
+    padding-top: 0.1rem;
+}
+.shipping-wrapper .ship a {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-decoration: none;
+    border-radius: 0.25rem;
+    background: var(--color-tertiary);
+    color: #fff;
+    display: flex;
+    width: 80%;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.shipping-wrapper .ship a:hover {
+    color: #fff;
+}
+.shipping form input {
+    width: 100%;
+    height: 3rem;
+    background: #f5f2f2;
+    color: var(--color-admin-text);
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+}
+/*Services*/
+.service-box-container  {
+    padding: 2rem 2rem 0 2rem;
+}
+.service-box-container .aservice,
+.service-box-container .aservice .options,
+.service-box-container .aservice .bullet,
+.service-box-container .aservice .feature,
+.service-box-container .aservice .options .option {
+    display: flex;
+    align-items: center;
+    color: #444;
+}
+.service-box-container .aservice {
+    background: #fff;
+    border: 1px solid #dddde1;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    margin-bottom: 0.5rem;
+    justify-content: space-between;
+}
+.service-box-container .aservice .bullet {
+    width: 3rem;
+    justify-content: center;
+}
+.service-box-container .aservice .bullet div {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--color-tertiary);
+}
+.service-box-container .aservice .options .option {
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+    cursor: pointer;
+}
+.service-box-container .aservice .options .option:first-child {
+    margin-right: 0.25rem;
+}
+.service-box-container .aservice .options .option i {
+    transition: 0.3s;
+}
+.service-box-container .aservice .options .option:hover i {
+    transform: scale(1.3);
+}
+.createService-modal-container {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.createService-modal {
+    width: 30%;
+    height: 65vh;
+    background: var(--color-white);
+    position: relative;
+    border-radius: 0.3rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+.createService-modal img {
+    height: 35vh;
+    margin-block: 1rem;
+}
+@keyframes scaleToNormal {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+@keyframes scaleToZero {
+    from { transform: scale(1); }
+    to { transform: scale(0); }
+}
+.createService-modal-container form {
+    display: flex;
+    flex-direction: column;
+}
+.createService-modal-container form button {
+    width: 100%;
+    height: 3rem;
+    padding: 0 1rem;
+    font-family: var(--font-barlow);
+    background: var(--color-tertiary);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 1rem;
+}
+.createService-modal-container form button:hover {
+    color: #fff;
+}
+.createService-modal-container form button[disabled] {
+    cursor: no-drop;
+    pointer-events: auto;
+}
+.createService-modal-container form input {
+    background: #ededed;
+}
+#service-create-btn-close {
+    background: #dae0e5;
+    color: var(--color-admin-text);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*Update Shipping*/
+.shipping .shipping-update {
+    width: 100%;
+    padding: 1rem 2rem;
+}
+.shipping form .form-wrapper {
+    width: 100%;
+    margin-top: 1rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+.shipping-update form .w-32 {
+    width: 32%;
+}
+.shipping-update form .block {
+    display: flex;
+}
+.shipping-update form .block:not(:first-child) {
+    margin-top: 3rem;
+}
+.shipping-update form .block-desc {
+    width: 25%;
+}
+.shipping-update form .block-desc h3,
+.shipping-update form .block-desc p {
+    color: var(--color-admin-text);
+}
+.shipping-update form .block-desc h3 {
+    margin-top: -1rem;
+}
+.shipping-update form .block-fields {
+    width: 75%;
+}
+.shipping-update form .block-fields .field-wrapper {
+    justify-content: space-between;
+    align-items: center;
+}
+.shipping-update form .block-fields .field-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    position: relative;
+}
+.shipping-update form .block-fields .field-container span.error-message {
+    display: block;
+    height: 1rem;
+    font-size: 0.8rem;
+}
+
+.shipping-update form .block-fields label {
+    color: var(--color-admin-text);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.shipping-update form .block-fields label span {
+    display: block;
+    color: var(--color-secondary);
+    color: red;
+}
+
+.shipping-update form .block-fields .field-wrapper span.error-message {
+    display: block;
+    color: red;
+    margin-top: 0.2rem;
+}
+
+.shipping-update form .block-fields input {
+    width: 100%;
+    height: 3rem;
+    background: var(--color-input-background);
+    color: var(--color-admin-text);
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+    padding: 0 1rem;
+}
+
+.shipping-update form .block-fields .field-container .symbol {
+    height: 2rem;
+    width: 2rem;
+    background: #fff;
+    color: var(--color-admin-text);
+    font-weight: 500;
+    border-radius: 0.3rem;
+    position: absolute;
+    right: 0.5rem;
+    bottom: 1.75rem;
+    justify-content: center;
+}
+.shipping-update form .block-fields .field-wrapper,
+.shipping-update form .block-fields label,
+.shipping-update form .block-fields .field-container .symbol,
+.shipping-update .button-box .btn {
+    display: flex;
+    align-items: center;
+}
+.services {
+    margin-top: 1rem;
+}
+.services .service {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: 0 0 0.2rem rgba(0,0,0,0.2);
+    margin-bottom: 0.5rem;
+}
+.services .service .data {
+    color: #444;
+}
+.services .service .operationbutton {
+    height: 1em;
+}
+
+
+
+.operationbutton input {
+    display: none;
+}
+.operationbutton .label-switch {
+	display: inline-block;
+	position: relative;
+}
+.operationbutton .label-switch::before, 
+.operationbutton .label-switch::after {
+	content: "";
+	display: inline-block;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+.service .operationbutton .label-switch::before {
+    width: 3em;
+    height: 1.5em;
+    border: 1px solid #757575;
+    border-radius: 4em;
+    background: #888888;
+}
+.service .operationbutton .label-switch::after {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5em;
+    height: 1.5em;
+    border: 1px solid #757575;
+    border-radius: 4em;
+    background: #ffffff;
+}
+
+.service .operationbutton .input-switch:checked ~ .label-switch::before {
+    background: #00a900;
+    border-color: #008e00;
+}
+
+.service .operationbutton .input-switch:checked ~ .label-switch::after {
+    left: unset;
+    right: 0;
+    background: #00ce00;
+    border-color: #009a00;
+}
+.shipping-update .button-box {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+
+
+.shipping-update .button-box .btn {
+    text-decoration: none;
+    width: 10rem;
+    height: 3rem;
+    padding: 0 1rem;
+    font-family: var(--font-barlow);
+    font-size: 0.9rem;
+    font-weight: 500;
+    outline: none;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: 0.3s;
+    justify-content: center;
+}
+
+.shipping-update .button-box .btn.btn-primary {
+    background: var(--color-tertiary);
+    color: #fff;
+    margin-left: 0.5rem;
+}
+
+.shipping-update .button-box .btn.btn-secondary {
+    background: #dae0e5;
+    color: var(--color-admin-text);
+}
+
+.shipping-update .button-box .btn.btn-secondary {
+    width: 7rem;
+}
+
+.shipping-update .button-box .btn.btn-secondary i {
+    margin-right: 0.2rem;
+    font-size: 1.1rem;
+}
+
+.shipping-update .button-box .btn.btn-primary:hover {
+    background: var(--color-tertiary2);
+}
+
+.shipping-update .button-box .btn.btn-secondary:hover {
+    background: #aeb3b7;
+}
+/*Shipping Service NotFound*/
+.block-fields .notfound {
+    margin-top: 2rem;
+    width: 100%;
+    height: 50vh;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.block-fields .notfound .wrapper {
+    text-align: center;
+}
+.block-fields .notfound .wrapper .circle {
+    width: 8rem;
+    height: 8rem;
+    margin: auto;
+    border-radius: 50%;
+    background: var(--color-input-background);
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.block-fields .notfound .wrapper .circle img {
+    width: 70%;
+}
+.block-fields .notfound .wrapper h3 {
+    font-size: 1.5rem;
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    color: #444;
+    font-weight: 600;
+}
+.block-fields .notfound .wrapper p {
+    color: #444;
+    font-size: 0.9rem;
+}
+.block-fields .notfound .wrapper a {
+    margin: auto;
+    width: fit-content;
+}

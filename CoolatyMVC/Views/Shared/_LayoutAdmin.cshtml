@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coolaty ・ @ViewData["Title"]</title>
+    <link rel="icon" type="image/x-icon" href="~/img/logo2.png" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/iconoir-icons/iconoir@main/css/iconoir.css" />
@@ -44,6 +45,21 @@
                            asp-action="Index"
                         >
                             <i class="iconoir-component"></i> Categories
+                        </a>
+                        <a 
+                            class="menu-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Shipping" ? "active" : "")"
+                            asp-area="Admin"
+                            asp-controller="Shipping"
+                            asp-action="Index"
+                        >
+                            <i class="iconoir-truck"></i> Shipping
+                        </a>
+                        <a class="menu-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Coupon" ? "active" : "")"
+                            asp-area="Admin"
+                            asp-controller="Coupon"
+                            asp-action="Index"
+                        >
+                            <i class="iconoir-post"></i> Coupons
                         </a>
                         <a href="" class="menu-link">
                             <i class="iconoir-user"></i> Users

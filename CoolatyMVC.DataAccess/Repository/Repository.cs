@@ -3,6 +3,7 @@ using CoolatyMVC.Data.Repository.Categories;
 using CoolatyMVC.Data.Repository.OrderDetails;
 using CoolatyMVC.Data.Repository.Orders;
 using CoolatyMVC.Data.Repository.Products;
+using CoolatyMVC.Data.Repository.Shippings;
 using CoolatyMVC.Data.Repository.ShopingCarts;
 
 namespace CoolatyMVC.Data.Repository
@@ -16,6 +17,7 @@ namespace CoolatyMVC.Data.Repository
         public IOrderRepository Order { get; private set; }
         public IOrderDetailsRepository OrderDetail { get; private set; }
         public IAppUserRepository AppUser { get; private set;  }
+        public IShippingRepository Shipping { get; private set; }
 
         public Repository(ApplicationDbContext db)
         {
@@ -26,6 +28,7 @@ namespace CoolatyMVC.Data.Repository
             Order = new OrderRepository(_db);
             OrderDetail = new OrderDetailsRepository(_db);
             AppUser = new AppUserRepository(_db);
+            Shipping = new ShippingRepository(_db);
         }
 
         public void Save()

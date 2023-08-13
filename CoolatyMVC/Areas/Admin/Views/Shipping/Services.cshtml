@@ -1,0 +1,51 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/shipping.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Shipping Services"; }
+@model IEnumerable<ShippingService>
+
+<div class="shipping">
+    <div class="heading">
+        <div class="heading-name">
+            <div class="block"></div>
+            <h2>Shipping Services</h2>
+        </div>
+        <div class="options">
+            <a class="service-btn" onclick="showServiceCreateModal('', 0)"><i class="iconoir-plus"></i> Add Services</a>
+            <a class="heading-link" asp-area="Admin" asp-controller="Shipping" asp-action="Index"><i class="iconoir-nav-arrow-left"></i></a>
+        </div>
+    </div>
+
+    <div class="service-box-container">
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach(var service in Model)
+            {
+                <div class="aservice">
+                    <div class="feature">
+                        <div class="bullet"><div></div></div>
+                        <div>@service.Feature</div>
+                    </div>
+                    <div class="options">
+                        <div class="option" onclick="showServiceCreateModal('@service.Feature', @service.Id)">
+                            <i class="iconoir-edit-pencil"></i>
+                        </div>
+                        <div class="option" onclick="showServiceDeleteModal(@service.Id)">
+                            <i class="iconoir-trash"></i>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
+                Heading = "Service Not Found",
+                Message = "Soory, we haven't find any shipping services.",
+                ImageType = 1
+            });
+        }
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shipping/_ModalServiceCreate.cshtml", new ShippingService())
+        @await Html.PartialAsync("~/Areas/Admin/Views/Shipping/_ModalServiceDelete.cshtml", new ShippingService())
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/admin/admin-shipping.js" asp-append-version="true"></script> }

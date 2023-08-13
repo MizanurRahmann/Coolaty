@@ -5,6 +5,7 @@ using CoolatyMVC.Services.ShopingCarts;
 using CoolatyMVC.Services.AppUsers;
 using CoolatyMVC.Services.Orders;
 using CoolatyMVC.Services.OrderDetails;
+using CoolatyMVC.Services.Shippings;
 
 namespace CoolatyMVC.Services.Service
 {
@@ -16,6 +17,7 @@ namespace CoolatyMVC.Services.Service
         IOrderService Order { get; }
         IOrderDetailsService OrderDetails { get; }
         IAppUserService AppUser { get; }
+        IShippingServices ShippingService { get; }
         Task<byte[]> GetBytes(IFormFile image);
     }
 }
