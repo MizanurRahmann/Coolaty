@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace CoolatyMVC.Models
 {
@@ -16,7 +16,8 @@ namespace CoolatyMVC.Models
         
         [Required(ErrorMessage = "Shipping description is required")]
         public string Description { get; set; }
-
-        public ICollection<ShippingServiceJunction> ShippingFeatures { get; set; }
+        
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime ModifiedAt { get; set; } = DateTime.Now;
     }
 }

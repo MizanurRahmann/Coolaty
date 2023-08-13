@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using CoolatyMVC.Services.AppUsers;
 using CoolatyMVC.Services.Orders;
 using CoolatyMVC.Services.OrderDetails;
+using CoolatyMVC.Services.Shippings;
 
 namespace CoolatyMVC.Services.Service
 {
@@ -18,6 +19,7 @@ namespace CoolatyMVC.Services.Service
         public IOrderService Order { get; private set; }
         public IOrderDetailsService OrderDetails { get; private set; }
         public IAppUserService AppUser { get; private set; }
+        public IShippingServices ShippingService { get; private set; }
 
         public Service(Repository repo)
         {
@@ -28,6 +30,7 @@ namespace CoolatyMVC.Services.Service
             Order = new OrderService(_repo);
             OrderDetails = new OrderDetailsService(_repo);
             AppUser = new AppUserService(_repo);
+            ShippingService = new ShippingServices(_repo);
         }
 
         public async Task<byte[]> GetBytes(IFormFile image)

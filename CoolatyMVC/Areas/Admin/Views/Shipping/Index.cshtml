@@ -1,5 +1,6 @@
 ﻿@section Styles { <link rel="stylesheet" href="~/css/admin/shipping.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Shipping"; }
+@model IEnumerable<ShippingWithServiceListVM>;
 
 <div class="shipping">
     <div class="heading">
@@ -21,40 +22,43 @@
     </div>
 
     <div class="shipping-wrapper">
-        <div class="ship free">
-            <div class="block"></div>
-            <h6>Free Shiping</h6>
-            <h2>0 <span>৳</span></h2>
-            <div class="services">
-                <p><span><i class="iconoir-check-circle"></i></span>Takes 07-10 business days</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Track order anytime</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
-            </div>
-            <a>Update Shipping Plan</a>
-        </div>
-        <div class="ship regular">
-            <div class="block"></div>
-            <h6>Regular Shiping</h6>
-            <h2>50 <span>৳</span></h2>
-            <div class="services">
-                <p><span><i class="iconoir-check-circle"></i></span>Takes 07-10 business days</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Track order anytime</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
-            </div>
-            <a>Update Shipping Plan</a>
-        </div>
-        <div class="ship fast">
-            <div class="block"></div>
-            <h6>Fast Shiping</h6>
-            <h2>100 <span>৳</span></h2>
-            <div class="services">
-                <p><span><i class="iconoir-check-circle"></i></span>Takes 07-10 business days</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Track order anytime</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
-                <p><span><i class="iconoir-check-circle"></i></span>Dedicated Customer Service</p>
-            </div>
-            <a>Update Shipping Plan</a>
-        </div>
+        @if(Model != null && Model.Count() > 0)
+        {
+            @foreach(var item in Model)
+            {
+                <div class="ship @item.Shipping.Type">
+                    <div class="block"></div>
+                    <h6>@item.Shipping.Type Shiping</h6>
+                    <h2>@item.Shipping.Price <span>৳</span></h2>
+                    <div class="services">
+                        <p><span><i class="iconoir-check-circle"></i></span>@item.Shipping.Description</p>
+                        
+                        @if(item.ShippingServices.Count() > 0)
+                        {
+                            @foreach (var serviceItem in item.ShippingServices)
+                            {
+                               <p><span><i class="iconoir-check-circle"></i></span>@serviceItem.Feature</p>
+                            }
+                        }
+                    </div>
+                    <a
+                        asp-area="Admin"
+                        asp-controller="Shipping"
+                        asp-action="Update"
+                        asp-route-id="@item.Shipping.Id"
+                    >
+                        Update Shipping Plan
+                    </a>
+                </div>
+            }
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
+                Heading = "Shipping Not Found",
+                Message = "Soory, we haven't find any shipping types.",
+                ImageType = 1
+            });
+        }
     </div>
 </div>

@@ -1,9 +1,9 @@
 ﻿using CoolatyMVC.Models;
 using CoolatyMVC.Models.ViewModels;
 
-namespace CoolatyMVC.Services.Shippings
+namespace CoolatyMVC.Data.Repository.Shippings
 {
-    public interface IShippingServices
+    public interface IShippingRepository
     {
         Task<IEnumerable<ShippingWithServiceListVM>> GetAllShippingTypes();
         Task<IEnumerable<ShippingService>> GetAllShippingServices();

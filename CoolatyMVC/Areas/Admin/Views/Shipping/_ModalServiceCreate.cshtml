@@ -3,17 +3,19 @@
 <div class="createService-modal-container">
     <div class="createService-modal">
         <img src="~/img/admin/goods-truck.png" />
-        <div class="btn" id="service-create-btn-close">
+        <div class="btn" id="service-create-btn-close" onclick="closeServiceCreateModal()">
             <i class="iconoir-cancel"></i>
         </div>
         <form 
             class="create-box"
             asp-controller="Shipping"
-            asp-action="ServiceCreate"
+            asp-action="CreateShippingService"
             method="post"
         >
-            <input type="text" placeholder="Enter service description"/>
-            <button class="btn">Create</button>    
+            <input type="text" asp-for="@Model.Id" id="serviceId" hidden />
+            <input type="text" asp-for="@Model.Feature" placeholder="Enter service description" id="serviceFeature"/>
+            <span asp-validation-for="@Model.Feature"></span>
+            <button class="btn" id="submitBtn">Add New Service</button>
         </form>
     </div>
 </div>

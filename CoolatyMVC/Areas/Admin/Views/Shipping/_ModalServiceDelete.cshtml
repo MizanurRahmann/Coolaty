@@ -1,0 +1,19 @@
+﻿@model ShippingService
+
+<div class="delete-modal-container">
+    <div class="delete-modal">
+        <img src="~/img/delete.png" />
+        <h1>Delete Service?</h1>
+        <p>Do you really want to delete this service? If you delete it, it will be deleted from all shippings that are using this service.</p>
+        <form 
+            class="button-box"
+            asp-controller="Shipping"
+            asp-action="Delete"
+            method="post"
+        >
+            <input asp-for="@Model.Id" value="@Model.Id" id="deleteServiceId" hidden />
+            <div class="btn" onclick="closeServiceDeleteModal()">Cancel</div>
+            <button class="btn">Delete</button>
+        </form>
+    </div>
+</div>

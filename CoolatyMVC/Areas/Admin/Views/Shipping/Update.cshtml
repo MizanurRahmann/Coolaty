@@ -1,0 +1,135 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/shipping.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Shipping Update"; }
+@model ShippingWithServiceListVM;
+
+<div class="shipping addCreateCommon">
+    <div class="common-container">
+        <div class="heading">
+            <div class="heading-name">
+                <div class="block"></div>
+                <h2>Shipping Details</h2>
+            </div>
+            <div class="options">
+                <a class="heading-link" asp-area="Admin" asp-controller="Shipping" asp-action="Index">
+                    <i class="iconoir-nav-arrow-left"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="shipping-update">
+            <form 
+                asp-controller="Shipping"
+                asp-action="Update"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                <div class="form-wrapper">
+                    <div class="block">
+                        <div class="block-desc">
+                            <p>01</p>
+                            <h3>BASIC DESCRIPTION</h3>
+                        </div>
+                        <div class="block-fields">
+                            <div class="field-wrapper">
+                                <!-- type field -->
+                                <div class="field-container w-32">
+                                    <label asp-for=@Model.Shipping.Type>Type<span>*</span></label>
+                                    <input type="hidden" asp-for=@Model.Shipping.Id />
+                                    <input id="shippingType"
+                                           type="text"
+                                           asp-for=@Model.Shipping.Type
+                                           value=@Model.Shipping.Type
+                                           placeholder="Enter shipping Type" />
+                                    <span asp-validation-for="@Model.Shipping.Type" class="error-message" id="error-name"></span>
+                                </div>
+                                <!-- price field -->
+                                <div class="field-container w-32">
+                                    <label asp-for=@Model.Shipping.Price>Price<span>*</span></label>
+                                    <input id="shippingPrice"
+                                           type="text"
+                                           asp-for=@Model.Shipping.Price
+                                           value=@Model.Shipping.Price
+                                           placeholder="Enter shipping price" />
+                                    <div class="symbol">৳</div>
+                                    <span asp-validation-for="@Model.Shipping.Price" class="error-message" id="error-price"></span>
+                                </div>
+                                <!-- description field -->
+                                <div class="field-container w-32">
+                                    <label asp-for=@Model.Shipping.Description>Type<span>*</span></label>
+                                    <input id="shippingType"
+                                           type="text"
+                                           asp-for=@Model.Shipping.Description
+                                           value=@Model.Shipping.Description
+                                           placeholder="Enter shipping description" />
+                                    <span asp-validation-for="@Model.Shipping.Description" class="error-message" id="error-name"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="block">
+                        <div class="block-desc">
+                            <p>02</p>
+                            <h3>Shipping Features</h3>
+                        </div>
+                        <div class="block-fields">
+                            @if(Model != null && Model.ShippingServices != null && Model.ShippingServices.Count() > 0)
+                            {
+                                <div class="services">
+                                    @foreach (var item in Model.ShippingServices)
+                                    {
+                                        <div class="service">
+                                            <div class="data">@item.Feature</div>
+                                            <div class="operationbutton">
+                                                <input 
+                                                    class="input-switch"
+                                                    type="checkbox" 
+                                                    id="input-@item.Id" 
+                                                    name="SelectedServices" 
+                                                    value="@item.Id"
+                                                    @(item.IsServiceEnabled ? "checked" : "")
+                                               />
+                                                <label class="label-switch" for="input-@item.Id" id="input-@item.Id"></label>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="notfound">
+                                    <div class="wrapper">
+                                        <div class="circle">
+                                            <img src="~/img/admin/empty-folder.png" alt="" />
+                                        </div>
+                                        <h3>Service Not Found</h3>
+                                        <p>Sorry, there isn't any shipping service available</p>
+                                        <a 
+                                            asp-area="Admin"
+                                            asp-controller="Shipping"
+                                            asp-action="Services"
+                                        >
+                                          Add New Service
+                                      </a>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="button-box">
+                    <a class="btn btn-secondary"
+                       asp-area="Admin"
+                       asp-controller="Shipping"
+                       asp-action="Index"
+                    >
+                        <i class="iconoir-nav-arrow-left"></i> Back
+                    </a>
+                    <button class="btn btn-primary">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/admin/admin-shipping.js" asp-append-version="true"></script> }

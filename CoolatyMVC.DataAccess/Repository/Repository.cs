@@ -3,7 +3,7 @@ using CoolatyMVC.Data.Repository.Categories;
 using CoolatyMVC.Data.Repository.OrderDetails;
 using CoolatyMVC.Data.Repository.Orders;
 using CoolatyMVC.Data.Repository.Products;
-using CoolatyMVC.Data.Repository.Shipping;
+using CoolatyMVC.Data.Repository.Shippings;
 using CoolatyMVC.Data.Repository.ShopingCarts;
 
 namespace CoolatyMVC.Data.Repository
