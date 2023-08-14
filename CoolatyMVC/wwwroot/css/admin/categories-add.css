@@ -89,7 +89,7 @@
     outline: none;
     border: none;
     border-radius: 0.3rem;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     padding: 0 1rem;
 }
 
@@ -200,18 +200,15 @@
     margin-top: 0.2rem;
 }
 .addCategories .button-box {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
     display: flex;
 }
 
 .addCategories .button-box .btn {
     text-decoration: none;
-    width: 10rem;
-    height: 3rem;
+    height: 2.5rem;
     padding: 0 1rem;
     font-family: var(--font-barlow);
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-weight: 500;
     outline: none;
     border: none;
@@ -232,12 +229,10 @@
 .addCategories .button-box .btn.btn-secondary {
     background: #dae0e5;
     color: var(--color-admin-text);
-    width: 7rem;
 }
 
 .addCategories .button-box .btn.btn-secondary i {
-    margin-right: 0.2rem;
-    font-size: 1.1rem;
+    margin-right: 0.5rem;
 }
 
 .addCategories .button-box .btn.btn-primary:hover {
@@ -278,6 +273,6 @@
 
 .message .message-text {
     color: #4d3eac;
-    font-size: 0.8rem;
+    font-size: var(--font-text-size-admin);
     font-weight: 500;
 }

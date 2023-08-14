@@ -101,7 +101,7 @@ form .block-fields textarea {
     outline: none;
     border: none;
     border-radius: 0.3rem;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     padding: 0 1rem;
 }
 
@@ -109,7 +109,6 @@ form .block-fields textarea {
     height: 5rem;
     padding: 1rem;
     font-family: var(--font-barlow);
-    font-weight: 500;
 }
 
 form .block-fields .field-container .symbol {
@@ -173,6 +172,8 @@ form .block-fields .select-dropdown .dropdown {
     border-radius: inherit;
     box-shadow: inherit;
     background: inherit;
+    border: 1px solid #dddde1;
+    border-radius: 0.3rem;
     -webkit-transition: 0.5s ease;
     -moz-transition: 0.5s ease;
     -ms-transition: 0.5s ease;
@@ -197,8 +198,7 @@ form .block-fields .select-dropdown .dropdown {
 form .block-fields .select-dropdown span,
 form .block-fields .select-dropdown .dropdown li {
     font-family: var(--font-barlow);
-    font-weight: 500;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
 }
 
 form .block-fields .select-dropdown .dropdown li {
@@ -217,6 +217,7 @@ form .block-fields .select-dropdown .dropdown li {
 
 form .block-fields .select-dropdown .dropdown li:last-child {
     border-bottom: none;
+    border-radius: 0 0 0.3rem 0.3rem;
 }
 
 form .block-fields .select-dropdown .dropdown li:hover {
@@ -240,7 +241,6 @@ form .block-fields .image-field {
     border: 1px dashed #a0a0a0;
     font-size: 0.9rem;
     font-family: var(--font-barlow);
-    font-weight: 500;
     color: var(--color-admin-text);
 }
 
@@ -374,18 +374,15 @@ form .image-preview .container img {
 }
 
 .addProducts .button-box {
-    margin-top: 1.5rem;
-    margin-bottom: 2rem;
     display: flex;
 }
 
 .addProducts .button-box .btn {
     text-decoration: none;
-    width: 10rem;
-    height: 3rem;
+    height: 2.5rem;
     padding: 0 1rem;
     font-family: var(--font-barlow);
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-weight: 500;
     outline: none;
     border: none;
@@ -405,13 +402,8 @@ form .image-preview .container img {
     color: var(--color-admin-text);
 }
 
-.addProducts .button-box .btn.btn-secondary {
-    width: 7rem;
-}
-
 .addProducts .button-box .btn.btn-secondary i {
-    margin-right: 0.2rem;
-    font-size: 1.1rem;
+    margin-right: 0.5rem;
 }
 
 .addProducts .button-box .btn.btn-primary:hover {

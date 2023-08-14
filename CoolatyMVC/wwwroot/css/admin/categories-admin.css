@@ -1,78 +1,86 @@
 ﻿.adminCategory .heading {
-  width: 100%;
-  height: 3.5rem;
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
+    width: 100%;
+    height: 3.5rem;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
 }
+
 .adminCategory .heading h2 {
-  font-family: var(--font-barlow);
-  text-transform: capitalize;
-  color: #444;
+    font-family: var(--font-barlow);
+    text-transform: capitalize;
+    color: #444;
 }
+
 .adminCategory .heading .options,
 .adminCategory .heading .options form {
-  display: flex;
-  align-items: center;
-  height: 2.5rem;
-  padding: 0;
-  margin: 0;
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+    padding: 0;
+    margin: 0;
 }
+
 .adminCategory .heading .options form .icon {
-  height: 2.5rem;
-  width: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #e6e9eb;
-  border-radius: 0.3rem 0 0 0.3rem;
-  color: #444;
+    height: 2.5rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #e6e9eb;
+    border-radius: 0.3rem 0 0 0.3rem;
+    color: #444;
 }
+
 .adminCategory .heading .options form input {
-  outline: none;
-  border: none;
-  min-width: 15rem;
-  height: 2.5rem;
-  background: transparent;
-  padding: 0.5rem 1rem 0.5rem 0;
-  font-size: 0.8rem;
-  font-family: var(--font-barlow);
-  background: #e6e9eb;
-  color: #444;
+    outline: none;
+    border: none;
+    min-width: 15rem;
+    height: 2.5rem;
+    background: transparent;
+    padding: 0.5rem 1rem 0.5rem 0;
+    border-radius: 0 0.3rem 0.3rem 0;
+    font-size: var(--font-text-size-admin);
+    font-family: var(--font-barlow);
+    background: #e6e9eb;
+    color: #444;
 }
+
 .adminCategory .heading .create-category-button {
-  height: 2.5rem;
-  padding: 0 1rem;
-  background: var(--color-tertiary);
-  color: var(--color-white);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-family: var(--font-barlow);
-  font-weight: 400;
-  margin-left: 0.5rem;
-  border-radius: 0.3rem;
-  text-decoration: none;
+    height: 2.5rem;
+    padding: 0 1rem;
+    background: var(--color-tertiary);
+    color: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-text-size-admin);
+    font-family: var(--font-barlow);
+    font-weight: 400;
+    margin-left: 0.5rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
 }
+
 .adminCategory .heading .create-category-button i {
-  margin-right: 0.3rem;
-  font-size: 1rem;
+    margin-right: 0.3rem;
+    font-size: 1rem;
 }
 
 .adminCategory .category-container {
-  height: calc(90vh - 3rem);
-  overflow-x: hidden;
-  overflow-y: auto;
+    height: calc(90vh - 3rem);
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .adminCategory .categories {
-  width: 100%;
-  padding: 1rem 2rem;
+    width: 100%;
+    padding: 1rem 2rem;
 }
+
 .adminCategory .categories .acategory,
 .adminCategory .categories .acategory .data,
 .adminCategory .categories .acategory .options,
@@ -83,6 +91,7 @@
     align-items: center;
     color: #444;
 }
+
 .adminCategory .categories .acategory {
     background: #fff;
     border: 1px solid #dddde1;
@@ -91,6 +100,7 @@
     justify-content: space-between;
     margin-bottom: 0.5rem;
 }
+
 .adminCategory .categories .acategory .cat-image {
     width: 3rem;
     height: 3rem;
@@ -99,9 +109,11 @@
     justify-content: center;
     border: 1px solid #dddde1;
 }
+
 .adminCategory .categories .acategory .cat-image img {
     width: 70%;
 }
+
 .adminCategory .categories .acategory .options .edit,
 .adminCategory .categories .acategory .options .delete {
     text-decoration: none;
@@ -120,11 +132,14 @@
     color: red;
     border-left: 1px solid #dddde1;
 }
+
 .adminCategory .categories .acategory .options .edit:hover i,
-.adminCategory .categories .acategory .options .delete:hover i{
-    transform: scale(1.2);;
+.adminCategory .categories .acategory .options .delete:hover i {
+    transform: scale(1.2);
+    ;
 }
 
 .adminCategory .categories .acategory .cat-name {
     padding-left: 1rem;
+    font-size: var(--font-text-size-admin);
 }
