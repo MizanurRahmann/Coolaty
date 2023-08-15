@@ -281,21 +281,26 @@ namespace CoolatyMVC.Data.Migrations
 
             modelBuilder.Entity("CoolatyMVC.Models.ShippingServiceJunction", b =>
                 {
-                    b.Property<int>("ShippingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.HasKey("ShippingId", "ServiceId");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShippingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ServiceId");
+
+                    b.HasIndex("ShippingId");
 
                     b.ToTable("ShippingServiceJunctions");
                 });
@@ -601,13 +606,13 @@ namespace CoolatyMVC.Data.Migrations
             modelBuilder.Entity("CoolatyMVC.Models.ShippingServiceJunction", b =>
                 {
                     b.HasOne("CoolatyMVC.Models.ShippingService", "Service")
-                        .WithMany("ShippingFeatures")
+                        .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CoolatyMVC.Models.Shipping", "Shipping")
-                        .WithMany("ShippingFeatures")
+                        .WithMany()
                         .HasForeignKey("ShippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -685,16 +690,6 @@ namespace CoolatyMVC.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CoolatyMVC.Models.Shipping", b =>
-                {
-                    b.Navigation("ShippingFeatures");
-                });
-
-            modelBuilder.Entity("CoolatyMVC.Models.ShippingService", b =>
-                {
-                    b.Navigation("ShippingFeatures");
                 });
 #pragma warning restore 612, 618
         }
