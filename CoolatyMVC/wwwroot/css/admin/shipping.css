@@ -1,4 +1,7 @@
-﻿.shipping .heading {
+﻿.shipping {
+    position: relative;
+}
+.shipping .heading {
     width: 100%;
     height: 3.5rem;
     padding: 0 2rem;
@@ -24,7 +27,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-family: var(--font-barlow);
     font-weight: 500;
     margin-left: 0.5rem;
@@ -44,13 +47,15 @@
     background: #dae0e5;
     color: var(--color-admin-text);
 }
-.shipping .heading a i {
-    margin-right: 0.25rem;
+.shipping .heading a.service-btn i {
+    margin-right: 0.5rem;
+    color: #fff;
+    font-size: 1rem;
 }
 .shipping-wrapper {
     width: 100%;
     height: 83.5vh;
-    padding: 2.2rem;
+    padding: 2rem 8rem;
     overflow: hidden;
     display: flex;
     align-items: flex-end;
@@ -59,7 +64,7 @@
     width: 30%;
     height: 50vh;
     box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
-    padding: 2rem;
+    padding: 2rem 1rem;
     border-radius: 0.5rem;
     position: relative;
 }
@@ -110,6 +115,7 @@
     align-content: center;
     color: var(--color-admin-text);
     margin-bottom: 0;
+    font-size: var(--font-text-size-admin);
 }
 .shipping-wrapper .ship .services p span {
     display: block;
@@ -120,26 +126,29 @@
 }
 .shipping-wrapper .ship a {
     position: absolute;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 1rem;
+    right: 1rem;
     text-decoration: none;
     border-radius: 0.25rem;
     background: var(--color-tertiary);
     color: #fff;
     display: flex;
-    width: 80%;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
     justify-content: center;
     align-items: center;
     padding: 0 1rem;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-weight: 500;
     cursor: pointer;
     transition: 0.3s;
 }
-.shipping-wrapper .ship a:hover {
+.shipping-wrapper .ship a i {
+    transition: 0.3s;
+}
+.shipping-wrapper .ship a:hover i {
     color: #fff;
+    transform: scale(1.5);
 }
 .shipping form input {
     width: 100%;
@@ -149,7 +158,7 @@
     outline: none;
     border: none;
     border-radius: 0.3rem;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     padding: 0 1rem;
 }
 /*Services*/
@@ -164,6 +173,9 @@
     display: flex;
     align-items: center;
     color: #444;
+}
+.service-box-container .aservice .feature {
+    font-size: var(--font-text-size-admin);
 }
 .service-box-container .aservice {
     background: #fff;
@@ -241,7 +253,7 @@
     font-family: var(--font-barlow);
     background: var(--color-tertiary);
     color: #fff;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-weight: 500;
     outline: none;
     border: none;
@@ -348,7 +360,7 @@
     outline: none;
     border: none;
     border-radius: 0.3rem;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     padding: 0 1rem;
 }
 
@@ -385,6 +397,7 @@
 }
 .services .service .data {
     color: #444;
+    font-size: var(--font-text-size-admin);
 }
 .services .service .operationbutton {
     height: 1em;
@@ -444,11 +457,10 @@
 
 .shipping-update .button-box .btn {
     text-decoration: none;
-    width: 10rem;
-    height: 3rem;
+    height: 2.5rem;
     padding: 0 1rem;
     font-family: var(--font-barlow);
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-weight: 500;
     outline: none;
     border: none;
@@ -469,13 +481,8 @@
     color: var(--color-admin-text);
 }
 
-.shipping-update .button-box .btn.btn-secondary {
-    width: 7rem;
-}
-
 .shipping-update .button-box .btn.btn-secondary i {
-    margin-right: 0.2rem;
-    font-size: 1.1rem;
+    margin-right: 0.5rem;
 }
 
 .shipping-update .button-box .btn.btn-primary:hover {

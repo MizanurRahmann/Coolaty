@@ -12,8 +12,10 @@
             method="post"
         >
             <input asp-for="@Model.Id" value="@Model.Id" id="deleteServiceId" hidden />
-            <div class="btn" onclick="closeServiceDeleteModal()">Cancel</div>
-            <button class="btn">Delete</button>
+            <div class="btn-wrapper">
+                <div class="btn cancel" onclick="closeServiceDeleteModal()">Cancel</div>
+                <button class="btn">Delete</button>
+            </div>
         </form>
     </div>
 </div>

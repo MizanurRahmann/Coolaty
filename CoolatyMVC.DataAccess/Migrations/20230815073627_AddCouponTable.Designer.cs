@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoolatyMVC.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230812051918_AddDateFieldToShippingRelatedTables")]
-    partial class AddDateFieldToShippingRelatedTables
+    [Migration("20230815073627_AddCouponTable")]
+    partial class AddCouponTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -50,6 +50,56 @@ namespace CoolatyMVC.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Category");
+                });
+
+            modelBuilder.Entity("CoolatyMVC.Models.Coupon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DiscountAmount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ExpireDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("ForNewUser")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("MinimumCost")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MinimumItem")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Coupons");
                 });
 
             modelBuilder.Entity("CoolatyMVC.Models.Order", b =>
@@ -284,21 +334,26 @@ namespace CoolatyMVC.Data.Migrations
 
             modelBuilder.Entity("CoolatyMVC.Models.ShippingServiceJunction", b =>
                 {
-                    b.Property<int>("ShippingId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.HasKey("ShippingId", "ServiceId");
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ShippingId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("ServiceId");
+
+                    b.HasIndex("ShippingId");
 
                     b.ToTable("ShippingServiceJunctions");
                 });
@@ -604,13 +659,13 @@ namespace CoolatyMVC.Data.Migrations
             modelBuilder.Entity("CoolatyMVC.Models.ShippingServiceJunction", b =>
                 {
                     b.HasOne("CoolatyMVC.Models.ShippingService", "Service")
-                        .WithMany("ShippingFeatures")
+                        .WithMany()
                         .HasForeignKey("ServiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("CoolatyMVC.Models.Shipping", "Shipping")
-                        .WithMany("ShippingFeatures")
+                        .WithMany()
                         .HasForeignKey("ShippingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -688,16 +743,6 @@ namespace CoolatyMVC.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CoolatyMVC.Models.Shipping", b =>
-                {
-                    b.Navigation("ShippingFeatures");
-                });
-
-            modelBuilder.Entity("CoolatyMVC.Models.ShippingService", b =>
-                {
-                    b.Navigation("ShippingFeatures");
                 });
 #pragma warning restore 612, 618
         }

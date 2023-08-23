@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -18,7 +19,9 @@ namespace CoolatyMVC.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Price = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -31,7 +34,9 @@ namespace CoolatyMVC.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Feature = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Feature = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,14 +47,15 @@ namespace CoolatyMVC.Data.Migrations
                 name: "ShippingServiceJunctions",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     ShippingId = table.Column<int>(type: "int", nullable: false),
                     ServiceId = table.Column<int>(type: "int", nullable: false),
-                    Id = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ShippingServiceJunctions", x => new { x.ShippingId, x.ServiceId });
+                    table.PrimaryKey("PK_ShippingServiceJunctions", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ShippingServiceJunctions_ShippingServices_ServiceId",
                         column: x => x.ServiceId,
@@ -68,6 +74,11 @@ namespace CoolatyMVC.Data.Migrations
                 name: "IX_ShippingServiceJunctions_ServiceId",
                 table: "ShippingServiceJunctions",
                 column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ShippingServiceJunctions_ShippingId",
+                table: "ShippingServiceJunctions",
+                column: "ShippingId");
         }
 
         /// <inheritdoc />

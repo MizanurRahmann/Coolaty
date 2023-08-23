@@ -7,8 +7,6 @@ namespace CoolatyMVC.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {
-        private readonly IConfiguration _configuration;
-
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
         public DbSet<Product> Products { get; set; }
@@ -20,5 +18,6 @@ namespace CoolatyMVC.Data
         public DbSet<ShippingService> ShippingServices { get; set; }
         public DbSet<Shipping> Shipping { get; set; }
         public DbSet<ShippingServiceJunction> ShippingServiceJunctions { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
     }
 }

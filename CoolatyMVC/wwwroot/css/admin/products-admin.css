@@ -42,7 +42,8 @@
     height: 2.5rem;
     background: transparent;
     padding: 0.5rem 1rem 0.5rem 0;
-    font-size: 0.8rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+    font-size: var(--font-text-size-admin);
     font-family: var(--font-barlow);
     background: #e6e9eb;
     color: #444;
@@ -56,7 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9rem;
+    font-size: var(--font-text-size-admin);
     font-family: var(--font-barlow);
     font-weight: 500;
     margin-left: 0.5rem;
