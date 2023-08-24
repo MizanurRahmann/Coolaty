@@ -1,10 +1,84 @@
 ﻿@section Styles { <link rel="stylesheet" href="~/css/admin/coupons.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Coupons"; }
+@model IEnumerable<Coupon>
 
 <div class="coupon">
     <div class="heading">
         <div class="heading-name">
             <h2>Coupons</h2>
         </div>
+        <div class="options">
+            <form>
+                <div class="icon"><i class="iconoir-search"></i></div>
+                <input type="text" id="coupon-search" placeholder="Search here..." />
+            </form>
+            <a class="create-product-button"
+               asp-area="Admin"
+               asp-controller="Coupon"
+               asp-action="Upsert">
+                <i class="iconoir-plus"></i>
+                Create New Coupon
+            </a>
+        </div>
+    </div>
+
+    <div class="coupon-container">
+        @if (Model != null && Model.Count() > 0)
+        {
+            <div class="coupons">
+                <div class="table-head">
+                    <div class="data">
+                        <div class="w-20">Name</div>
+                        <div class="w-20">Code</div>
+                        <div class="w-15">Type</div>
+                        <div class="w-15">Amount</div>
+                        <div class="w-15">Expiration Date</div>
+                        <div class="w-10">Status</div>
+                    </div>
+                    <div class="options">
+
+                    </div>
+                </div>
+                @foreach (var coupon in Model)
+                {
+                    <div class="acoupon">
+                        <div class="data">
+                            <div class="c-name w-20">@coupon.Name</div>
+                            <div class="c-code w-20">
+                                <span>@coupon.Code</span>
+                            </div>
+                            <div class="c-code w-15">@coupon.Type</div>
+                            <div class="c-amount w-15">
+                                @coupon.DiscountAmount @(coupon.Type == "Percentage" ? "%" : "$")
+                            </div>
+                            <div class="w-15">Expiration Date</div>
+                            <div class="c-status w-10">
+                                <div class="circle @coupon.Status"></div>
+                                <div class="status">@coupon.Status</div>
+                            </div>
+                        </div>
+                        <div class="options">
+                            <a 
+                                asp-area="Admin"
+                                asp-controller="Coupon"
+                                asp-action="Upsert"
+                                asp-route-id=@coupon.Id
+                                class="edit"
+                            >
+                                <i class="iconoir-edit-pencil"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
+                Heading = "Coupon Not Found",
+                Message = "Soory, we haven't find any coupons.",
+                ImageType = 1
+            });
+        }
     </div>
 </div>

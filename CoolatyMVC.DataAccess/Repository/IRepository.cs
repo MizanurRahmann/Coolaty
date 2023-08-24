@@ -1,5 +1,6 @@
 ﻿using CoolatyMVC.Data.Repository.AppUsers;
 using CoolatyMVC.Data.Repository.Categories;
+using CoolatyMVC.Data.Repository.Coupons;
 using CoolatyMVC.Data.Repository.OrderDetails;
 using CoolatyMVC.Data.Repository.Orders;
 using CoolatyMVC.Data.Repository.Products;
@@ -17,6 +18,7 @@ namespace CoolatyMVC.Data.Repository
         IOrderDetailsRepository OrderDetail { get; }
         IAppUserRepository AppUser { get; }
         IShippingRepository Shipping { get; }
+        ICouponRepository Coupon { get; }
         void Save();
         Task SaveAsync();
     }

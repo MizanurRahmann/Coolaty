@@ -1,0 +1,233 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/coupons.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Coupons"; }
+@model CouponVM;
+
+<div class="addCreateCommon addCoupon">
+    <div class="common-container">
+        <!-- HEADING -->
+        <div class="heading">
+            <h2>Create Coupon</h2>
+            <div class="button-box">
+                @if (Model != null && Model.Coupon.Id != 0)
+                {
+                    <div class="heading-button" id="coupon-delete-btn">
+                        <i class="iconoir-trash"></i>
+                    </div>
+                }
+                <a 
+                    class="heading-link"
+                    asp-area="Admin"
+                    asp-controller="Coupon"
+                    asp-action="Index"
+                >
+                    <i class="iconoir-cancel"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- FORM -->
+        <div class="coupon-creation">
+            <form 
+                asp-controller="Coupon"
+                asp-action="Upsert"
+                method="post"
+                enctype="multipart/form-data"
+            >
+                <div class="form-wrapper">
+                    <div class="block">
+                        <div class="block-desc">
+                            <p>01</p>
+                            <h3>BASIC Info</h3>
+                        </div>
+                        <div class="block-fields">
+                            <!-- name field -->
+                            <div class="field-container w-33">
+                                <label class="label" asp-for=@Model.Coupon.Name>Name<span>*</span></label>
+                                <input id="cuoponId" type="text" asp-for=@Model.Coupon.Id hidden />
+                                <input
+                                    id="cuoponName"
+                                    type="text"
+                                    asp-for=@Model.Coupon.Name
+                                    placeholder="Enter coupon name" 
+                                 />
+                                <span asp-validation-for="Coupon.Name" class="error-message" id="error-name"></span>
+                            </div>
+                            <!-- code field -->
+                            <div class="field-container w-33">
+                                <label class="label" asp-for=@Model.Coupon.Code>Code<span>*</span></label>
+                                <input id="couponCode"
+                                       type="text"
+                                       asp-for=@Model.Coupon.Code
+                                       placeholder="Enter coupon code" />
+                                <span asp-validation-for="Coupon.Code" class="error-message" id="error-name"></span>
+                            </div>
+                            <!-- status field -->
+                            <div class="field-container w-33">
+                                <label asp-for=@Model.Coupon.Status>Status<span>*</span></label>
+                                <div class="select-dropdown" id="selectDropdown0">
+                                    <input 
+                                        id="couponStatus"
+                                        class="select-drop-down-field"
+                                        type="text"
+                                        asp-for=@Model.Coupon.Status
+                                        value=@(Model != null && Model.Coupon.Id != 0 ? Model.Coupon.Status : "Inactive")
+                                        class="select-drop-down-field" 
+                                    />
+                                    <div id="outer-circle" class="@(Model != null && Model.Coupon.Id != 0 ? Model.Coupon.Status : "Inactive")"></div>
+                                    <span>
+                                        @if (Model != null && Model.Coupon != null && Model.Coupon.Id != 0)
+                                        {
+                                            <span>@Model.Coupon.Status</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Inactive</span>
+                                        }
+                                    </span>
+                                    <ul class="dropdown">
+                                        <li id="Active">
+                                            <div id="circle" class="Active"></div> Active
+                                        </li>
+                                        <li id="Expired">
+                                            <div id="circle" class="Expired"></div> Expired
+                                        </li>
+                                        <li id="Inactive">
+                                            <div id="circle" class="Inactive"></div> Inactive
+                                        </li>
+                                    </ul>
+                                </div>
+                                <span asp-validation-for="Coupon.Status" class="error-message"></span>
+                            </div>
+                            <!-- type field -->
+                            <div class="field-container w-33">
+                                <label asp-for=@Model.Coupon.Type>Type<span>*</span></label>
+                                <div class="select-dropdown" id="selectDropdown1">
+                                    <input id="couponType"
+                                           class="select-drop-down-field"
+                                           type="text"
+                                           asp-for=@Model.Coupon.Type
+                                           value=@(Model != null && Model.Coupon.Id != 0 ? Model.Coupon.Type : "Percentage")
+                                           class="select-drop-down-field" />
+                                    <span>
+                                        @if (Model != null && Model.Coupon != null && Model.Coupon.Id != 0)
+                                        {
+                                            <span>@Model.Coupon.Type</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Percentage</span>
+                                        }
+                                    </span>
+                                    <ul class="dropdown">
+                                        <li id="Percentage">Percentage</li>
+                                        <li id="Fixed">Fixed</li>
+                                    </ul>
+                                </div>
+                                <span asp-validation-for="Coupon.Type" class="error-message"></span>
+                            </div>
+
+                            <div class="field-container w-33">
+                                <label class="label" asp-for=@Model.Coupon.DiscountAmount>Discount Amount<span>*</span></label>
+                                <input 
+                                    id="couponDiscountAmount"
+                                    type="text"
+                                    asp-for=@Model.Coupon.DiscountAmount
+                                    placeholder="Enter discount amount"
+                                 />
+                                <div class="symbol">%</div>
+                                <span asp-validation-for="Coupon.DiscountAmount" class="error-message"></span>
+                            </div>
+                            <!-- date field -->
+                            <div class="field-container w-33">
+                                <label class="label" asp-for=@Model.Coupon.ExpireDate>Expiration Date<span>*</span></label>
+                                <input id="cuoponExpireDate"
+                                       type="text"
+                                       asp-for=@Model.Coupon.ExpireDate
+                                       placeholder="Enter expiration date" />
+                                <span asp-validation-for="Coupon.ExpireDate" class="error-message" id="error-name"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="block">
+                        <div class="block-desc">
+                            <p>02</p>
+                            <h3>Conditions</h3>
+                        </div>
+                        <div class="block-fields">
+                            <!-- minimum items -->
+                            <div class="field-container w-33">
+                                <label class="label" asp-for=@Model.Coupon.MinimumItem>Minimum Items</label>
+                                <input id="cuoponMinimumItem"
+                                       type="text"
+                                       asp-for=@Model.Coupon.MinimumItem
+                                       placeholder="Enter minimum item" />
+                                <span asp-validation-for="Coupon.MinimumItem" class="error-message" id="error-name"></span>
+                            </div>
+                            <!-- minimum cost -->
+                            <div class="field-container w-33">
+                                <label class="label" asp-for=@Model.Coupon.MinimumCost>Minimum Cost</label>
+                                <input id="cuoponMinimumCost"
+                                       type="text"
+                                       asp-for=@Model.Coupon.MinimumCost
+                                       placeholder="Enter minimum cost" />
+                                <span asp-validation-for="Coupon.MinimumCost" class="error-message" id="error-name"></span>
+                            </div>
+                            <!-- Is this is for new user -->
+                            <div class="field-container w-33">
+                                <label asp-for=@Model.ForNewUserText>For New Users<span>*</span></label>
+                                <div class="select-dropdown" id="selectDropdown2">
+                                    <input 
+                                        id="couponForNewUser"
+                                        class="select-drop-down-field"
+                                        type="text"
+                                        asp-for=@Model.ForNewUserText
+                                        value=@(Model != null && Model.Coupon != null && Model.Coupon.Id != 0 ? Model.ForNewUserText : "No")
+                                        class="select-drop-down-field"
+                                    />
+                                    <span>
+                                        @if (Model != null && Model.Coupon != null &&  Model.Coupon.Id != 0)
+                                        {
+                                            <span>@Model.ForNewUserText</span>
+                                        }
+                                        else
+                                        {
+                                            <span>No</span>
+                                        }
+                                    </span>
+                                    <ul class="dropdown">
+                                        <li id="yes">Yes</li>
+                                        <li id="no">No</li>
+                                    </ul>
+                                </div>
+                                <span asp-validation-for="ForNewUserText" class="error-message" id="error-category"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button Box -->
+                <div class="button-box">
+                    <a class="btn btn-secondary"
+                       asp-area="Admin"
+                       asp-controller="Coupon"
+                       asp-action="Index">
+                        <i class="iconoir-nav-arrow-left"></i> Back to Coupons
+                    </a>
+
+                    @if (Model != null && Model.Coupon != null && Model.Coupon.Id != 0)
+                    {
+                        <button class="btn btn-primary">Update Coupon Info</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-primary">Add New Coupon</button>
+                    }
+                </div>
+            </form>
+        </div>
+        @await Html.PartialAsync("~/Areas/Admin/Views/Coupon/_ModalDelete.cshtml", Model.Coupon)
+    </div>
+</div>
+
+@section Scripts { <script src="~/js/admin/admin-coupon.js" asp-append-version="true"></script> }

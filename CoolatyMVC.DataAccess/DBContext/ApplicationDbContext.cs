@@ -18,5 +18,6 @@ namespace CoolatyMVC.Data
         public DbSet<ShippingService> ShippingServices { get; set; }
         public DbSet<Shipping> Shipping { get; set; }
         public DbSet<ShippingServiceJunction> ShippingServiceJunctions { get; set; }
+        public DbSet<Coupon> Coupons { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using CoolatyMVC.Services.AppUsers;
 using CoolatyMVC.Services.Orders;
 using CoolatyMVC.Services.OrderDetails;
 using CoolatyMVC.Services.Shippings;
+using CoolatyMVC.Services.Coupons;
 
 namespace CoolatyMVC.Services.Service
 {
@@ -20,6 +21,7 @@ namespace CoolatyMVC.Services.Service
         public IOrderDetailsService OrderDetails { get; private set; }
         public IAppUserService AppUser { get; private set; }
         public IShippingServices ShippingService { get; private set; }
+        public ICouponService CouponService { get; private set; }
 
         public Service(Repository repo)
         {
@@ -31,6 +33,7 @@ namespace CoolatyMVC.Services.Service
             OrderDetails = new OrderDetailsService(_repo);
             AppUser = new AppUserService(_repo);
             ShippingService = new ShippingServices(_repo);
+            CouponService = new CouponService(_repo);
         }
 
         public async Task<byte[]> GetBytes(IFormFile image)
