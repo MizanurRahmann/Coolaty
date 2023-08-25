@@ -18,9 +18,9 @@ namespace CoolatyMVC.Services.Orders
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search)
+        public async Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search, string type)
         {
-            return await _repo.Order.GetAllOrders(pageNumber, pageSize, search);
+            return await _repo.Order.GetAllOrders(pageNumber, pageSize, search, type);
         }
 
         public async Task<IEnumerable<Order>> GetMyOrders(string userId)

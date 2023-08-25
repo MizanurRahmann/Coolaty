@@ -5,5 +5,6 @@
         public string Heading { get; set; }
         public string Message { get; set; }
         public int ImageType { get; set; }
+        public string OptionalHeight { get; set; }
     }
 }

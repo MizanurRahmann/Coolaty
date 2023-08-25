@@ -27,7 +27,12 @@
                         >
                             <i class="iconoir-home"></i> Dashboard
                         </a>
-                        <a href="" class="menu-link">
+                        <a 
+                            class="menu-link @(ViewContext.RouteData.Values["Controller"].ToString() == "Orders" ? "active" : "")"
+                            asp-area="Admin"
+                            asp-controller="Orders"
+                            asp-action="Index"
+                        >
                             <i class="iconoir-simple-cart"></i> Orders
                         </a>
                         <a 

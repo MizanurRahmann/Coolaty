@@ -1,4 +1,7 @@
-﻿@section Styles { <link rel="stylesheet" href="~/css/admin/coupons.css" asp-append-version="true" /> }
+﻿@section Styles {
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="~/css/admin/coupons.css" asp-append-version="true" /> 
+}
 @{ ViewData["Title"] = "Coupons"; }
 @model CouponVM;
 
@@ -134,7 +137,9 @@
                                     asp-for=@Model.Coupon.DiscountAmount
                                     placeholder="Enter discount amount"
                                  />
-                                <div class="symbol">%</div>
+                                <div class="symbol">
+                                    @(Model != null && Model.Coupon.Id != 0 && Model.Coupon.Type == "Percentage" ? "%" : "৳")
+                                </div>
                                 <span asp-validation-for="Coupon.DiscountAmount" class="error-message"></span>
                             </div>
                             <!-- date field -->
@@ -143,7 +148,9 @@
                                 <input id="cuoponExpireDate"
                                        type="text"
                                        asp-for=@Model.Coupon.ExpireDate
-                                       placeholder="Enter expiration date" />
+                                       placeholder="Enter expiration date"
+                                       value="@Model.Coupon.ExpireDate.ToString("dd/MM/yyyy")"
+                                />
                                 <span asp-validation-for="Coupon.ExpireDate" class="error-message" id="error-name"></span>
                             </div>
                         </div>
@@ -230,4 +237,7 @@
     </div>
 </div>
 
-@section Scripts { <script src="~/js/admin/admin-coupon.js" asp-append-version="true"></script> }
+@section Scripts { 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/js/admin/admin-coupon.js" asp-append-version="true"></script>
+}

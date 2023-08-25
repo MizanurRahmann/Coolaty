@@ -1,0 +1,88 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/admin-orders.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Orders"; }
+@model IEnumerable<Order>;
+
+<div class="orders">
+    <!-- HEADING -->
+    <div class="heading">
+        <div class="heading-name">
+            <h2>Orders</h2>
+        </div>
+        <div class="options">
+            <form>
+                <div class="icon"><i class="iconoir-search"></i></div>
+                <input type="text" id="order-search" placeholder="Search here..." />
+            </form>
+            <a class="create-product-button"
+               asp-area="Admin"
+               asp-controller="Orders"
+               asp-action="Upsert">
+                <i class="iconoir-plus"></i>
+                Create New
+            </a>
+        </div>
+    </div>
+
+    <!-- FILTER OPTIONS -->
+    <div class="filter-options">
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="" class="active">All</a>
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Pending">Pending</a>
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Processing">Processing</a>
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Confirmed">Confirmed</a>
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Shipped">Shipped</a>
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Cancelled">Cancelled</a>
+        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Out of Delivery">Out of Delivery</a>
+    </div>
+
+    <!-- ORDER TABLE -->
+    <div class="order-table-wrapper">
+        @if (Model != null && Model.Count() > 0)
+        {
+            <div class="order-tables">
+                <div class="row head">
+                    <div class="id">Id</div>
+                    <div class="name">Name</div>
+                    <div class="date">Order Date</div>
+                    <div class="status">Status</div>
+                    <div class="pstatus">Payment</div>
+                    <div class="ototal">Order Total</div>
+                    <div class="option"></div>
+                </div>
+                @foreach (var order in Model)
+                {
+                    <div class="row data">
+                        <div class="id"># @order.Id</div>
+                        <div class="name">@order.Name</div>
+                        <div class="date">@order.OrderDate.ToShortDateString()</div>
+                        <div class="status">
+                            <div class="val">@order.OrderStatus</div>
+                        </div>
+                        <div class="pstatus">
+                            <div class="val">@order.PaymentStatus</div>
+                        </div>
+                        <div class="ototal">@order.OrderTotal ৳</div>
+                        <div class="option">
+                            <a 
+                                class="icon"
+                                asp-area="Admin"
+                                asp-controller="Orders"
+                                asp-action="Update"
+                            >
+                                <i class="iconoir-edit-pencil"></i>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
+                Heading = "Order Not Found",
+                Message = "Sorry, we haven't find any order.",
+                ImageType = 1,
+                OptionalHeight = "70vh"
+            });
+        }
+    </div>
+</div>

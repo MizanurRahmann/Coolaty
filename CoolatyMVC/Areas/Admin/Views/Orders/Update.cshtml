@@ -1,0 +1,89 @@
+﻿@section Styles { <link rel="stylesheet" href="~/css/admin/admin-order-update.css" asp-append-version="true" /> }
+@{ ViewData["Title"] = "Orders"; }
+
+<form class="update-orders">
+    <!-- HEADING -->
+    <div class="heading">
+        <div class="heading-name">
+            <h2>Order <span>#123</span></h2>
+        </div>
+    </div>
+
+    <!-- BODY -->
+    <div class="form-body">
+        <div class="prim-info">
+            <div>Incomplete</div>
+            <div>Not Paid</div>
+        </div>
+
+        <!-- MAIN INFO -->
+        <div class="main-info">
+            <div class="product-info">
+                <div class="wrapper">
+                    <div class="head">
+                        <h3>Overview</h3>
+                        <div>12/02/2023</div>
+                    </div>
+
+                    <div class="products">
+                        <div class="orow orow-th">
+                            <div class="prod">Product</div>
+                            <div class ="price">Price</div>
+                            <div class="quant">Quantity</div>
+                            <div class="subtotal">Subtotal</div>
+                        </div>
+                        <div class="orow">
+                            <div class="prod">
+                                <div class="img"></div>
+                                <div class="info">
+                                    <h6>Name</h6>
+                                    <p>Nothing</p>
+                                </div>
+                            </div>
+                            <div class="price">
+                                <input type="text" value="100 ৳" disabled />
+                                <div class="symbol">
+                                    <i class="iconoir-cancel"></i>
+                                </div>
+                            </div>
+                            <div class="quant">
+                                <div class="block">
+                                    <div class="dec"><i class="iconoir-minus"></i></div>
+                                    <input type="text" value="100" />
+                                    <div class="inc"><i class="iconoir-plus"></i></div>
+                                </div>
+                            </div>
+                            <div class="subtotal">
+                                <div class="val">100 ৳</div>
+                                <div class="symbol"><i class="iconoir-trash"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-info">
+                <div class="wrapper">
+                    <div class="head">
+                        <h3>Customer</h3>
+                        <div><a>View Details</a></div>
+                    </div>
+
+                    <div class="user">
+                        <div class="iuser">
+                            <div class="avatar"></div>
+                            <p class="name">Md. Mizanur Rahman</p>
+                            <p class="mail">mrr926560@gmail.com</p>
+                            <p class="phone">+88 01531709712</p>
+                        </div>
+                        <div class="shipping-address">
+                            <p class="phead">Shipping Address</p>
+                            <p>Area: Thon Thonia</p>
+                            <p>Thana: Bogura Sadar, Post: 5800, District: Bogura</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

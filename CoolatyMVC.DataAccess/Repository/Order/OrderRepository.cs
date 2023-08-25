@@ -1,5 +1,6 @@
 ﻿using CoolatyMVC.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace CoolatyMVC.Data.Repository.Orders
 {
@@ -17,13 +18,21 @@ namespace CoolatyMVC.Data.Repository.Orders
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search)
+        public async Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search, string type)
         {
             var result = _db.Orders.AsQueryable();
 
+            if (!string.IsNullOrEmpty(type))
+            {
+                result = result
+                       .Include(order => order.AppUser)
+                       .Where(order => order.OrderStatus == type);
+            }
+            
             if (!string.IsNullOrEmpty(search))
             {
-                result = result.Where(category => category.Name.Contains(search));
+                result = result
+                .Where(order => order.Name.Contains(search));
             }
 
             result = result.Skip((pageNumber - 1) * pageSize).Take(pageSize);

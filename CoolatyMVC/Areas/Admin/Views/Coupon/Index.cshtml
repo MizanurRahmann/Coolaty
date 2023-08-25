@@ -49,9 +49,9 @@
                             </div>
                             <div class="c-code w-15">@coupon.Type</div>
                             <div class="c-amount w-15">
-                                @coupon.DiscountAmount @(coupon.Type == "Percentage" ? "%" : "$")
+                                @coupon.DiscountAmount @(coupon.Type == "Percentage" ? "%" : "৳")
                             </div>
-                            <div class="w-15">Expiration Date</div>
+                            <div class="w-15">@coupon.ExpireDate.ToString("dd/MM/yyyy")</div>
                             <div class="c-status w-10">
                                 <div class="circle @coupon.Status"></div>
                                 <div class="status">@coupon.Status</div>
@@ -76,7 +76,7 @@
         {
             @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
                 Heading = "Coupon Not Found",
-                Message = "Soory, we haven't find any coupons.",
+                Message = "Sorry, we haven't find any coupons.",
                 ImageType = 1
             });
         }

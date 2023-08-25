@@ -65,12 +65,21 @@ namespace CoolatyMVC.Areas.Admin.Controllers
                     Code = model.Coupon.Code,
                     Type = model.Coupon.Type,
                     DiscountAmount = model.Coupon.DiscountAmount,
-                    ExpireDate = model.Coupon.ExpireDate,
+                    ExpireDate = model.Coupon.Status == "Expired" ? DateTime.Now : model.Coupon.ExpireDate,
                     MinimumCost = model.Coupon.MinimumCost,
                     MinimumItem = model.Coupon.MinimumItem,
                     ForNewUser = model.ForNewUserText == "Yes" ? true : false,
                     Status = model.Coupon.Status,
                 };
+
+                if(model.Coupon.ExpireDate < DateTime.Now)
+                {
+                    domainModel.Status = "Expired";
+                }
+                else if(model.Coupon.Status == "Expired")
+                {
+                    domainModel.Status = "Active";
+                }
 
                 if (model.Coupon.Id == 0)
                 {

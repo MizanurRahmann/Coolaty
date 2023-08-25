@@ -1,6 +1,8 @@
 ﻿@model NotFoundForAdminVM;
 
-<div class="common-error-wrapper">
+<div 
+    class="common-error-wrapper"
+     style="@(string.IsNullOrEmpty(Model.OptionalHeight) ? "" : "height: " + Model.OptionalHeight)">
     <div class="inner">
         <img src="~/img/admin/error.png" alt="" />
         <h1>@Model.Heading</h1>

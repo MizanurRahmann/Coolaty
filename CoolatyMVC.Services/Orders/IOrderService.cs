@@ -4,7 +4,7 @@ namespace CoolatyMVC.Services.Orders
 {
     public interface IOrderService
     {
-        Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search);
+        Task<IEnumerable<Order>> GetAllOrders(int pageNumber, int pageSize, string search, string type);
         Task<IEnumerable<Order>> GetMyOrders(string userId);
         Task<Order> GetSingleOrder(int orderId);
         Task Create(Order model);

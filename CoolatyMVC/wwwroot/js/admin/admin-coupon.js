@@ -20,6 +20,13 @@
     // delete Modal Controller
     $("#coupon-delete-btn").click(showDeleteModal);
     $("#coupon-delete-close-btn").click(closeDeleteModal);
+
+    // date picker 
+    $("#cuoponExpireDate").datepicker({
+        dateFormat: "dd/mm/yy",
+        minDate: 0,
+        maxDate: "+1M"
+    });
 });
 
 // DROPDOWN CONTROLLER
