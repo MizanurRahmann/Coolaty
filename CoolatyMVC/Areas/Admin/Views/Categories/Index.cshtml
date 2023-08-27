@@ -52,7 +52,11 @@
         }
         else
         {
-            @await Html.PartialAsync("~/Areas/Admin/Views/Categories/_NotFound.cshtml");
+            @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
+                Heading = "Category Not Found",
+                Message = "Sorry, we haven't find any category.",
+                ImageType = 2
+            });
         }
     </div>
 </div>

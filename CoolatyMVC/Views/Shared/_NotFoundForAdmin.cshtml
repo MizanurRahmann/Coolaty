@@ -4,7 +4,14 @@
     class="common-error-wrapper"
      style="@(string.IsNullOrEmpty(Model.OptionalHeight) ? "" : "height: " + Model.OptionalHeight)">
     <div class="inner">
-        <img src="~/img/admin/error.png" alt="" />
+        @if (Model.ImageType == 1)
+        {
+            <img src="~/img/admin/error.png" alt="" />
+        }
+        else
+        {
+            <img src="~/img/admin/error-2.png" alt="" />
+        }
         <h1>@Model.Heading</h1>
         <p>@Model.Message</p>
     </div>

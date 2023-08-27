@@ -62,7 +62,11 @@
         }
         else
         {
-            @await Html.PartialAsync("~/Areas/Admin/Views/Products/_NotFound.cshtml");
+            @await Html.PartialAsync("~/Views/Shared/_NotFoundForAdmin.cshtml", new NotFoundForAdminVM {
+                Heading = "Product Not Found",
+                Message = "Sorry, we haven't find any product.",
+                ImageType = 1
+            });
         }
     </div>
 </div>
