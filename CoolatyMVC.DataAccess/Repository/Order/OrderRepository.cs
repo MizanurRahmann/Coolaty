@@ -32,7 +32,7 @@ namespace CoolatyMVC.Data.Repository.Orders
             if (!string.IsNullOrEmpty(search))
             {
                 result = result
-                .Where(order => order.Name.Contains(search));
+                .Where(order => order.Id == int.Parse(search));
             }
 
             result = result.Skip((pageNumber - 1) * pageSize).Take(pageSize);
@@ -48,7 +48,9 @@ namespace CoolatyMVC.Data.Repository.Orders
 
         public async Task<Order> GetSingleOrder(int orderId)
         {
-            return await _db.Orders.FirstOrDefaultAsync(c => c.Id == orderId);
+            return await _db.Orders
+                .Include(order => order.AppUser)
+                .FirstOrDefaultAsync(c => c.Id == orderId);
         }
 
         public async Task Create(Order model)

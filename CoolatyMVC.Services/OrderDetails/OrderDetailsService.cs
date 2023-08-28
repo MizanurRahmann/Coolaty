@@ -18,9 +18,9 @@ namespace CoolatyMVC.Services.OrderDetails
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<OrderDetail>> GetAllOrders()
+        public async Task<IEnumerable<OrderDetail>> GetAllOrderDetails(int id)
         {
-            return await _repo.OrderDetail.GetAllOrders();
+            return await _repo.OrderDetail.GetAllOrderDetails(id);
         }
 
         public async Task<OrderDetail> GetOrderDetails(int id)

@@ -1,89 +1,115 @@
 ﻿@section Styles { <link rel="stylesheet" href="~/css/admin/admin-order-update.css" asp-append-version="true" /> }
 @{ ViewData["Title"] = "Orders"; }
+@model OrderWithProductsVM;
 
 <form class="update-orders">
     <!-- HEADING -->
     <div class="heading">
         <div class="heading-name">
-            <h2>Order <span>#123</span></h2>
+            <h2>Order <span>#@(Model != null && Model.OrderHeader != null ? Model.OrderHeader.Id : "")</span></h2>
         </div>
     </div>
 
     <!-- BODY -->
-    <div class="form-body">
-        <div class="prim-info">
-            <div>Incomplete</div>
-            <div>Not Paid</div>
-        </div>
+    @if(Model != null)
+    {
+        <div class="form-body">
+            <div class="prim-info">
+                <div>@Model.OrderHeader.OrderStatus</div>
+                <div>@Model.OrderHeader.PaymentStatus</div>
+            </div>
 
-        <!-- MAIN INFO -->
-        <div class="main-info">
-            <div class="product-info">
-                <div class="wrapper">
-                    <div class="head">
-                        <h3>Overview</h3>
-                        <div>12/02/2023</div>
-                    </div>
-
-                    <div class="products">
-                        <div class="orow orow-th">
-                            <div class="prod">Product</div>
-                            <div class ="price">Price</div>
-                            <div class="quant">Quantity</div>
-                            <div class="subtotal">Subtotal</div>
+            <!-- MAIN INFO -->
+            <div class="main-info">
+                <div class="product-info">
+                    <div class="wrapper">
+                        <div class="head">
+                            <h3>Overview</h3>
+                            <div>@Model.OrderHeader.OrderDate.ToShortDateString()</div>
                         </div>
-                        <div class="orow">
-                            <div class="prod">
-                                <div class="img"></div>
-                                <div class="info">
-                                    <h6>Name</h6>
-                                    <p>Nothing</p>
+
+                        <div class="products">
+                            @if (Model != null && Model.OrderDetails != null && Model.OrderDetails.Count() > 0)
+                            {
+                                <div class="orow orow-th">
+                                    <div class="prod">Product</div>
+                                    <div class="price">Price</div>
+                                    <div class="quant">Quantity</div>
+                                    <div class="subtotal">Subtotal</div>
                                 </div>
-                            </div>
-                            <div class="price">
-                                <input type="text" value="100 ৳" disabled />
-                                <div class="symbol">
-                                    <i class="iconoir-cancel"></i>
+                                @foreach(var product in Model.OrderDetails)
+                                {
+                                    <div class="orow">
+                                        <div class="prod">
+                                            <div class="img">
+                                                <img src="@(string.Format("data:image/png;base64,{0}", product.Product.ImageUrl))" alt="" />
+                                            </div>
+                                            <div class="info">
+                                                <h6>@product.Product.Name</h6>
+                                                <p>Nothing</p>
+                                            </div>
+                                        </div>
+                                        <div class="price">
+                                            <input type="text" value="@product.Product.Price ৳" disabled />
+                                            <div class="symbol">
+                                                <i class="iconoir-cancel"></i>
+                                            </div>
+                                        </div>
+                                        <div class="quant">
+                                            <div class="block">
+                                                <div class="dec"><i class="iconoir-minus"></i></div>
+                                                <input type="text" value="@product.Count" />
+                                                <div class="inc"><i class="iconoir-plus"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="subtotal">
+                                            <div class="val">@(product.Product.Price * product.Count) ৳</div>
+                                            <div class="symbol"><i class="iconoir-trash"></i></div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+                                <div class="notfound">
+                                    <div class="wrapper2">
+                                        <div class="circle">
+                                            <img src="~/img/admin/empty-folder.png" alt="" />
+                                        </div>
+                                        <h3>Product Not Found</h3>
+                                        <p>Sorry, there isn't any product available here</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="quant">
-                                <div class="block">
-                                    <div class="dec"><i class="iconoir-minus"></i></div>
-                                    <input type="text" value="100" />
-                                    <div class="inc"><i class="iconoir-plus"></i></div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="user-info">
+                    <div class="wrapper">
+                        <div class="head">
+                            <h3>Customer</h3>
+                            <div><a>View Details</a></div>
+                        </div>
+
+                        <div class="user">
+                            <div class="iuser">
+                                <div class="avatar">
+                                    <img src="~/img/admin/avatar/@(new Random().Next(1, 5)).png" alt="" />
                                 </div>
+                                <p class="name">@Model.OrderHeader.AppUser.Name</p>
+                                <p class="mail">@Model.OrderHeader.AppUser.Email</p>
+                                <p class="phone">+88 @Model.OrderHeader.AppUser.PhoneNumber</p>
                             </div>
-                            <div class="subtotal">
-                                <div class="val">100 ৳</div>
-                                <div class="symbol"><i class="iconoir-trash"></i></div>
+                            <div class="shipping-address">
+                                <p class="phead">Shipping Address</p>
+                                <p>Area: @Model.OrderHeader.Address</p>
+                                <p>Thana: @Model.OrderHeader.Thana, Post: @Model.OrderHeader.PostalCode, District: @Model.OrderHeader.District</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="user-info">
-                <div class="wrapper">
-                    <div class="head">
-                        <h3>Customer</h3>
-                        <div><a>View Details</a></div>
-                    </div>
-
-                    <div class="user">
-                        <div class="iuser">
-                            <div class="avatar"></div>
-                            <p class="name">Md. Mizanur Rahman</p>
-                            <p class="mail">mrr926560@gmail.com</p>
-                            <p class="phone">+88 01531709712</p>
-                        </div>
-                        <div class="shipping-address">
-                            <p class="phead">Shipping Address</p>
-                            <p>Area: Thon Thonia</p>
-                            <p>Thana: Bogura Sadar, Post: 5800, District: Bogura</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </div>
+    }
 </form>

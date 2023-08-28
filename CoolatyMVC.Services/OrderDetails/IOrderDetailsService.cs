@@ -4,7 +4,7 @@ namespace CoolatyMVC.Services.OrderDetails
 {
     public interface IOrderDetailsService
     {
-        Task<IEnumerable<OrderDetail>> GetAllOrders();
+        Task<IEnumerable<OrderDetail>> GetAllOrderDetails(int orderId);
         Task<OrderDetail> GetOrderDetails(int orderId);
         void Create(OrderDetail model);
         void Update(OrderDetail model);

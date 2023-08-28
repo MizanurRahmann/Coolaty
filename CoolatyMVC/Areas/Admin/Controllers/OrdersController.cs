@@ -1,4 +1,5 @@
 ﻿using CoolatyMVC.Models;
+using CoolatyMVC.Models.ViewModels;
 using CoolatyMVC.Services.Service;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,9 +33,16 @@ namespace CoolatyMVC.Areas.Admin.Controllers
             return View(orders);
         }
 
-        public IActionResult Update()
+        [HttpGet]
+        public async Task<IActionResult> Update(int id)
         {
-            return View();
+            var data = new OrderWithProductsVM
+            {
+                OrderHeader = await _services.Order.GetSingleOrder(id),
+                OrderDetails = await _services.OrderDetails.GetAllOrderDetails(id)
+            };
+
+            return View(data);
         }
         #endregion
     }

@@ -1,5 +1,8 @@
 ﻿@section Styles { <link rel="stylesheet" href="~/css/admin/admin-orders.css" asp-append-version="true" /> }
-@{ ViewData["Title"] = "Orders"; }
+@{ 
+    ViewData["Title"] = "Orders";
+    var queryType = Context.Request.Query["type"].ToString();
+}
 @model IEnumerable<Order>;
 
 <div class="orders">
@@ -25,13 +28,69 @@
 
     <!-- FILTER OPTIONS -->
     <div class="filter-options">
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="" class="active">All</a>
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Pending">Pending</a>
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Processing">Processing</a>
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Confirmed">Confirmed</a>
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Shipped">Shipped</a>
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Cancelled">Cancelled</a>
-        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" asp-route-type="Out of Delivery">Out of Delivery</a>
+        <a 
+            asp-area="Admin" 
+            asp-controller="Orders" 
+            asp-action="Index" 
+            asp-route-type=""
+            class="@(queryType == "" ? "active" : "")"
+        >
+            All
+        </a>
+        <a 
+            asp-area="Admin" 
+            asp-controller="Orders" 
+            asp-action="Index" 
+            asp-route-type="Pending"
+           class="@(queryType == "Pending" ? "active" : "")"
+        >
+            Pending
+        </a>
+        <a 
+            asp-area="Admin" 
+            asp-controller="Orders"
+            asp-action="Index" 
+            asp-route-type="Processing" 
+            class="@(queryType == "Processing" ? "active" : "")"
+        >
+            Processing
+        </a>
+        <a 
+            asp-area="Admin" 
+            asp-controller="Orders" 
+            asp-action="Index" 
+            asp-route-type="Confirmed" 
+            class="@(queryType == "Confirmed" ? "active" : "")"
+        >
+            Confirmed
+        </a>
+        <a 
+            asp-area="Admin" 
+            asp-controller="Orders" 
+            asp-action="Index" 
+            asp-route-type="Shipped"
+            class="@(queryType == "Shipped" ? "active" : "")"
+        >
+            Shipped
+        </a>
+        <a 
+            asp-area="Admin" 
+            asp-controller="Orders" 
+            asp-action="Index" 
+            asp-route-type="Cancelled"
+            class="@(queryType == "Cancelled" ? "active" : "")"
+        >
+            Cancelled
+        </a>
+        <a 
+            asp-area="Admin"
+            asp-controller="Orders" 
+            asp-action="Index" 
+            asp-route-type="Out of Delivery"
+            class="@(queryType == "Out of Delivery" ? "active" : "")"
+        >
+            Out of Delivery
+        </a>
     </div>
 
     <!-- ORDER TABLE -->
@@ -67,6 +126,7 @@
                                 asp-area="Admin"
                                 asp-controller="Orders"
                                 asp-action="Update"
+                                asp-route-id="@order.Id"
                             >
                                 <i class="iconoir-edit-pencil"></i>
                             </a>
@@ -86,3 +146,5 @@
         }
     </div>
 </div>
+
+@section Scripts { <script src="~/js/admin/admin-order.js" asp-append-version="true"></script> }

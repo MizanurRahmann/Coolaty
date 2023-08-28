@@ -18,9 +18,9 @@ namespace CoolatyMVC.Data.Repository.Orders
         #endregion
 
         #region Methods
-        public async Task<IEnumerable<OrderDetail>> GetAllOrders()
+        public async Task<IEnumerable<OrderDetail>> GetAllOrderDetails(int id)
         {
-            var result = _db.OrderDetails.AsQueryable();
+            var result = _db.OrderDetails.Include(o => o.Product).Where(o => o.OrderId == id);
             return await Task.FromResult(result);
         }
 
